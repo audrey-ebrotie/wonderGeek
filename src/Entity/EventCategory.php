@@ -15,6 +15,15 @@ class EventCategory
     #[ORM\Column(type: 'integer')]
     private $id;
 
+        /**
+     * @Assert\NotBlank(message="Vous devez saisir une categorie de jeu")
+     * @Assert\Length(
+     *      min=3,
+     *      max=40,
+     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
+     * )
+     */
     #[ORM\Column(type: 'string', length: 40)]
     private $name;
 

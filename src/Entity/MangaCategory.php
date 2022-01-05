@@ -15,6 +15,9 @@ class MangaCategory
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * * @Assert\NotBlank(message="Vous devez saisir une catégorie de manga")
+     */
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 

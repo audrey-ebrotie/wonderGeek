@@ -15,9 +15,21 @@ class Platform
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir un nom pour l'événement")
+     * @Assert\Length(
+     *      min=5,
+     *      max=50,
+     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
+     * )
+     */
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir un jeu")
+     */
     #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'platform')]
     private $games;
 
