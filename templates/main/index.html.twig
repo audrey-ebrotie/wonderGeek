@@ -11,13 +11,116 @@
 {% block mainClasses %}no-spaces{% endblock %}
 
 {% block body %}
-    <div class="landing">
-        <div class="landing-content">
-            <h1>Bienvenue sur WonderGeek</h1>
-            <h2>Le site référence de la PopCulture</h2>
-            <a href="#" class="button">
-                Voir nos événements
-            </a>
+    <div class="container-fluid">
+        <div class="landing row">
+            <div class="landing-content col-6 py-5">
+                <h1>Bienvenue sur WonderGeek</h1>
+                <h2>Le site référence de la PopCulture</h2>
+                <a href="#" class="button">
+                    Voir nos événements
+                </a>
+            </div>
+            <div class="text-center col-6">
+                <h2 class="text-light py-5"> A la une </h2>
+                <img src={{ asset('img/dota2.jpg') }} alt="jeu a la une">
+            </div>
+        </div>
+
+        <div class="row landing-option">
+            <h3 class="text-light py-4"> Evenements qui pourraient vous plaire </h3>
+            <div class="col">
+                <div class="card h-100 w-80">
+                    <img src={{ asset('img/finalfantasy.jpg') }} class="card-img-top" alt="Final fantasy XIV">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Farming dans la plaine Félicité</h4>
+                        <p class="card-text text-light">Warrario<br>
+                            Final Fantasy XIV
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 w-80">
+                    <img src={{ asset('img/halo.jpg') }} class="card-img-top" alt="Halo">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">5v5 in different maps</h4>
+                        <p class="card-text text-light">ExtreMz<br>
+                            Halo infinite
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 w-80">
+                    <img src={{ asset('img/lol.jpg') }} class="card-img-top" alt="LoL">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Niveau platine en match classé</h4>
+                        <p class="card-text text-light">Grinding elo<br>
+                            League of Legends
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 w-80">
+                    <img src={{ asset('img/warzone.jpg') }} class="card-img-top" alt="Warzone">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Team domination matches</h4>
+                        <p class="card-text text-light">Lets bring some flags back<br>
+                            Call of Duty Warzone
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row landing-option">
+            <h3 class="text-light py-4"> Catégories qui pourraient vous plaire </h3>
+            <div class="col">
+                <div class="card h-100">
+                    <img src={{ asset('img/hearthstone.jpg') }} class="card-img-top" alt="Hearthstone">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Venez on est bien</h4>
+                        <p class="card-text text-light">Le mister B<br>
+                            Hearthstone
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src={{ asset('img/magic.jpg') }} class="card-img-top" alt="Magic">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Tournoi amical</h4>
+                        <p class="card-text text-light">House of cards<br>
+                            Magic
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src={{ asset('img/yu-gi-oh.jpg') }} class="card-img-top" alt="Yu-Gi-Oh">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Vive les dragons</h4>
+                        <p class="card-text text-light">Gilician<br>
+                            Yu-Gi-Oh
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src={{ asset('img/pokemon.jpg') }} class="card-img-top" alt="Pokemon">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">Attrapez les tous</h4>
+                        <p class="card-text text-light">Gorgorama<br>
+                            Pokemon
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 {% endblock %}
