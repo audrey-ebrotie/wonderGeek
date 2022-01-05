@@ -1,0 +1,41 @@
+<header>
+    <a href="{{ path('main_index') }}" class="title">
+        <img src="{{ asset('images/logo.svg') }}" alt="Logo WonderGeek">
+        wonderGeek
+    </a>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Nos événements</a>
+            </li>
+            {% if is_granted('EVENT_FORM') %}
+                <li>
+                    <a href="#">Créer un événement</a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="account">
+        {% if app.user %}
+            <a href="#">
+                <i class="fas fa-user"></i>
+                {{ app.user.username }}
+            </a>
+            <a href="#">
+                Déconnexion
+            </a>
+        {% else %}
+            <a href="#">
+                Connexion
+            </a>
+            <a href="#">
+                Inscription
+            </a>
+        {% endif %}
+    </div>
+</header>
