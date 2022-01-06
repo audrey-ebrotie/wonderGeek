@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ComicRepository;
+use App\Repository\BoardGameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ComicRepository::class)]
-class Comic
+#[ORM\Entity(repositoryClass: BoardGameRepository::class)]
+class BoardGame
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,14 +24,11 @@ class Comic
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    private $author;
-
-    #[ORM\ManyToOne(targetEntity: ComicCategory::class, inversedBy: 'comics')]
+    #[ORM\ManyToOne(targetEntity: BoardGameCategory::class, inversedBy: 'boardGames')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoriteComic')]
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoriteBoardGame')]
     private $users;
 
     public function __construct()
@@ -80,24 +77,12 @@ class Comic
         return $this;
     }
 
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    public function getCategory(): ?ComicCategory
+    public function getCategory(): ?BoardGameCategory
     {
         return $this->category;
     }
 
-    public function setCategory(?ComicCategory $category): self
+    public function setCategory(?BoardGameCategory $category): self
     {
         $this->category = $category;
 
@@ -116,7 +101,7 @@ class Comic
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->addFavoriteComic($this);
+            $user->addFavoriteBoardGame($this);
         }
 
         return $this;
@@ -125,7 +110,7 @@ class Comic
     public function removeUser(User $user): self
     {
         if ($this->users->removeElement($user)) {
-            $user->removeFavoriteComic($this);
+            $user->removeFavoriteBoardGame($this);
         }
 
         return $this;

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ComicRepository;
+use App\Repository\VideoGameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ComicRepository::class)]
-class Comic
+#[ORM\Entity(repositoryClass: VideoGameRepository::class)]
+class VideoGame
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,18 +24,19 @@ class Comic
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    private $author;
+    #[ORM\ManyToMany(targetEntity: Platform::class, inversedBy: 'videoGames')]
+    private $platform;
 
-    #[ORM\ManyToOne(targetEntity: ComicCategory::class, inversedBy: 'comics')]
+    #[ORM\ManyToOne(targetEntity: VideoGameCategory::class, inversedBy: 'videoGames')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoriteComic')]
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoriteVideoGame')]
     private $users;
 
     public function __construct()
     {
+        $this->platform = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
 
@@ -80,24 +81,36 @@ class Comic
         return $this;
     }
 
-    public function getAuthor(): ?string
+    /**
+     * @return Collection|Platform[]
+     */
+    public function getPlatform(): Collection
     {
-        return $this->author;
+        return $this->platform;
     }
 
-    public function setAuthor(string $author): self
+    public function addPlatform(Platform $platform): self
     {
-        $this->author = $author;
+        if (!$this->platform->contains($platform)) {
+            $this->platform[] = $platform;
+        }
 
         return $this;
     }
 
-    public function getCategory(): ?ComicCategory
+    public function removePlatform(Platform $platform): self
+    {
+        $this->platform->removeElement($platform);
+
+        return $this;
+    }
+
+    public function getCategory(): ?VideoGameCategory
     {
         return $this->category;
     }
 
-    public function setCategory(?ComicCategory $category): self
+    public function setCategory(?VideoGameCategory $category): self
     {
         $this->category = $category;
 
@@ -116,7 +129,7 @@ class Comic
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->addFavoriteComic($this);
+            $user->addFavoriteVideoGame($this);
         }
 
         return $this;
@@ -125,7 +138,7 @@ class Comic
     public function removeUser(User $user): self
     {
         if ($this->users->removeElement($user)) {
-            $user->removeFavoriteComic($this);
+            $user->removeFavoriteVideoGame($this);
         }
 
         return $this;

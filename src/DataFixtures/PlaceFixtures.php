@@ -13,7 +13,7 @@ class PlaceFixtures extends Fixture
         {
             $faker = Factory::create('fr_FR');
 
-            for($nbrPlaces = 1; $nbrPlaces <= 10; $nbrPlaces++){
+            for($nbrPlaces = 1; $nbrPlaces <= 50; $nbrPlaces++){
             $place = new Place();
 
             $place->setName($faker->company());

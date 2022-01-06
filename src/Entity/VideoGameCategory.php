@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PlatformRepository;
+use App\Repository\VideoGameCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PlatformRepository::class)]
-class Platform
+#[ORM\Entity(repositoryClass: VideoGameCategoryRepository::class)]
+class VideoGameCategory
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,7 +18,7 @@ class Platform
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
-    #[ORM\ManyToMany(targetEntity: VideoGame::class, mappedBy: 'platform')]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: VideoGame::class)]
     private $videoGames;
 
     public function __construct()
@@ -55,7 +55,7 @@ class Platform
     {
         if (!$this->videoGames->contains($videoGame)) {
             $this->videoGames[] = $videoGame;
-            $videoGame->addPlatform($this);
+            $videoGame->setCategory($this);
         }
 
         return $this;
@@ -64,7 +64,10 @@ class Platform
     public function removeVideoGame(VideoGame $videoGame): self
     {
         if ($this->videoGames->removeElement($videoGame)) {
-            $videoGame->removePlatform($this);
+            // set the owning side to null (unless already changed)
+            if ($videoGame->getCategory() === $this) {
+                $videoGame->setCategory(null);
+            }
         }
 
         return $this;
