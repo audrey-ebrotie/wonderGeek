@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\EventCategoryRepository;
+use App\Repository\BoardGameCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EventCategoryRepository::class)]
-class EventCategory
+#[ORM\Entity(repositoryClass: BoardGameCategoryRepository::class)]
+class BoardGameCategory
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,7 +16,7 @@ class EventCategory
     private $id;
 
     /**
-     * @Assert\NotBlank(message="Vous devez saisir une catégorie d'évènement")
+     * @Assert\NotBlank(message="Vous devez saisir une catégorie de jeu de société")
      * @Assert\Length(
      *      min=3,
      *      max=50,
@@ -27,12 +27,12 @@ class EventCategory
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Event::class)]
-    private $events;
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: BoardGame::class)]
+    private $boardGames;
 
     public function __construct()
     {
-        $this->events = new ArrayCollection();
+        $this->boardGames = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -53,29 +53,29 @@ class EventCategory
     }
 
     /**
-     * @return Collection|Event[]
+     * @return Collection|BoardGame[]
      */
-    public function getEvents(): Collection
+    public function getBoardGames(): Collection
     {
-        return $this->events;
+        return $this->boardGames;
     }
 
-    public function addEvent(Event $event): self
+    public function addBoardGame(BoardGame $boardGame): self
     {
-        if (!$this->events->contains($event)) {
-            $this->events[] = $event;
-            $event->setCategory($this);
+        if (!$this->boardGames->contains($boardGame)) {
+            $this->boardGames[] = $boardGame;
+            $boardGame->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeEvent(Event $event): self
+    public function removeBoardGame(BoardGame $boardGame): self
     {
-        if ($this->events->removeElement($event)) {
+        if ($this->boardGames->removeElement($boardGame)) {
             // set the owning side to null (unless already changed)
-            if ($event->getCategory() === $this) {
-                $event->setCategory(null);
+            if ($boardGame->getCategory() === $this) {
+                $boardGame->setCategory(null);
             }
         }
 

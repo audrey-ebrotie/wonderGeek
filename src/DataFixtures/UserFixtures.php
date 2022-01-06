@@ -6,7 +6,6 @@ use Faker\Factory;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 class UserFixtures extends Fixture
 {
@@ -14,7 +13,7 @@ class UserFixtures extends Fixture
         {
             $faker = Factory::create('fr_FR');
 
-            for($nbrUsers = 1; $nbrUsers <= 10; $nbrUsers++){
+            for($nbrUsers = 1; $nbrUsers <= 50; $nbrUsers++){
             $user = new User();
 
             $user->setUsername($faker->userName());

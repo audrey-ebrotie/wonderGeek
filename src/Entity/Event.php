@@ -2,11 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EventRepository;
-use Doctrine\Common\Collections\Collection;
-use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
@@ -20,16 +19,15 @@ class Event
      * @Assert\NotBlank(message="Vous devez saisir un nom pour l'événement")
      * @Assert\Length(
      *      min=5,
-     *      max=60,
+     *      max=50,
      *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
      *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
      * )
-     * @ORM\Column(type="string", length=60)
      */
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
-        /**
+    /**
      * @Assert\NotBlank(message="Vous devez saisir une description pour l'événement")
      * @Assert\Length(
      *      min=10,
@@ -38,7 +36,7 @@ class Event
      *      maxMessage="La description doit contenir au maximum {{ limit }} caractères"
      * )
      */
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: 'text')]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -87,9 +85,6 @@ class Event
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    /**
-     * @Assert\Valid()
-     */
     #[ORM\ManyToOne(targetEntity: Place::class, inversedBy: 'events')]
     private $place;
 
@@ -127,7 +122,7 @@ class Event
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
@@ -142,30 +137,6 @@ class Event
     public function setPicture(string $picture): self
     {
         $this->picture = $picture;
-
-        return $this;
-    }
-
-    public function getPictureFile(): ?File
-    {
-        return $this->pictureFile;
-    }
-
-    public function setPictureFile(?File $pictureFile): self
-    {
-        $this->pictureFile = $pictureFile;
-
-        return $this;
-    }
-    
-    public function getPictureUrl(): ?string
-    {
-        return $this->pictureUrl;
-    }
-
-    public function setPictureUrl(string $pictureUrl): self
-    {
-        $this->pictureUrl = $pictureUrl;
 
         return $this;
     }

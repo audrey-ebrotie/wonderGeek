@@ -2,19 +2,21 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\GameRepository;
-use Doctrine\Common\Collections\Collection;
-use Symfony\Component\HttpFoundation\File\File;
+use App\Repository\BoardGameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: GameRepository::class)]
-class Game
+#[ORM\Entity(repositoryClass: BoardGameRepository::class)]
+class BoardGame
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
+
+    #[ORM\Column(type: 'string', length: 50)]
+    private $name;
 
     /**
      * @Assert\NotBlank(message="Vous devez saisir le nom du jeu")
@@ -25,9 +27,9 @@ class Game
      *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
      * )
      */
-    #[ORM\Column(type: 'string', length: 50)]
-    private $name;
-
+    #[ORM\Column(type: 'text')]
+    private $description;
+    
     /**
      * @Assert\NotBlank(message="Vous devez saisir une description du jeu")
      * @Assert\Length(
@@ -37,9 +39,6 @@ class Game
      *      maxMessage="La description doit contenir au maximum {{ limit }} caractères"
      *)
      */
-    #[ORM\Column(type: 'text')]
-    private $description;
-
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 
@@ -62,17 +61,16 @@ class Game
      */
     private $pictureFile;
 
-
-    #[ORM\ManyToOne(targetEntity: GameCategory::class, inversedBy: 'games')]
+    #[ORM\ManyToOne(targetEntity: BoardGameCategory::class, inversedBy: 'boardGames')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    #[ORM\ManyToMany(targetEntity: Platform::class, inversedBy: 'games')]
-    private $platform;
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoriteBoardGame')]
+    private $users;
 
     public function __construct()
     {
-        $this->platform = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -116,36 +114,12 @@ class Game
         return $this;
     }
 
-    public function getPictureFile(): ?File
-    {
-        return $this->pictureFile;
-    }
-
-    public function setPictureFile(?File $pictureFile): self
-    {
-        $this->pictureFile = $pictureFile;
-
-        return $this;
-    }
-
-    public function getPictureUrl(): ?string
-    {
-        return $this->pictureUrl;
-    }
-
-    public function setPictureUrl(string $pictureUrl): self
-    {
-        $this->pictureUrl = $pictureUrl;
-
-        return $this;
-    }
-
-    public function getCategory(): ?GameCategory
+    public function getCategory(): ?BoardGameCategory
     {
         return $this->category;
     }
 
-    public function setCategory(?GameCategory $category): self
+    public function setCategory(?BoardGameCategory $category): self
     {
         $this->category = $category;
 
@@ -153,25 +127,28 @@ class Game
     }
 
     /**
-     * @return Collection|Platform[]
+     * @return Collection|User[]
      */
-    public function getPlatform(): Collection
+    public function getUsers(): Collection
     {
-        return $this->platform;
+        return $this->users;
     }
 
-    public function addPlatform(Platform $platform): self
+    public function addUser(User $user): self
     {
-        if (!$this->platform->contains($platform)) {
-            $this->platform[] = $platform;
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addFavoriteBoardGame($this);
         }
 
         return $this;
     }
 
-    public function removePlatform(Platform $platform): self
+    public function removeUser(User $user): self
     {
-        $this->platform->removeElement($platform);
+        if ($this->users->removeElement($user)) {
+            $user->removeFavoriteBoardGame($this);
+        }
 
         return $this;
     }
