@@ -20,7 +20,7 @@ class PlaceFixtures extends Fixture
             $place->setStreet($faker->streetAddress());
             $place->setCity($faker->city());
             $place->setZipcode($faker->postcode());
-            $place->setCountry('FR');
+            $place->setCountry('France');
 
             $manager->persist($place);
         }

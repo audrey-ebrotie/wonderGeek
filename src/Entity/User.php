@@ -17,18 +17,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir une adresse e-mail")
+     * @Assert\Email(message="Vous devez saisir une adresse e-mail valide", mode="strict")
+     * @ORM\Column(type="string", length=255)
+     */
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir un mot de passe")
+     * @Assert\Length(
+     *      min=8,
+     *      max=40,
+     *      minMessage="Votre mot de passe doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="Votre mot de passe doit contenir au maximum {{ limit }} caractères"
+     * )
+     * @Assert\Regex("/^(?=.*[A-Za-z])(?=.*\d)(?=.*?[@$!%*#?&])/", message="Votre mot de passe doit au minmum contenir un chiffre, une lettre et un caractère spécial")
+     * @Assert\NotCompromisedPassword(message="Ce mot de passe a été compromis lors d'une fuite de donnée d'un autre service")
+     */
     #[ORM\Column(type: 'string')]
     private $password;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur")
+     * @Assert\Length(
+     *      min=2,
+     *      max=20,
+     *      minMessage="Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères"
+     * )
+     */
     #[ORM\Column(type: 'string', length: 20)]
     private $username;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez renseigner votre date de naissance")
+     * @Assert\LessThanOrEqual("-13 years", message="Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")
+     * @ORM\Column(type="date")
+     */
     #[ORM\Column(type: 'date')]
     private $birthdate;
 

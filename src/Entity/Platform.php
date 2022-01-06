@@ -15,6 +15,15 @@ class Platform
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir le nom de la plateforme")
+     * @Assert\Length(
+     *      min=2,
+     *      max=50,
+     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
+     * )
+     */
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
