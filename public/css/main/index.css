@@ -1,12 +1,12 @@
 main{
     display: flex;
-    flex-direction: column;
 }
 
 .landing{
     display: flex;
-    flex-direction: column;
     flex: 1;
+    background-color: #002a35;
+    align-items: center;
 }
 
 .landing-content{
@@ -17,10 +17,16 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #002a35;
     color: #ecf0f1;
+}
+.landing-option{
+    background-color: #002a35;
 }
 
 h1, h2{
     margin: 0;
+}
+.card img{
+    height: 250px;
 }
