@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\GameRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\GameRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: GameRepository::class)]
 class Game
@@ -15,14 +16,52 @@ class Game
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir le nom du jeu")
+     * @Assert\Length(
+     *      min=3,
+     *      max=50,
+     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
+     * )
+     */
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir une description du jeu")
+     * @Assert\Length(
+     *      min=10,
+     *      max=1500,
+     *      minMessage="La description doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="La description doit contenir au maximum {{ limit }} caractères"
+     *)
+     */
     #[ORM\Column(type: 'text')]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
+
+    /**
+     * @Assert\Url(message="Vous devez saisir une URL valide")
+     */
+    private $pictureUrl;
+
+    /**
+     * @Assert\Expression(
+     *     "this.getPictureUrl() or this.getPictureFIle()",
+     *     message="Vous devez importer une image ou fournir une URL"
+     * )
+     * @Assert\File(
+     *     maxSize="2M",
+     *     mimeTypes={"image/jpeg", "image/png"},
+     *     maxSizeMessage="Les imports sont limités à {{ limit }}{{ suffix }}",
+     *     mimeTypesMessage="Les imports sont limités au JPEG et PNG"
+     * )
+     */
+    private $pictureFile;
+
 
     #[ORM\ManyToOne(targetEntity: GameCategory::class, inversedBy: 'games')]
     #[ORM\JoinColumn(nullable: false)]
@@ -73,6 +112,30 @@ class Game
     public function setPicture(string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPictureFile(?File $pictureFile): self
+    {
+        $this->pictureFile = $pictureFile;
+
+        return $this;
+    }
+
+    public function getPictureUrl(): ?string
+    {
+        return $this->pictureUrl;
+    }
+
+    public function setPictureUrl(string $pictureUrl): self
+    {
+        $this->pictureUrl = $pictureUrl;
 
         return $this;
     }

@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
+use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('', name: 'main_')]
 class MainController extends AbstractController
@@ -28,5 +30,17 @@ class MainController extends AbstractController
 
         return new Response("Page à propos");
     }
+
+    #[Route('/register',name:'register')]
+    public function register(): Response
+    {   
+        $event= new User();
+        $form = $this->createForm(UserType::class);
+
+        return $this->render('main/register.html.twig', [
+            'form'=> $form->createView(),
+        ]);
+    }
+
 
 }

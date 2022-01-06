@@ -15,15 +15,28 @@ class Place
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * * @Assert\NotBlank(message="Vous devez saisir un nom")
+     */
     #[ORM\Column(type: 'string', length: 40)]
     private $name;
 
+    /**
+     * * @Assert\NotBlank(message="Vous devez saisir une adresse")
+     */
     #[ORM\Column(type: 'string', length: 120)]
     private $street;
 
+    /**
+     * 
+     * @Assert\NotBlank(message="Vous devez saisir un code postal")
+     */
     #[ORM\Column(type: 'string', length: 12)]
     private $zipcode;
 
+    /**
+    * @Assert\NotBlank(message="Vous devez saisir une ville")
+     */
     #[ORM\Column(type: 'string', length: 60)]
     private $city;
 

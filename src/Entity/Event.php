@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\EventRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EventRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
@@ -15,21 +16,70 @@ class Event
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir un nom pour l'événement")
+     * @Assert\Length(
+     *      min=5,
+     *      max=60,
+     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
+     * )
+     * @ORM\Column(type="string", length=60)
+     */
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
+        /**
+     * @Assert\NotBlank(message="Vous devez saisir une description pour l'événement")
+     * @Assert\Length(
+     *      min=10,
+     *      max=1500,
+     *      minMessage="La description doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="La description doit contenir au maximum {{ limit }} caractères"
+     * )
+     */
     #[ORM\Column(type: 'text', nullable: true)]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 
+    /**
+     * @Assert\Url(message="Vous devez saisir une URL valide")
+     */
+    private $pictureUrl;
+
+    /**
+     * @Assert\Expression(
+     *     "this.getPictureUrl() or this.getPictureFIle()",
+     *     message="Vous devez importer une image ou fournir une URL"
+     * )
+     * @Assert\File(
+     *     maxSize="2M",
+     *     mimeTypes={"image/jpeg", "image/png"},
+     *     maxSizeMessage="Les imports sont limités à {{ limit }}{{ suffix }}",
+     *     mimeTypesMessage="Les imports sont limités au JPEG et PNG"
+     * )
+     */
+    private $pictureFile;
+
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir une date de début")
+     * @Assert\GreaterThan("now", message="Vous devez saisir une date de début supérieure à la date actuelle")
+     */
     #[ORM\Column(type: 'datetime')]
     private $startAt;
 
+    /**
+     * @Assert\NotBlank(message="Vous devez saisir une date de fin")
+     * @Assert\GreaterThan(propertyPath="startAt", message="Vous devez saisir une date de fin supérieur à la date de début")
+     */
     #[ORM\Column(type: 'datetime')]
     private $endAt;
 
+    /**
+     * @Assert\Positive(message="Vous devez saisir une capacité positive ou laisser le champ vide pour ne pas imposer de limite")
+     */
     #[ORM\Column(type: 'integer', nullable: true)]
     private $capacity;
 
@@ -37,6 +87,9 @@ class Event
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
+    /**
+     * @Assert\Valid()
+     */
     #[ORM\ManyToOne(targetEntity: Place::class, inversedBy: 'events')]
     private $place;
 
@@ -89,6 +142,30 @@ class Event
     public function setPicture(string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPictureFile(?File $pictureFile): self
+    {
+        $this->pictureFile = $pictureFile;
+
+        return $this;
+    }
+    
+    public function getPictureUrl(): ?string
+    {
+        return $this->pictureUrl;
+    }
+
+    public function setPictureUrl(string $pictureUrl): self
+    {
+        $this->pictureUrl = $pictureUrl;
 
         return $this;
     }
