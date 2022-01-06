@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EventController!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+
+                <h2 class="text-light py-3">Créer un évenement </h2>
+                
+                <form>
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label for="validationDefault01"></label>
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="Nom de l'évenement" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="validationDefault02"></label>
+                            <input type="text" class="form-control" id="validationDefault02" placeholder="Catégorie de l'évenement" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-4">
+                            <label for="validationDefault05"></label>
+                            <input type="text" class="form-control" id="validationDefault05" placeholder="Nombre de joueur" required>
+                        </div>
+                        <div class="col-4">
+                            <label for="validationDefault03"></label>
+                            <input type="text" class="form-control" id="validationDefault03" placeholder="Nom du jeu" required>
+                        </div>
+                        <div class="col-4">
+                            <label for="validationDefault04"></label>
+                            <input type="text" class="form-control" id="validationDefault04" placeholder="Niveau de jeu" required>
+                        </div>
+                        <div class="col-4">
+                            <label for="validationDefault05"></label>
+                            <input type="text" class="form-control" id="validationDefault05" placeholder="Langue" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-3" type="submit">Créer l'évenement !</button>
+                </form>
+            </div>
+
+            <div class="col-6">
+                <h2 class="text-light py-3">Rejoindre un évenement </h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card bg-dark">
+                            <div class="card-body text-light text-center">
+                                <h3 class="card-title">Jeuxvidéos</h3>
+                                <img src={{ asset('img/dota2.jpg') }} class="w-75 my-3" alt="image de jeuxvidéo">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Type de jeuxvidéo</label>
+                                    <select class="form-select form-select text-center" id="exampleFormControlSelect1">
+                                        <option selected>TYPE</option>
+                                        <option value="MOBA">MOBA</option>
+                                        <option value="FPS">FPS</option>
+                                        <option value="MMORPG">MMORPG</option>
+                                        <option value="Action">Action/Aventure</option>
+                                        <option value="Combat">Combat</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Nom du jeu</label>
+                                    <select class="form-select form-select text-center" id="exampleFormControlSelect1">
+                                        <option selected>NOM</option>
+                                        <option value="Dota2">Dota2</option>
+                                        <option value="LOL">League of Legends</option>
+                                        <option value="Smite">Smite</option>
+                                        <option value="Dota">Dota</option>
+                                    </select>
+                                </div>
+                                <a href="#" class="btn btn-primary mt-3">Rechercher</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card bg-dark">
+                            <div class="card-body text-light text-center">
+                                <h3 class="card-title">Jeux de société</h3>
+                                <img src={{ asset('img/pokemon.jpg') }} class="w-75 my-3" alt="image de jeuxvidéo">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Type de jeux</label>
+                                    <select class="form-select form-select text-center" id="exampleFormControlSelect1">
+                                        <option selected>TYPE</option>
+                                        <option value="Jeu de rôle">Jeu de rôle</option>
+                                        <option value="Jeu de cartes">Jeu de cartes</option>
+                                        <option value="Jeu de société">Jeu de société</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Nom du jeu</label>
+                                    <select class="form-select form-select text-center" id="exampleFormControlSelect1">
+                                        <option selected>NOM</option>
+                                        <option value="Magic">Magic</option>
+                                        <option value="Pokemon">Pokémon</option>
+                                        <option value="Hearthstone">Hearthstone</option>
+                                        <option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
+                                    </select>
+                                </div>
+                                <a href="#" class="btn btn-primary mt-3">Rechercher</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+        

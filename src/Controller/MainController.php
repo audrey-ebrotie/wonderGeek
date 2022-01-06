@@ -24,6 +24,12 @@ class MainController extends AbstractController
         return $this->render('main/contact.html.twig');
     }
 
+    #[Route('/event', name: 'event')]
+    public function event(): Response
+    {
+        return $this->render('event/event.html.twig');
+    }
+
     #[Route('/about', name: 'about')]
     public function about(): Response
     {

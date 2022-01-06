@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class EventController extends AbstractController
 {
     #[Route('/event', name: 'event')]
-    public function index(): Response
+    public function event(): Response
     {
-        return $this->render('event/index.html.twig', [
+        return $this->render('event/event.html.twig', [
             'controller_name' => 'EventController',
         ]);
     }
