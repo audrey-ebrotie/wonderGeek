@@ -1,0 +1,23 @@
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 5rem;
+}
+form{
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+    width: 10rem;
+    color: white;
+    position: absolute;
+    margin-left: 45%;
+}
+
+.form-end{
+    margin-top: 2rem;
+    align-self: center;
+}
+
+form .form-error{
+    border: 5px solid #f00101;
+}

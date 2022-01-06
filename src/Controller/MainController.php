@@ -31,16 +31,4 @@ class MainController extends AbstractController
         return new Response("Page à propos");
     }
 
-    #[Route('/register',name:'register')]
-    public function register(): Response
-    {   
-        $event= new User();
-        $form = $this->createForm(UserType::class);
-
-        return $this->render('main/register.html.twig', [
-            'form'=> $form->createView(),
-        ]);
-    }
-
-
 }

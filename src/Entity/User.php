@@ -8,12 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 /** @UniqueEntity("username", message="Ce nom d'utilisateur est déjà utilisé")
 *   @UniqueEntity("email", message="Cette adresse e-mail est déjà rattaché à un compte")
 */
-class User
+class User implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -39,9 +40,9 @@ class User
      * @Assert\Email(message="Vous devez saisir une adresse e-mail valide", mode="strict")
      * @ORM\Column(type="string", length=255)
      */
-
     #[ORM\Column(type: 'string', length: 255)]
     private $email;
+
 
     /**
      * @Assert\NotBlank(message="Vous devez saisir un mot de passe")
@@ -52,7 +53,7 @@ class User
      *      maxMessage="Votre mot de passe doit contenir au maximum {{ limit }} caractères"
      * )
      * @Assert\Regex("/^(?=.*[A-Za-z])(?=.*\d)(?=.*?[@$!%*#?&])/", message="Votre mot de passe doit au minmum contenir un chiffre, une lettre et un caractère spécial")
-     * @Assert\NotCompromisedPassword(message="Ce mot de passe semble avoir déjà été compromis lors d'une fuite de donnée d'un autre service")
+     * @Assert\NotCompromisedPassword(message="Ce mot de passe a été compromis lors d'une fuite de donnée d'un autre service")
      */
     #[ORM\Column(type: 'string', length: 255)]
     private $password;
@@ -62,7 +63,7 @@ class User
 
     /**
      * @Assert\NotBlank(message="Vous devez renseigner votre date de naissance")
-     * @Assert\LessThanOrEqual("-18 years", message="Vous devez être majeur pour accéder à notre plateforme")
+     * @Assert\LessThanOrEqual("-13 years", message="Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")
      * @ORM\Column(type="date")
      */
     #[ORM\Column(type: 'date')]
