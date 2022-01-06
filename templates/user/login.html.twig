@@ -3,6 +3,7 @@
 {% block title %}Connexion - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/component/form.css') }}">
 {% endblock %}
 
@@ -17,13 +18,13 @@
     {% endif %}
     <div class="form-row">
         <div>
-            <label for="emailInput">E-mail</label>
+            <label for="emailInput">E-mail:</label>
             <input type="email" name="_email" id="emailInput">
         </div>
     </div>
     <div class="form-row">
         <div>
-            <label for="passwordInput">Mot de passe</label>
+            <label for="passwordInput">Mot de passe:</label>
             <input type="password" name="_password" id="passwordInput">
         </div>
     </div>
