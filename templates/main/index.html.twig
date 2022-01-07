@@ -11,23 +11,23 @@
 {% block mainClasses %}no-spaces{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid px-3">
         <div class="landing row">
-            <div class="landing-content col-6 py-5">
+            <div class="landing-content col py-5">
                 <h1>Bienvenue sur WonderGeek</h1>
                 <h2>Le site référence de la PopCulture</h2>
                 <a href="{{ path('main_event') }}" class="button">
                     Voir nos événements
                 </a>
             </div>
-            <div class="text-center col-6">
+            <div class="text-center col">
                 <h2 class="text-light py-5"> A la une </h2>
                 <img src={{ asset('img/dota2.jpg') }} alt="jeu a la une">
             </div>
         </div>
 
-        <div class="row landing-option">
-            <h3 class="text-light py-4"> Evenements qui pourraient vous plaire </h3>
+        <h3 class="text-light py-4"> Evenements qui pourraient vous plaire </h3>
+        <div class="row row-cols-1 row-cols-md-2 g-4 row-cols-xl-4 landing-option">
             <div class="col">
                 <div class="card h-100 w-80">
                     <img src={{ asset('img/finalfantasy.jpg') }} class="card-img-top" alt="Final fantasy XIV">
@@ -98,8 +98,8 @@
             </div>
         </div>
 
-        <div class="row landing-option">
-            <h3 class="text-light py-4"> Catégories qui pourraient vous plaire </h3>
+        <h3 class="text-light py-4"> Catégories qui pourraient vous plaire </h3>
+        <div class="row row-cols-1 row-cols-md-2 g-4 row-cols-xl-4 landing-option">
             <div class="col">
                 <div class="card h-100">
                     <img src={{ asset('img/hearthstone.jpg') }} class="card-img-top" alt="Hearthstone">

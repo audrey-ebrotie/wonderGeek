@@ -9,21 +9,28 @@
 <link rel="stylesheet" href="{{ asset('css/component/form.css') }}">
 {% endblock %}
 {% block body %}
-    <h1>Contact</h1>
-    <form method="post" class="contactform">
-            <label for="usernameInput">Nom:</label>
-            <input type="name" name="_name" id="usernameInput">
-            <label for="emailInput"> E-mail: </label>
-            <input type="email" name="_email" id="emailInput">
-        
-        <textarea name="message">Entrez votre message ici </textarea>
-        
-        <div class="form-end">
-            <input type="submit" placeholder="Valider">
-        </div>
-        </div>
-    </form>
+
+<div class="container">
+        <h1 class="text-center">Contact</h1>
+        <form method="post" class="contactform">
+            <div class="row">
+                <label class="text-center py-2" for="usernameInput">Nom:</label>
+                <input class="opacity-75" type="name" name="_name" id="usernameInput">
+            </div>
+            <div class="row">
+                <label class="text-center py-2" for="emailInput"> E-mail: </label>
+                <input class="opacity-75" type="email" name="_email" id="emailInput">
+            </div>
+            <div class="row pt-4">
+                <textarea class="opacity-75" name="message">Entrez votre message ici </textarea>
+            </div>
+            <div class="form-end">
+                <input class="py-2 px-3" type="submit" value="Valider">
+            </div>
+        </form>
+    </div>
+
     <div class="InfoMessage">
-        <p> WonderGeek s'engage à vous répondre sous 48h dès la reception de votre message</p>
+        <p class="fst-italic"> WonderGeek s'engage à vous répondre sous 48h dès la réception de votre message</p>
     </div>
 {% endblock %}
