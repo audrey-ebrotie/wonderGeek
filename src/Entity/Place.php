@@ -16,31 +16,34 @@ class Place
     private $id;
 
     /**
-     * * @Assert\NotBlank(message="Vous devez saisir un nom")
+     * * @Assert\NotBlank(message="Vous devez saisir le nom du lieu")
      */
-    #[ORM\Column(type: 'string', length: 40)]
+    #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
     /**
-     * * @Assert\NotBlank(message="Vous devez saisir une adresse")
+     * * @Assert\NotBlank(message="Vous devez saisir la rue")
      */
     #[ORM\Column(type: 'string', length: 120)]
     private $street;
 
     /**
      * 
-     * @Assert\NotBlank(message="Vous devez saisir un code postal")
+     * @Assert\NotBlank(message="Vous devez saisir le code postal")
      */
     #[ORM\Column(type: 'string', length: 12)]
     private $zipcode;
 
     /**
-    * @Assert\NotBlank(message="Vous devez saisir une ville")
+    * @Assert\NotBlank(message="Vous devez saisir la ville")
      */
     #[ORM\Column(type: 'string', length: 60)]
     private $city;
 
-    #[ORM\Column(type: 'string', length: 2)]
+    /**
+    * @Assert\NotBlank(message="Vous devez saisir le pays")
+     */
+    #[ORM\Column(type: 'string', length: 50)]
     private $country;
 
     #[ORM\OneToMany(mappedBy: 'place', targetEntity: Event::class)]
