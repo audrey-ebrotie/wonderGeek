@@ -2,10 +2,6 @@ body{
     color: white;
 }
 
-h1{
-    text-align: center;
-    margin-top: 5rem;
-}
 form{
     display:flex;
     flex-direction: column;
