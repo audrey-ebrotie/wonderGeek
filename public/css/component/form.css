@@ -1,23 +1,30 @@
-h1{
+body{
     color: white;
+}
+
+h1{
     text-align: center;
     margin-top: 5rem;
 }
 form{
     display:flex;
     flex-direction: column;
-    align-content: center;
-    width: 10rem;
     color: white;
-    position: absolute;
-    margin-left: 45%;
 }
-
+.form-row{
+    align-self: center;
+    width: 10vw;
+}
 .form-end{
     margin-top: 2rem;
     align-self: center;
 }
-
-form .form-error{
-    border: 5px solid #f00101;
+textarea{
+    margin-top: 2rem;
+    height: 20vh;
 }
+.InfoMessage{
+    margin-top: 2rem;
+    text-align: center;
+}
+
