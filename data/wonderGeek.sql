@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : jeu. 06 jan. 2022 à 22:29
+-- Généré le : ven. 07 jan. 2022 à 10:33
 -- Version du serveur : 5.7.34
 -- Version de PHP : 8.0.8
 
@@ -170,6 +170,21 @@ CREATE TABLE `event` (
   `capacity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `event`
+--
+
+INSERT INTO `event` (`id`, `category_id`, `place_id`, `owner_id`, `name`, `description`, `picture`, `start_at`, `end_at`, `capacity`) VALUES
+(1, 7, NULL, 26, 'Netflix Geeked Week', 'C’est un secret pour personne, les jeux vidéo ont de plus en plus la côte au cinéma et sur les plateformes de streaming.  Netflix prépare une multitude de projets (films et/ou série) autour du Gaming et via cette conférence nous allons pouvoir découvrir de nouvelles choses !', 'https://www.presse-citron.net/app/uploads/2021/06/netflix-geeked-week-summer-game-fest-2021.jpeg', '2022-06-07 18:00:00', '2022-06-11 23:00:00', NULL),
+(2, 7, NULL, 20, 'Koch Media Prime Time', 'L’éditeur Koch Media prépare de nombreuses surprises qu’il sera possible de découvrir le 11 juin 2021 au cours d’une conférence à partir de 21h ! Un événement qui entre dans le cadre de l’E3 et qui aura pour objectif de dévoiler de nombreuses surprises et des jeux inédits !', 'https://www.presse-citron.net/app/uploads/2021/05/koch-media-e3-conference.jpeg', '2022-03-09 15:00:00', '2022-01-09 21:00:00', NULL),
+(3, 4, 1, 45, 'Tournoir amical Magic', 'Lorem ipsum dolor sit amet. Ea autem nulla nam saepe deserunt et ullam repellat in ratione reiciendis est debitis animi. Aut iste tempora aut laboriosam sint ea blanditiis voluptatem aut autem nobis ad itaque esse. Qui ratione molestiae id provident galisum sed commodi similique quo itaque deleniti sed eveniet provident qui iusto recusandae. Et odit quasi vel sint quod sit earum vitae ea omnis repellendus sed dignissimos delectus est libero commodi.', 'https://images.ctfassets.net/s5n2t79q9icq/114xMnrR6RiLD15UxL8LYZ/ca73ec9fe59f654a150b543e05979181/Meta-Homepage.jpg', '2022-04-16 14:00:00', '2022-04-16 23:00:00', 30),
+(4, 2, NULL, 33, 'Dota 2 Party', 'Lorem ipsum dolor sit amet. Cum dolorem vero eum consequatur velit est cupiditate quidem! Qui corrupti aliquam non iusto voluptatibus eum officiis dolorum quo quis nihil et sunt veniam. Atque minus id natus galisum ut debitis magnam. Et dolorem velit quo aliquid ipsum non reprehenderit quis ut eius ratione et eligendi dolorem non saepe architecto est reiciendis modi.\r\n\r\nAb quibusdam sint qui distinctio tenetur 33 enim sequi est ducimus voluptates aut unde necessitatibus et sapiente sint. Et repellendus ipsum est consequatur excepturi sed odio accusamus sed facere reprehenderit ut laboriosam voluptatem in officia ipsam.', 'https://data.1freewallpapers.com/download/dota-2-1280x720.jpg', '2022-02-04 20:00:00', '2022-02-05 23:00:00', 50),
+(5, 7, NULL, 32, 'E3 Showcase', 'Lorem ipsum dolor sit amet. Sit animi ipsam et neque aliquam et vitae molestiae non veritatis omnis est quia dolores hic nostrum asperiores. Et voluptatem voluptas est dicta perferendis sed recusandae culpa. Et nulla mollitia porro voluptate rem nisi dolore vel blanditiis vitae.\r\n\r\nAd necessitatibus voluptatum est consequatur officia nam omnis commodi ut saepe explicabo non architecto quod est odit vero et Quis aperiam. Est neque quia non odio libero nam galisum delectus et maiores ratione est quia excepturi! Non maxime officia est quidem cumque qui dolor dolorem aut error placeat et minima temporibus.\r\n\r\nEt nostrum aperiam est quas recusandae ad maiores error. Quo consectetur iure eum placeat ipsam et earum quia vel necessitatibus ducimus. Ut reprehenderit accusamus est exercitationem ullam est quis corrupti qui architecto accusamus et suscipit vero est nobis commodi. Cum porro commodi a modi enim qui cupiditate suscipit ex quia repellendus id eaque dolores!', 'https://www.presse-citron.net/app/uploads/2020/04/e3-online.jpg', '2022-07-02 10:00:00', '2022-07-03 22:00:00', NULL),
+(6, 4, 48, 32, 'Tournoi Mortal Kombat', 'Lorem ipsum dolor sit amet. Ut asperiores nesciunt vel voluptatem delectus rem aspernatur eaque! Qui obcaecati molestiae aut aspernatur veniam quo voluptas aperiam et necessitatibus qui eveniet iusto eum possimus eveniet. Ad ipsam veniam aut debitis harum ut culpa labore eos reiciendis corrupti ea natus molestias ut odit illo.', 'https://i0.wp.com/www.nintendo-town.fr/wp-content/uploads/2019/04/H2x1_NSwitch_MortalKombat11_image1600w.jpg?fit=1600%2C800&ssl=1', '2022-05-07 11:00:00', '2022-05-08 20:00:00', 20),
+(7, 5, 36, 37, 'Pokemon Go Meet', 'Lorem ipsum dolor sit amet. Et temporibus necessitatibus est ullam voluptates est sunt placeat eos rerum sunt sed molestias omnis est rerum aperiam et quaerat dolore. Aut ducimus temporibus ad perferendis adipisci et neque galisum qui iusto alias qui voluptatem tenetur.\r\n\r\nEum velit ducimus eum voluptatem aliquid qui provident sequi ut asperiores magnam vel dignissimos aliquid. Eum accusantium distinctio ut maiores consequatur aut internos voluptas cum doloremque pariatur ut aperiam magnam cum ullam nisi. Ut ducimus voluptatem ut ipsa fugit et omnis consequatur sed voluptatem dolorem ut eveniet incidunt est quia cumque.', 'https://www.realite-virtuelle.com/wp-content/uploads/2020/11/pokemon-go-milliard-revenus.jpg', '2022-06-04 12:00:00', '2022-06-04 18:00:00', NULL),
+(8, 1, 22, 29, 'Convention Geek Unchained 4', 'Lorem ipsum dolor sit amet. Et temporibus necessitatibus est ullam voluptates est sunt placeat eos rerum sunt sed molestias omnis est rerum aperiam et quaerat dolore. Aut ducimus temporibus ad perferendis adipisci et neque galisum qui iusto alias qui voluptatem tenetur.\r\n\r\nEum velit ducimus eum voluptatem aliquid qui provident sequi ut asperiores magnam vel dignissimos aliquid. Eum accusantium distinctio ut maiores consequatur aut internos voluptas cum doloremque pariatur ut aperiam magnam cum ullam nisi. Ut ducimus voluptatem ut ipsa fugit et omnis consequatur sed voluptatem dolorem ut eveniet incidunt est quia cumque.', 'https://www.manga-news.com/public/images/events/geek-unchained-4.jpg', '2022-05-28 10:00:00', '2022-05-29 10:00:00', 100),
+(9, 6, 6, 25, 'Les enchères Geek', 'Lorem ipsum dolor sit amet. Et velit accusantium sed nihil ullam in quia incidunt sit veniam omnis. Et nostrum inventore hic molestiae neque aut internos quia aut voluptas officia qui recusandae dolorum et ipsa dolores aperiam dolorem. Qui laboriosam possimus aut suscipit laboriosam non repellendus quidem sed asperiores commodi eum velit ipsa.', '', '2022-02-12 10:00:00', '2022-02-12 22:00:00', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -186,12 +201,13 @@ CREATE TABLE `event_category` (
 --
 
 INSERT INTO `event_category` (`id`, `name`) VALUES
-(1, 'Salon grand public'),
+(1, 'Convention'),
 (2, 'Partie en ligne'),
 (3, 'Partie en local (LAN Party)'),
 (4, 'Tournoi'),
 (5, 'Meeting'),
-(6, 'Vente aux enchères');
+(6, 'Vente aux enchères'),
+(7, 'Conférence');
 
 -- --------------------------------------------------------
 
@@ -777,13 +793,13 @@ ALTER TABLE `comic_category`
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `event_category`
 --
 ALTER TABLE `event_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `manga`
