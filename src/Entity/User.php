@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -63,7 +64,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $birthdate;
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Event::class)]
-    private $OwnedEvents;
+    private $ownedEvents;
 
     #[ORM\ManyToMany(targetEntity: VideoGame::class, inversedBy: 'users')]
     private $favoriteVideoGame;
@@ -82,7 +83,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->OwnedEvents = new ArrayCollection();
+        $this->ownedEvents = new ArrayCollection();
         $this->favoriteVideoGame = new ArrayCollection();
         $this->favoriteBoardGame = new ArrayCollection();
         $this->favoriteManga = new ArrayCollection();
@@ -189,13 +190,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getOwnedEvents(): Collection
     {
-        return $this->OwnedEvents;
+        return $this->ownedEvents;
     }
 
     public function addOwnedEvent(Event $ownedEvent): self
     {
-        if (!$this->OwnedEvents->contains($ownedEvent)) {
-            $this->OwnedEvents[] = $ownedEvent;
+        if (!$this->ownedEvents->contains($ownedEvent)) {
+            $this->ownedEvents[] = $ownedEvent;
             $ownedEvent->setOwner($this);
         }
 
@@ -204,7 +205,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeOwnedEvent(Event $ownedEvent): self
     {
-        if ($this->OwnedEvents->removeElement($ownedEvent)) {
+        if ($this->ownedEvents->removeElement($ownedEvent)) {
             // set the owning side to null (unless already changed)
             if ($ownedEvent->getOwner() === $this) {
                 $ownedEvent->setOwner(null);
