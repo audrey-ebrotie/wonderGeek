@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EventController!{% endblock %}
+{% block title %} Évenements {% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
@@ -23,6 +23,12 @@
                         <div class="col-6">
                             <label for="validationDefault02"></label>
                             <input type="text" class="form-control" id="validationDefault02" placeholder="Catégorie de l'évenement" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="text-light" for="meeting-time">Choisissez votre date de début:</label>
+                            <input type="datetime-local" id="meeting-time"
+                            name="start_date" value="2018-06-12T19:30"
+                            min="2022-01-07T00:00" max="2030-12-14T00:00">
                         </div>
                     </div>
                     <div class="form-row">
