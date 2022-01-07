@@ -6,7 +6,24 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/component/form.css') }}">
 {% endblock %}
 {% block body %}
     <h1>Contact</h1>
+    <form method="post" class="contactform">
+            <label for="usernameInput">Nom:</label>
+            <input type="name" name="_name" id="usernameInput">
+            <label for="emailInput"> E-mail: </label>
+            <input type="email" name="_email" id="emailInput">
+        
+        <textarea name="message">Entrez votre message ici </textarea>
+        
+        <div class="form-end">
+            <input type="submit" placeholder="Valider">
+        </div>
+        </div>
+    </form>
+    <div class="InfoMessage">
+        <p> WonderGeek s'engage à vous répondre sous 48h dès la reception de votre message</p>
+    </div>
 {% endblock %}
