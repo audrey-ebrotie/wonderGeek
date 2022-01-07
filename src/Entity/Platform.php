@@ -16,9 +16,9 @@ class Platform
     private $id;
 
     /**
-     * @Assert\NotBlank(message="Vous devez saisir un nom pour l'événement")
+     * @Assert\NotBlank(message="Vous devez saisir le nom de la plateforme")
      * @Assert\Length(
-     *      min=5,
+     *      min=2,
      *      max=50,
      *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
      *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
@@ -27,15 +27,12 @@ class Platform
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir un jeu")
-     */
-    #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'platform')]
-    private $games;
+    #[ORM\ManyToMany(targetEntity: VideoGame::class, mappedBy: 'platform')]
+    private $videoGames;
 
     public function __construct()
     {
-        $this->games = new ArrayCollection();
+        $this->videoGames = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,27 +53,27 @@ class Platform
     }
 
     /**
-     * @return Collection|Game[]
+     * @return Collection|VideoGame[]
      */
-    public function getGames(): Collection
+    public function getVideoGames(): Collection
     {
-        return $this->games;
+        return $this->videoGames;
     }
 
-    public function addGame(Game $game): self
+    public function addVideoGame(VideoGame $videoGame): self
     {
-        if (!$this->games->contains($game)) {
-            $this->games[] = $game;
-            $game->addPlatform($this);
+        if (!$this->videoGames->contains($videoGame)) {
+            $this->videoGames[] = $videoGame;
+            $videoGame->addPlatform($this);
         }
 
         return $this;
     }
 
-    public function removeGame(Game $game): self
+    public function removeVideoGame(VideoGame $videoGame): self
     {
-        if ($this->games->removeElement($game)) {
-            $game->removePlatform($this);
+        if ($this->videoGames->removeElement($videoGame)) {
+            $videoGame->removePlatform($this);
         }
 
         return $this;

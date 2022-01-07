@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/component/form.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1>Inscription</h1>
+
+{{ form_start(form) }}
+
+<div>
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.Password) }}
+    {{ form_row(form.birthdate) }}
+</div>
+<div class="form-end">
+    {{ form_row(form.submit) }}
+</div>
+
+{{ form_end(form) }}
+
+{% endblock %}

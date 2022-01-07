@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MangaRepository;
-use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MangaRepository::class)]
 class Manga
@@ -15,7 +16,13 @@ class Manga
     private $id;
 
     /**
-     * * @Assert\NotBlank(message="Vous devez saisir un nom")
+     * @Assert\NotBlank(message="Vous devez saisir le nom du manga)
+     * @Assert\Length(
+     *      min=3,
+     *      max=50,
+     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
+     * )
      */
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
@@ -35,7 +42,7 @@ class Manga
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 
-     /**
+    /**
      * @Assert\Url(message="Vous devez saisir une URL valide")
      */
     private $pictureUrl;
@@ -54,12 +61,23 @@ class Manga
      */
     private $pictureFile;
 
+    /**
+     * * @Assert\NotBlank(message="Vous devez saisir un auteur")
+     */
     #[ORM\Column(type: 'string', length: 50)]
     private $author;
 
     #[ORM\ManyToOne(targetEntity: MangaCategory::class, inversedBy: 'mangas')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoriteManga')]
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -102,30 +120,6 @@ class Manga
         return $this;
     }
 
-    public function getPictureFile(): ?File
-    {
-        return $this->pictureFile;
-    }
-
-    public function setPictureFile(?File $pictureFile): self
-    {
-        $this->pictureFile = $pictureFile;
-
-        return $this;
-    }
-
-    public function getPictureUrl(): ?string
-    {
-        return $this->pictureUrl;
-    }
-
-    public function setPictureUrl(string $pictureUrl): self
-    {
-        $this->pictureUrl = $pictureUrl;
-
-        return $this;
-    }
-
     public function getAuthor(): ?string
     {
         return $this->author;
@@ -146,6 +140,33 @@ class Manga
     public function setCategory(?MangaCategory $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addFavoriteManga($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeFavoriteManga($this);
+        }
 
         return $this;
     }

@@ -9,17 +9,25 @@ use Doctrine\ORM\Mapping as ORM;
 class Booking
 {
     #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private $id;
+
     #[ORM\ManyToOne(targetEntity: Event::class, inversedBy: 'bookings')]
     #[ORM\JoinColumn(nullable: false)]
     private $event;
 
-    #[ORM\Id]
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'bookings')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
     #[ORM\Column(type: 'uuid')]
     private $reference;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getEvent(): ?Event
     {
