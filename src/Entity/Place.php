@@ -16,34 +16,23 @@ class Place
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * * @Assert\NotBlank(message="Vous devez saisir le nom du lieu")
-     */
+    # @Assert\NotBlank(message="Vous devez saisir le nom du lieu")
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
-    /**
-     * * @Assert\NotBlank(message="Vous devez saisir la rue")
-     */
+    # @Assert\NotBlank(message="Vous devez saisir la rue")
     #[ORM\Column(type: 'string', length: 120)]
     private $street;
 
-    /**
-     * 
-     * @Assert\NotBlank(message="Vous devez saisir le code postal")
-     */
+    # @Assert\NotBlank(message="Vous devez saisir le code postal")
     #[ORM\Column(type: 'string', length: 12)]
     private $zipcode;
 
-    /**
-    * @Assert\NotBlank(message="Vous devez saisir la ville")
-     */
+    # @Assert\NotBlank(message="Vous devez saisir la ville")
     #[ORM\Column(type: 'string', length: 60)]
     private $city;
 
-    /**
-    * @Assert\NotBlank(message="Vous devez saisir le pays")
-     */
+    # @Assert\NotBlank(message="Vous devez saisir le pays")
     #[ORM\Column(type: 'string', length: 50)]
     private $country;
 
@@ -120,9 +109,7 @@ class Place
         return $this;
     }
 
-    /**
-     * @return Collection|Event[]
-     */
+    # @return Collection|Event[]
     public function getEvents(): Collection
     {
         return $this->events;

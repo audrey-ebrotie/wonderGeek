@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des jeux{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{% for game in games %}
+    <article class="game">
+        <div class="game-summary">
+            <h2>{{ game.name }}</h2>
+            <p>{{ game.description|slice(0, 80) }} ...</p>
+            <aside>
+                <ul>
+                    <li>
+                        {{ event.category.name }}
+                    </li>
+                    <li>
+                        {{ game.place ? game.place.name : 'A distance' }}
+                    </li>
+                    <li>
+                        {{ game.event.startAt|date('d/m/Y H:i') }}
+                    </li>
+                </ul>
+            </aside>
+            <div class="game-action">
+                <a href="{{ path('game_show', {id: game.id}) }}" class="button">En savoir plus</a>
+            </div>
+        </div>
+    </article>
+{% else %}
+    <p>Aucun résultat disponible</p>    
+{% endfor %}
+{% endblock %}

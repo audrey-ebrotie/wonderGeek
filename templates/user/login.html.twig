@@ -3,42 +3,41 @@
 {% block title %}Connexion - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/component/form.css') }}">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/component/form.css') }}">
 {% endblock %}
 
 {% block body %}
-<h1 class="text-center py-4">Connexion</h1>
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
-    <form method="post" class="form-box">
-        {% if error %}
-        <div class="form-error">
-            {{ error.message }}
+    {% if app.user %}
+        <div class="mb-3">
+            Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
-        {% endif %}
-        <div class="text-center justify-content-center">
-            <div class="col py-2">
-                <label for="emailInput">E-mail:</label>
-            </div>
-            <div class="col py-2">
-                <input type="email" name="_email" id="emailInput">
-            </div>
-            <div class="col py-2">
-                <label for="passwordInput">Mot de passe:</label>
-            </div>
-            <div class="col py-2">
-                <input type="password" name="_password" id="passwordInput">
-            </div>
-            <div class="col py-2">
-                <input type="checkbox" name="_keep_login" id="keepLoginInput">
-            </div>
-            <label for="keepLoginInput">Rester connecté</label>
-            <div class="form-end">
-                <button class="button rounded-2">Connexion</button>
-            </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 text-center">Identifiants de connexion</h1>
+    <div class="container">
+        <div class="row py-2 text-center">
+            <label for="inputEmail">Email</label>
+            <input type="email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        </div>
+        <div class="row py-2 text-center">
+            <label for="inputPassword">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
         </div>
         
-        <input type="hidden" name="_token" value="{{ csrf_token('authenticate') }}">
-    </form>
+        <input type="hidden" name="_csrf_token"
+        value="{{ csrf_token('authenticate') }}">
         
+        <div class="py-3 text-center">
+            <button class="btn btn-lg btn-primary" type="submit">
+                Se connecter
+            </button>
+        </div>
+    </div>
+</form>
 {% endblock %}

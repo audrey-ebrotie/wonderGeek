@@ -7,10 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-<<<<<<< HEAD
-
-=======
->>>>>>> dylan
 
 #[ORM\Entity(repositoryClass: EventCategoryRepository::class)]
 class EventCategory
@@ -20,15 +16,13 @@ class EventCategory
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir une catégorie d'évènement")
-     * @Assert\Length(
-     *      min=3,
-     *      max=50,
-     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
-     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
-     * )
-     */
+    # @Assert\NotBlank(message="Vous devez saisir une catégorie d'évènement")
+    # @Assert\Length(
+    #      min=3,
+    #      max=50,
+    #      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
+    #      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
+    # )
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
@@ -57,9 +51,7 @@ class EventCategory
         return $this;
     }
 
-    /**
-     * @return Collection|Event[]
-     */
+    # @return Collection|Event[]
     public function getEvents(): Collection
     {
         return $this->events;

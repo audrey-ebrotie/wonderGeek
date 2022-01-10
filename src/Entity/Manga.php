@@ -16,55 +16,46 @@ class Manga
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir le nom du manga)
-     * @Assert\Length(
-     *      min=3,
-     *      max=50,
-     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
-     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
-     * )
-     */
+
+    # @Assert\NotBlank(message="Vous devez saisir le nom du manga)
+    # @Assert\Length(
+    #      min=3,
+    #      max=50,
+    #      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
+    #      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
+    # )
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir une description du manga")
-     * @Assert\Length(
-     *      min=10,
-     *      max=1500,
-     *      minMessage="La description doit contenir au minimum {{ limit }} caractères",
-     *      maxMessage="La description doit contenir au maximum {{ limit }} caractères"
-     *)
-     */
+    # @Assert\NotBlank(message="Vous devez saisir une description du manga")
+    # @Assert\Length(
+    #      min=10,
+    #      max=1500,
+    #      minMessage="La description doit contenir au minimum {{ limit }} caractères",
+    #      maxMessage="La description doit contenir au maximum {{ limit }} caractères"
+    #)
     #[ORM\Column(type: 'text')]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 
-    /**
-     * @Assert\Url(message="Vous devez saisir une URL valide")
-     */
+    # @Assert\Url(message="Vous devez saisir une URL valide")
     private $pictureUrl;
 
-    /**
-     * @Assert\Expression(
-     *     "this.getPictureUrl() or this.getPictureFIle()",
-     *     message="Vous devez importer une image ou fournir une URL"
-     * )
-     * @Assert\File(
-     *     maxSize="2M",
-     *     mimeTypes={"image/jpeg", "image/png"},
-     *     maxSizeMessage="Les imports sont limités à {{ limit }}{{ suffix }}",
-     *     mimeTypesMessage="Les imports sont limités au JPEG et PNG"
-     * )
-     */
+    # @Assert\Expression(
+    #     "this.getPictureUrl() or this.getPictureFIle()",
+    #     message="Vous devez importer une image ou fournir une URL"
+    # )
+    # @Assert\File(
+    #     maxSize="2M",
+    #     mimeTypes={"image/jpeg", "image/png"},
+    #     maxSizeMessage="Les imports sont limités à {{ limit }}{{ suffix }}",
+    #     mimeTypesMessage="Les imports sont limités au JPEG et PNG"
+    # )
     private $pictureFile;
 
-    /**
-     * * @Assert\NotBlank(message="Vous devez saisir un auteur")
-     */
+    # @Assert\NotBlank(message="Vous devez saisir un auteur")
     #[ORM\Column(type: 'string', length: 50)]
     private $author;
 
@@ -145,9 +136,7 @@ class Manga
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
+    # @return Collection|User[]
     public function getUsers(): Collection
     {
         return $this->users;

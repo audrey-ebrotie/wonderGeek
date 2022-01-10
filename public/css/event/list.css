@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  background-color: #002a35;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.events .event {
+  margin: 2% 0;
+  display: flex;
+  gap: 15px;
+  background-color: #212529;
+  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.events .event img {
+  width: 450px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.events .event .event-summary {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  flex: 1;
+}
+
+.events .event aside {
+  width: 100%;
+  padding-top: 2%;
+}
+
+.events .event aside ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.events .event aside i {
+  color: #3d7f3c;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.events .event .event-action {
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}

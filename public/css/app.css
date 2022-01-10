@@ -1,82 +1,83 @@
-body{
-    margin: 0;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    background-color: #002a35;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  background-color: #002a35;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-header{
-    background-color: #063541;
-    color: #ecf0f1;
-    padding: 10px 20px;
+header {
+  background-color: #063541;
+  color: #ecf0f1;
+  padding: 10px 20px;
 }
 
-header img{
-    width: 200px;
-    height: auto;
+header img {
+  width: 200px;
+  height: auto;
 }
 
-header nav ul{
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
 }
 
-header a{
-    color: inherit;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 1.4rem;
+header a {
+  color: inherit;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 1.4rem;
 }
 
-main{
-    flex: 1;
-    padding: 20px;
+main {
+  flex: 1;
+  padding: 20px;
 }
 
-main.no-spaces{
-    padding: 0;
+main.no-spaces {
+  padding: 0;
 }
 
-.button{
-    color: #ecf0f1;
-    background-color: #063541;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
+.button {
+  color: #ecf0f1;
+  background-color: #063541;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
 }
 
-nav .mainMenu{
-    display: flex;
-    list-style: none;
+nav .mainMenu {
+  display: flex;
+  list-style: none;
 }
-nav .mainMenu li a{
-    display: inline-block;
-    padding: 15px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: white;
+nav .mainMenu li a {
+  display: inline-block;
+  padding: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
 }
-nav .openMenu{
-    font-size: 2rem;
-    margin: 20px;
-    visibility: hidden;
-    cursor: pointer;
+nav .openMenu {
+  font-size: 2rem;
+  margin: 20px;
+  visibility: hidden;
+  cursor: pointer;
 }
-nav .mainMenu .closeMenu , .icons i{
-    font-size: 2rem;
-    display: none;
-    cursor: pointer;
+nav .mainMenu .closeMenu,
+.icons i {
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
 }
 
-nav .logo{
-    margin: 6px;
-    font-size: 25px;
-    cursor: pointer;
+nav .logo {
+  margin: 6px;
+  font-size: 25px;
+  cursor: pointer;
 }
 @media(max-width: 800px) {
     nav .mainMenu{
