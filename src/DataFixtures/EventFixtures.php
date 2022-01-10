@@ -2,11 +2,11 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
 use App\Entity\Event;
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 
 class EventFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -21,10 +21,19 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'https://i0.wp.com/www.nintendo-town.fr/wp-content/uploads/2019/04/H2x1_NSwitch_MortalKombat11_image1600w.jpg?fit=1600%2C800&ssl=1',
                 'https://www.realite-virtuelle.com/wp-content/uploads/2020/11/pokemon-go-milliard-revenus.jpg',
                 'https://www.manga-news.com/public/images/events/geek-unchained-4.jpg',
-                'https://github.com/audrey-ebrotie/wonderGeek/blob/develop/public/img/events/encheres_geek.jpeg',
                 'https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2019/11/08/fc0f91de-3998-4be5-b50e-96d8d9e0cd45/lol-10-ans-league-of-legends',
                 'https://fr.web.img2.acsta.net/newsv7/20/06/30/12/28/5740456.jpg',
-                'https://www.miraigamers.com/wp-content/uploads/2021/07/Yu-Gi-Oh-Master-Duel-arrive-sur-tous-les-supports-pret-pour-le-Duel.jpg'
+                'https://www.miraigamers.com/wp-content/uploads/2021/07/Yu-Gi-Oh-Master-Duel-arrive-sur-tous-les-supports-pret-pour-le-Duel.jpg',
+                'https://pbs.twimg.com/media/EECAyk7W4AAQP9w.jpg',
+                'https://i.ytimg.com/vi/gjVtbJkKQbo/maxresdefault.jpg',
+                'https://cdn.arstechnica.net/wp-content/uploads/2021/07/legend-of-zelda-nes-gold-800x450.jpg',
+                'https://happydays365.org/wp-content/uploads/2020/05/Geek-Pride-Day-1080x630.jpg',
+                'https://i.ytimg.com/vi/TFZacjKUlic/maxresdefault.jpg',
+                'https://cdn.akamai.steamstatic.com/steam/apps/851590/capsule_616x353.jpg?t=1631538454',
+                'https://www.rostercon.com/wp-content/uploads/2021/09/dcfandome-2021.jpg',
+                'https://www.rom-game.fr/multimedia/agenda/211005_videgreniergeekpampuyre2022.jpg',
+                'https://www.poilsdemartre.fr/medias/images/japan-touch.jpg',
+                'https://previews.123rf.com/images/microone/microone2006/microone200600047/148520518-board-game-evening-friends-meeting-happy-players-characters-isolated-teenagers-or-adults-playing-car.jpg'
             ];
 
 
