@@ -47,7 +47,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 $event = new Event();
 
                 $event->setName($faker->words(mt_rand(3,10), true));
-                $event->setDescription($faker->text(300));
+                $event->setDescription($faker->text(800));
 
                 $event->setPicture($faker->randomElement($eventPicturesArray));
 
