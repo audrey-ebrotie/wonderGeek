@@ -7,20 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class CategoryController extends AbstractController
+class SectionController extends AbstractController
 {
-    private $VideoGameRepository;
-
-    public function __construct(
-        VideoGameRepository $VideoGameRepository,
-    ){
-        $this->VideoGameRepository = $VideoGameRepository;
-    }
-    #[Route('/category', name: 'category_')]
+    #[Route('/section', name: 'section')]
     public function index(): Response
     {
-        return $this->render('category/index.html.twig', [
-            'controller_name' => 'CategoryController',
+        return $this->render('section/index.html.twig', [
+            'controller_name' => 'SectionController',
         ]);
     }
 

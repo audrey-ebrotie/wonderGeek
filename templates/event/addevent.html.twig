@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EventController!{% endblock %}
+{% block title %} Évenements {% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
@@ -13,16 +13,28 @@
             <div class="col-6">
 
                 <h2 class="text-light py-3">Créer un évenement </h2>
-                
+
                 <form>
                     <div class="form-row">
-                        <div class="col-6">
-                            <label for="validationDefault01"></label>
-                            <input type="text" class="form-control" id="validationDefault01" placeholder="Nom de l'évenement" required>
+                        <div class="col-6 my-2">
+                            <label for="event_name" hidden>Nom de l'évenement</label>
+                            <input type="text" id="event_name" class="form-control" placeholder="Nom de l'évenement" required aria-label="Nom de l'évenement">
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 my-2">
                             <label for="validationDefault02"></label>
                             <input type="text" class="form-control" id="validationDefault02" placeholder="Catégorie de l'évenement" required>
+                        </div>
+                        <div class="col-6 my-2">
+                            <label class="text-light" for="meeting-time">Choisissez votre date de début:</label>
+                            <input type="datetime-local" id="meeting-time"
+                            name="start_date" value="2022-01-07T19:30"
+                            min="2022-01-07T00:00" max="2030-12-14T00:00">
+                        </div>
+                        <div class="col-6 my-2">
+                            <label class="text-light" for="meeting-time">Choisissez votre date de fin:</label>
+                            <input type="datetime-local" id="meeting-time"
+                            name="end_date" value="2022-01-07T19:30"
+                            min="2022-01-07T00:00" max="2030-12-14T00:00">
                         </div>
                     </div>
                     <div class="form-row">
@@ -43,7 +55,7 @@
                             <input type="text" class="form-control" id="validationDefault05" placeholder="Langue" required>
                         </div>
                     </div>
-                    <button class="btn btn-primary mt-3" type="submit">Créer l'évenement !</button>
+                    <button class="btn btn-primary mt-3" type="submit" aria-label="Créer l'évenement">Créer l'évenement !</button>
                 </form>
             </div>
 
