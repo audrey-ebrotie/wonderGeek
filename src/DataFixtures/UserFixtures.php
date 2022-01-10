@@ -11,6 +11,15 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class UserFixtures extends Fixture implements DependentFixtureInterface
 {
+    // const DATA = [
+    //     [
+    //         'firstname' => "John",
+    //         'favorites' => [
+    //             'comics' => ['comic_3'],
+    //         ]
+    //     ]
+    // ];
+
     public function load(ObjectManager $manager): void
         {
             $faker = Factory::create('fr_FR');

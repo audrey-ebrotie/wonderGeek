@@ -10,6 +10,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class VideoGameFixtures extends Fixture implements DependentFixtureInterface
 {
+
     public function load(ObjectManager $manager): void
         {
             $videoGamePicturesArray = [
@@ -71,71 +72,47 @@ class VideoGameFixtures extends Fixture implements DependentFixtureInterface
 
                 $randomNbr = mt_rand(1, 10);
 
-                switch ($randomNbr) {
-                    case 1:
-                        $videoGame->addPlatform($platform1);
-                        break;
-                    case 2:
-                        $videoGame->addPlatform($platform1);
-                        $videoGame->addPlatform($platform2);
-                        break;
+                switch ($randomNbr){
+                    case 10: 
+                    $videoGame->addPlatform($platform8);
+                    $videoGame->addPlatform($platform7);
+                    $videoGame->addPlatform($platform6);
+                    case 9: 
+                    $videoGame->addPlatform($platform5);
+                    $videoGame->addPlatform($platform4);
+                    $videoGame->addPlatform($platform3);
+                    $videoGame->addPlatform($platform2);
+                    case 8: 
+                    $videoGame->addPlatform($platform8);
+                    $videoGame->addPlatform($platform1);
+                    $videoGame->addPlatform($platform2);
+                    case 7: 
+                    $videoGame->addPlatform($platform7);
+                    $videoGame->addPlatform($platform8);
+                    $videoGame->addPlatform($platform6);
+                    $videoGame->addPlatform($platform5);
+                    $videoGame->addPlatform($platform4);
+                    $videoGame->addPlatform($platform3);
+                    $videoGame->addPlatform($platform2);
+                    $videoGame->addPlatform($platform1);
+                    case 6: 
+                    $videoGame->addPlatform($platform6);
+                    case 5: 
+                    $videoGame->addPlatform($platform5);
+                    $videoGame->addPlatform($platform4);
+                    case 4: 
+                    $videoGame->addPlatform($platform4);
                     case 3:
-                        $videoGame->addPlatform($platform1);
-                        $videoGame->addPlatform($platform2);
-                        $videoGame->addPlatform($platform3);
-                        break;
-                    case 4:
-                        $videoGame->addPlatform($platform1);
-                        $videoGame->addPlatform($platform2);
-                        $videoGame->addPlatform($platform3);
-                        $videoGame->addPlatform($platform4);
-                        break;
-                    case 5:
-                        $videoGame->addPlatform($platform1);
-                        $videoGame->addPlatform($platform2);
-                        $videoGame->addPlatform($platform3);
-                        $videoGame->addPlatform($platform4);
-                        $videoGame->addPlatform($platform5);
-                        break;
-                    case 6:
-                        $videoGame->addPlatform($platform1);
-                        $videoGame->addPlatform($platform2);
-                        $videoGame->addPlatform($platform3);
-                        $videoGame->addPlatform($platform4);
-                        $videoGame->addPlatform($platform5);
-                        $videoGame->addPlatform($platform6);
-                        break;
-                    case 7:
-                        $videoGame->addPlatform($platform1);
-                        $videoGame->addPlatform($platform2);
-                        $videoGame->addPlatform($platform3);
-                        $videoGame->addPlatform($platform4);
-                        $videoGame->addPlatform($platform5);
-                        $videoGame->addPlatform($platform6);
-                        $videoGame->addPlatform($platform7);
-                        break;
-                    case 8:
-                        $videoGame->addPlatform($platform1);
-                        $videoGame->addPlatform($platform2);
-                        $videoGame->addPlatform($platform3);
-                        $videoGame->addPlatform($platform4);
-                        $videoGame->addPlatform($platform5);
-                        $videoGame->addPlatform($platform6);
-                        $videoGame->addPlatform($platform7);
-                        $videoGame->addPlatform($platform8);
-                        break;
-                    case 9:
-                        $videoGame->addPlatform($platform8);
-                    case 10:
-                        $videoGame->addPlatform($platform5);
-                        $videoGame->addPlatform($platform6);
-                        $videoGame->addPlatform($platform1);
-                        $videoGame->addPlatform($platform2);
-                    default:
-                        $videoGame->addPlatform($platform4);
-                        $videoGame->addPlatform($platform7);
-                    
+                    $videoGame->addPlatform($platform3);
+                    $videoGame->addPlatform($platform2);
+                    case 2: 
+                    $videoGame->addPlatform($platform2);
+                    $videoGame->addPlatform($platform5);
+                    $videoGame->addPlatform($platform4);
+                    case 1: 
+                    $videoGame->addPlatform($platform1);
                 }
+
                 $manager->persist($videoGame);
 
                 $this->setReference('videoGame_' . $nbrGames, $videoGame);

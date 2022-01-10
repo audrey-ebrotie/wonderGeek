@@ -9,31 +9,31 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 class VideoGameCategoryFixtures extends Fixture 
 {
     public function load(ObjectManager $manager): void
-        {
-            $videoGameCategoriesArray = [
-                'FPS / TPS',
-                'Combat',
-                'RTS',
-                'Simulation',
-                'Plateforme',
-                'RPG',
-                'MMORPG',
-                'Sandbox',
-                'MOBA',
-                'Battle Royals',
-                'Action / Aventure',
-                'Beat Them All',
-                'Puzzlers',
-                'Réflexion',
-                'Survival Horror',
-                'Hack’n’slash',
-                'Party Games',
-                'Rythme',
-                'Course',
-                'Sports'
-            ];
+    {
+        $videoGameCategoriesArray = [
+            'FPS / TPS',
+            'Combat',
+            'RTS',
+            'Simulation',
+            'Plateforme',
+            'RPG',
+            'MMORPG',
+            'Sandbox',
+            'MOBA',
+            'Battle Royals',
+            'Action / Aventure',
+            'Beat Them All',
+            'Puzzlers',
+            'Réflexion',
+            'Survival Horror',
+            'Hack’n’slash',
+            'Party Games',
+            'Rythme',
+            'Course',
+            'Sports'
+        ];
 
-            for($i = 0; $i < count($videoGameCategoriesArray); $i++){
+        for($i = 0; $i < count($videoGameCategoriesArray); $i++){
             $videoGameCategory = new VideoGameCategory();
             $videoGameCategory->setName($videoGameCategoriesArray[$i]);
 
