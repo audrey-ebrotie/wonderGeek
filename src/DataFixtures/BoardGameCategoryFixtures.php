@@ -3,8 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\BoardGameCategory;
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
 
 class BoardGameCategoryFixtures extends Fixture 
 {

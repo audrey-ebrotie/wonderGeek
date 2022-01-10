@@ -2,24 +2,14 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
 use App\Entity\User;
-use App\Entity\Event;
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 
 class UserFixtures extends Fixture implements DependentFixtureInterface
 {
-    // const DATA = [
-    //     [
-    //         'firstname' => "John",
-    //         'favorites' => [
-    //             'comics' => ['comic_3'],
-    //         ]
-    //     ]
-    // ];
-
     public function load(ObjectManager $manager): void
         {
             $faker = Factory::create('fr_FR');

@@ -2,11 +2,11 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
 use App\Entity\Booking;
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 
 class BookingFixtures extends Fixture implements DependentFixtureInterface
 {
