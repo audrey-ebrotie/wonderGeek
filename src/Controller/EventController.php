@@ -30,7 +30,11 @@ class EventController extends AbstractController
     #[Route('/{id}', name: 'show', requirements: ['id' => '\d+'])]
     public function showEvent($id): Response
     {
-        return new Response("Page vue d'une évènement : " . $id);
+        $event = $this->eventRepository->find($id);
+        
+        return $this->render('event/show.html.twig', [
+            'event' => $event
+        ]);
     }
 
     #[Route('/new', name: 'new')]
