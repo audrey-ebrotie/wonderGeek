@@ -73,9 +73,15 @@ class UserController extends AbstractController
         return $this->redirectToRoute('main_index');
     }
 
-    private function disallowAccess(): Response
+    private function disallowAccess():Response
     {
         $this->addFlash('info', 'Vous êtes déjà connecté, déconnectez vous pour changer de compte');
         return $this->redirectToRoute('main_index');
+    }
+
+    #[Route('/profil', name: 'profil')]
+    public function profil():Response
+    {
+        return $this->render('user/profil.html.twig');
     }
 }
