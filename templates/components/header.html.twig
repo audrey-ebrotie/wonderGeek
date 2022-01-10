@@ -11,7 +11,7 @@
         <li><a href="{{ path('main_contact') }}">Contact</a></li>
 
 {% if app.user %}
-        <li> <a href="#">{{ app.user.username }}</a></li>
+        <li> <a href="{{path ('user_profil')}}">{{ app.user.username }}</a></li>
         <li> <a href="{{ path('user_logout') }}">Déconnexion</a> </li>
 {% else %}
         <li><a href="{{ path('user_login')}}">Connexion</a></li>

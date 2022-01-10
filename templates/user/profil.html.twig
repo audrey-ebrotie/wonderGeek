@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1> Mon profil </h1>
+
+<div class="card border-light mb-3" style="max-width: 18rem;">
+  <div class="card-header">{{app.user.username}}</div>
+  <div class="card-body">
+    <h5 class="card-title">Centres d'intêret</h5>
+    <p class="card-text"></p>
+  </div>
+</div>
+
+
+{% endblock %}
