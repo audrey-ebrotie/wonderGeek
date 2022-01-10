@@ -68,6 +68,11 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/logout', name: 'logout')]
+    public function logout():Response{
+        return $this->redirectToRoute('main_index');
+    }
+
     private function disallowAccess(): Response
     {
         $this->addFlash('info', 'Vous êtes déjà connecté, déconnectez vous pour changer de compte');
