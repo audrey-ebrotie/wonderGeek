@@ -10,33 +10,35 @@
 {% block body %}
 <h1 class="text-center py-4">Connexion</h1>
 
-<form method="post" class="form-box">
-    {% if error %}
+    <form method="post" class="form-box">
+        {% if error %}
         <div class="form-error">
             {{ error.message }}
         </div>
-    {% endif %}
-    <div class="form-row">
-        <div>
-            <label for="emailInput">E-mail:</label>
-            <input type="email" name="_email" id="emailInput">
+        {% endif %}
+        <div class="text-center justify-content-center">
+            <div class="col py-2">
+                <label for="emailInput">E-mail:</label>
+            </div>
+            <div class="col py-2">
+                <input type="email" name="_email" id="emailInput">
+            </div>
+            <div class="col py-2">
+                <label for="passwordInput">Mot de passe:</label>
+            </div>
+            <div class="col py-2">
+                <input type="password" name="_password" id="passwordInput">
+            </div>
+            <div class="col py-2">
+                <input type="checkbox" name="_keep_login" id="keepLoginInput">
+            </div>
+            <label for="keepLoginInput">Rester connecté</label>
+            <div class="form-end">
+                <button class="button rounded-2">Connexion</button>
+            </div>
         </div>
-    </div>
-    <div class="form-row">
-        <div>
-            <label for="passwordInput">Mot de passe:</label>
-            <input type="password" name="_password" id="passwordInput">
-        </div>
-    </div>
-    <div class="form-row">
-        <input type="checkbox" name="_keep_login" id="keepLoginInput">
-        <label for="keepLoginInput">Rester connecté</label>
-    </div>
-    <div class="form-end">
-        <button class="button">Connexion</button>
-    </div>
-
-    <input type="hidden" name="_token" value="{{ csrf_token('authenticate') }}">
-</form>
-
+        
+        <input type="hidden" name="_token" value="{{ csrf_token('authenticate') }}">
+    </form>
+        
 {% endblock %}
