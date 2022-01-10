@@ -48,3 +48,9 @@ h3{
     height: 40px;
     width: auto;
 }
+@media(max-width:576px){
+    .landing{
+        display: flex;
+        flex-direction: column;
+    }
+}
