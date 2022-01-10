@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\VideoGameRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SectionController extends AbstractController
 {
@@ -14,5 +15,15 @@ class SectionController extends AbstractController
         return $this->render('section/index.html.twig', [
             'controller_name' => 'SectionController',
         ]);
+    }
+
+    #[Route('/gamelist', name: 'gamelist')]
+    public function gamelist(): Response
+    {
+        $game = $this->VideoGameRepository-> findAll();
+
+        return $this->render('category/gamelist.html.twig', [
+            'game' => $game]
+        );
     }
 }
