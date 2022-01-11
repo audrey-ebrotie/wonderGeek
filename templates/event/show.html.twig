@@ -9,16 +9,16 @@
 {% block mainClasses %}no-spaces{% endblock %}
 
 {% block body %}
-    <article class="event">
+    <article class="event container-fluid">
+        <h1 class="py-3 text-center">{{ event.name }}</h1>
         <div class="event-view">
             <img src="{{ event.picture }}" alt="{{ event.name }}">
-            <h1>{{ event.name }}</h1>
         </div>
-        <div class="event-summary">
-                <p class="event-summary__description">
+        <div class="event-summary d-flex flex-column">
+                <p class="event-summary__description my-3">
                     {{ event.description }}
                 </p>
-                <aside class="event-summary__detail">
+                <aside class="event-summary__detail my-3">
                     <ul>
                         <li data-icon="&#xf274">
                             Début : {{ event.startAt|date('d/m/Y H:i') }}
@@ -41,7 +41,7 @@
                     </ul>
                 </aside>
             </div>
-        <div class="event-register">
+        <div class="event-register my-3">
             <span>
                 <i class="fas fa-ticket-alt"></i>
                 Nombre de places restantes : {{ event.capacity }}
