@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class EventType extends AbstractType
@@ -23,21 +23,28 @@ class EventType extends AbstractType
                     'rows' => 10,
                 ]
             ])
-            ->add('pictureUrl', UrlType::class,[
+            ->add('picture', UrlType::class,[
                 'label' => 'Image',
                 'help' => 'Url de l\'image'
             ])
             ->add('startAt', null, [
-                'label' => 'Date de début',
-                'date_widget' => 'single_text',
-                'time_widget' => 'single_text'
-            ])
-            ->add('endAt', null, [
                 'label' => 'Date de fin',
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text'
             ])
-            ->add('capacity')
+            ->add('endAt')
+            ->add('capacity', null, [
+                'label' => 'Places disponibles'
+            ])
+            ->add('gameLevel', ChoiceType::class, [
+                'choices'  => [
+                    'Tous niveaux' => 'true',
+                    'Débutant' => 'true',
+                    'Occasionnel' => 'true',
+                    'Intermédiaire' => 'true',
+                    'Confirmé' => 'true',
+                    'Professionnel' => 'true'
+            ]])
             ->add('category', null, [
                 'choice_label' => 'name',
                 'label' => 'Categorie',
@@ -45,26 +52,18 @@ class EventType extends AbstractType
             ->add('place', null, [
                 'choice_label' => 'name',
                 'label' => 'Lieu',
-                'placeholder' => 'A distance',
+                'placeholder' => 'En ligne',
             ])
-            //->add('place', PlaceType::class, [
-            //    'label' => 'Lieu',
-            //])
+            ->add('activity', null, [
+                'choice_label' => 'name',
+                'label' => 'Activité'
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
                 'attr' => [
                     'class' => 'button',
                 ]
             ])
-            ->add('GameLevel', ChoiceType::class,[
-                'choices'  => [
-                    'Tous niveaux' => null,
-                    'Debutant' => true,
-                    'Occasionnel' => true,
-                    'Intermediaire' => false,
-                    'Confirmé' => true,
-                    'Professionnel' => true,
-            ]])
         ;
     }
 

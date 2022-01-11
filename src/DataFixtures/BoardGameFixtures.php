@@ -44,7 +44,7 @@ class BoardGameFixtures extends Fixture implements DependentFixtureInterface
                 $boardGame = new BoardGame();
 
                 $boardGame->setName($faker->words(mt_rand(1,4), true));
-                $boardGame->setDescription($faker->text(300));
+                $boardGame->setDescription($faker->text(600));
                 $boardGame->setPicture($faker->randomElement($boardGamePicturesArray));
                 $boardGame->setCategory($boardGameCategory);
             

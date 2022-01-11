@@ -22,11 +22,34 @@
                     <aside>
                         <ul>
                             <li>
+                                <i class="fas fa-tags"></i>
                                 Genre : {{ videoGame.category.name }}
                             </li>
-                            <li>
-                                {# Platforme : {{ videoGame.platform.name }} #}
-                            </li>
+                            Disponible sur :
+                            {% for platform in videoGame.platform %}
+                                <li>
+                                    {% if platform.name == "Playstation 4" or platform.name == "Playstation 5" %}
+                                        <i class="fab fa-playstation"></i>
+                                            
+                                        {% elseif platform.name == "Xbox One" or platform.name == "Xbox Series" %}
+                                        <i class="fab fa-xbox"></i>
+
+                                        {% elseif platform.name == "Nintendo Switch" or platform.name == "Wii U" %}
+                                        <i class="fas fa-gamepad"></i>
+
+                                        {% elseif platform.name == "PC" %}
+                                        <i class="fab fa-windows"></i>
+
+                                        {% elseif platform.name == "MAC" %}
+                                        <i class="fab fa-apple"></i>
+
+                                        {% else %}
+                                        <i class="fab fa-google-wallet"></i>
+                                            
+                                    {% endif %}
+                                    {{ platform.name }}
+                                </li>
+                            {% endfor %}
                         </ul>
                     </aside>
                     <div class="videoGame-action">
