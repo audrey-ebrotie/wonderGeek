@@ -64,8 +64,8 @@ h1 {
 }
 
 .events .event img {
-  width: 450px;
-  height: 100%;
+  width: 350px;
+  height: auto;
   object-fit: cover;
 }
 
@@ -110,4 +110,15 @@ h1 {
   box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
   transform: scale(1.2);
   color: white;
+}
+
+@media (max-width:720px) {
+  .event{
+    display: flex;
+    flex-direction: column;
+  }
+  .main-header{
+    display: flex;
+    flex-direction: column;
+  }
 }
