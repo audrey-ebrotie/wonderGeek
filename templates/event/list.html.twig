@@ -9,9 +9,9 @@
 {% block body %}
 
 <div class="main-header">
-    <h1>Nos événements</h1>
+    <h1 class="py-2">Nos événements</h1>
     
-    <div class="create-event__button">
+    <div class="create-event__button my-2">
         <a href="{{ path('event_new') }}" class="button">Créer un évènement</a>
     </div>
 </div>
@@ -20,7 +20,7 @@
     <div class="events">
         {% for event in events %}
             <article class="event">
-                <div class="event-picture">    
+                <div class="event-picture text-center p-1">    
                     {% if event.endAt < date() %}
                         {% set statusText = 'Passé' %}
                         {% set statusColor = 'red' %}
