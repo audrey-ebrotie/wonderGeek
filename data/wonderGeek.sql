@@ -4,10 +4,14 @@
 --
 -- Hôte : localhost:8889
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Généré le : mar. 11 jan. 2022 à 11:28
 =======
 -- Généré le : mar. 11 jan. 2022 à 09:02
 >>>>>>> walid
+=======
+-- Généré le : mar. 11 jan. 2022 à 09:02
+>>>>>>> alessio
 -- Version du serveur : 5.7.34
 -- Version de PHP : 8.0.8
 
@@ -44,6 +48,7 @@ CREATE TABLE `board_game` (
 --
 
 INSERT INTO `board_game` (`id`, `category_id`, `name`, `description`, `picture`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (401, 99, 'occaecati', 'Eveniet illum in sit voluptatum beatae aut libero. Perspiciatis quia corrupti dolorum voluptatem non. Alias omnis atque adipisci omnis dignissimos expedita. Ipsam odio sit suscipit omnis debitis laborum deleniti amet.', 'https://cdn3.philibertnet.com/516145-thickbox_default/nouvelles-contrees.jpg'),
 (402, 94, 'ullam sed', 'Similique incidunt fugiat voluptatum quidem natus inventore est. Ut voluptate eum quidem nemo. Neque corporis officia provident iste aut ducimus et. Saepe ut rerum inventore at. Omnis mollitia qui quidem qui. Atque ea culpa est soluta ducimus. Soluta aut repellendus earum sed.', 'https://cdn3.philibertnet.com/472228-thickbox_default/the-crew.jpg'),
@@ -146,6 +151,8 @@ INSERT INTO `board_game` (`id`, `category_id`, `name`, `description`, `picture`)
 (499, 100, 'in', 'Nulla architecto sint quam ex et libero. Exercitationem maiores molestiae a. Exercitationem dolor veritatis facilis provident ipsum voluptatem itaque.', 'https://cdn2.philibertnet.com/527633-thickbox_default/scrabble-deluxe.jpg'),
 (500, 89, 'impedit aut rerum est', 'Est accusamus fugit quisquam. Qui voluptatem dolorem eligendi animi porro. Corporis delectus ut quaerat quis. Tenetur aperiam aut consequatur ea mollitia praesentium.', 'https://cdn3.philibertnet.com/515898-thickbox_default/7-wonders-architects.jpg');
 =======
+=======
+>>>>>>> alessio
 (101, 24, 'in officiis porro dolorem', 'Tempora labore ad dolorem nisi voluptatem et. Aspernatur corporis fugiat omnis temporibus facere tenetur commodi eos. Recusandae sequi sunt enim deleniti dolorum ut. Et vitae neque suscipit quo.', 'https://cdn3.philibertnet.com/525941-thickbox_default/harry-potter-bataille-a-poudlard-extension-sortileges-et-potions.jpg'),
 (102, 25, 'natus quasi quibusdam aut', 'Deleniti quo impedit non in sed. Et voluptatem qui quia autem magnam facilis. Amet corporis ut dolor deleniti ab est qui. Et praesentium voluptatem et. Dolores perferendis necessitatibus est.', 'https://cdn2.philibertnet.com/305958-thickbox_default/uno.jpg'),
 (103, 25, 'et repudiandae et consequatur', 'Et nihil laboriosam officia error consequatur eum ullam debitis. Et sed enim vero velit pariatur. In voluptas dolorem et est est et. Cumque quidem ea aut.', 'https://cdn3.philibertnet.com/503205-thickbox_default/magic-the-gathering-horizons-du-modern-2-bundle.jpg'),
@@ -246,7 +253,10 @@ INSERT INTO `board_game` (`id`, `category_id`, `name`, `description`, `picture`)
 (198, 31, 'et', 'Dolorum omnis architecto quia est praesentium est et. Sit dolores qui tempore distinctio laudantium enim. Voluptatibus quibusdam inventore exercitationem accusantium qui porro modi.', 'https://cdn3.philibertnet.com/525941-thickbox_default/harry-potter-bataille-a-poudlard-extension-sortileges-et-potions.jpg'),
 (199, 27, 'perferendis sed voluptatem vitae', 'Enim autem occaecati voluptatem occaecati quis doloribus minus eum. Vel quis voluptatum et pariatur. Autem architecto hic sunt consequuntur sint occaecati natus et. Quis sequi quidem ullam. Voluptas ipsa mollitia atque alias quod nihil.', 'https://cdn2.philibertnet.com/527633-thickbox_default/scrabble-deluxe.jpg'),
 (200, 22, 'modi', 'Voluptas maxime in et quaerat nihil. Sint rerum nam sunt voluptatem dolorem dolore. Corrupti nemo laboriosam suscipit veritatis eum ea. Velit quae qui maxime perferendis quis porro ut dolor. Qui praesentium enim quos esse adipisci.', 'https://cdn1.philibertnet.com/343934-thickbox_default/7-wonders-duel.jpg');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -264,6 +274,7 @@ CREATE TABLE `board_game_category` (
 --
 
 INSERT INTO `board_game_category` (`id`, `name`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (86, 'Jeu de dés'),
 (87, 'Jeu d\'adresse'),
@@ -283,6 +294,8 @@ INSERT INTO `board_game_category` (`id`, `name`) VALUES
 (101, 'Jeu de hasard'),
 (102, 'Jeu de rôle');
 =======
+=======
+>>>>>>> alessio
 (18, 'Jeu de dés'),
 (19, 'Jeu d\'adresse'),
 (20, 'Jeu d\'ambiance'),
@@ -300,7 +313,10 @@ INSERT INTO `board_game_category` (`id`, `name`) VALUES
 (32, 'Jeu de gestion'),
 (33, 'Jeu de hasard'),
 (34, 'Jeu de rôle');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -320,6 +336,7 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`id`, `event_id`, `user_id`, `reference`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (101, 251, 1492, 0x2f22065cb2613d528e683287679a19d3),
 (102, 245, 1411, 0xea827fa52e463a208e150c3237ec67ae),
@@ -372,6 +389,8 @@ INSERT INTO `booking` (`id`, `event_id`, `user_id`, `reference`) VALUES
 (149, 217, 1307, 0x3d113f7943883e2f818a940a71fb875c),
 (150, 241, 1209, 0x425632de71b43e9fab202e683e0b06b3);
 =======
+=======
+>>>>>>> alessio
 (1, 63, 184, 0xcecf0be4d0143d0e9b1d7190244f5392),
 (2, 87, 142, 0xe0625632ab8a309cbd4ef2cd5845f38b),
 (3, 83, 52, 0x835e20928cb337e694cd827d328d42f7),
@@ -422,7 +441,10 @@ INSERT INTO `booking` (`id`, `event_id`, `user_id`, `reference`) VALUES
 (48, 89, 408, 0x4e77a7ef6d7e3ff599ab1115340d6073),
 (49, 95, 418, 0xf8bba6acdcc533f99fdd537e9cbcf00f),
 (50, 83, 201, 0xf062aff5506d3b94ad0c180561bcef19);
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -444,6 +466,7 @@ CREATE TABLE `comic` (
 --
 
 INSERT INTO `comic` (`id`, `category_id`, `name`, `description`, `picture`, `author`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (401, 99, 'sunt', 'Quidem qui quas dolore consectetur illum. Corrupti fugiat qui modi. Quis aut aut aliquid consequatur velit autem dolorem. Vitae consequatur voluptas sunt sapiente eos cum eaque.', 'https://images-na.ssl-images-amazon.com/images/S/cmx-images-prod/Item/279507/279507._SX1280_QL80_TTD_.jpg', 'Kaleb Bartoletti'),
 (402, 100, 'corrupti rerum numquam consectetur', 'Ut possimus nulla et dicta aliquid occaecati. Error debitis molestiae molestias quas vero. Facere quia et corporis unde. Vitae amet magni sed quos vel et quae. Incidunt accusamus rerum debitis qui optio.', 'https://www.hallmark.com/dw/image/v2/AALB_PRD/on/demandware.static/-/Sites-hallmark-master/default/dw8ba9f1e5/images/finished-goods/Marvel-The-Amazing-SpiderMan-Comic-Book-Cover-Fathers-Day-Card-root-599FHE8966_PV.1.FHE8966.jpg_Source_Image.jpg?sw=1920', 'George Kuhn'),
@@ -546,6 +569,8 @@ INSERT INTO `comic` (`id`, `category_id`, `name`, `description`, `picture`, `aut
 (499, 93, 'consequatur id id perferendis', 'Sed libero voluptates vero accusamus. Sit dolore autem magni pariatur dicta qui quo quis. In dolore est qui rerum neque. Repellat non natus molestiae doloribus et et.', 'https://images.omerlocdn.com/resize?url=https%3A%2F%2Fgcm.omerlocdn.com%2Fproduction%2Fglobal%2Ffiles%2Fimage%2Fb4ddd4dd-70a1-4977-8a46-559f77b48ccc.jpg&width=1200&type=jpeg&stripmeta=true', 'Rosemary Schiller'),
 (500, 100, 'molestiae dolorem quae', 'Quia ratione unde vitae tempora est ut temporibus. In voluptas dolorem architecto voluptatem possimus et. Dicta occaecati accusantium ducimus sunt saepe nihil. Fuga sit autem itaque tenetur neque. Voluptatem in non tempora cumque qui dolores voluptatum.', 'https://images-na.ssl-images-amazon.com/images/I/71aGRDbG9WL.jpg', 'Mabel Abbott');
 =======
+=======
+>>>>>>> alessio
 (101, 25, 'totam ex', 'Minus veniam ut laborum quia. Ut voluptas commodi et ex et modi. Vitae aut ad est explicabo qui repellendus dolores. Possimus porro ut est officiis eum sed.', 'https://www.gamespot.com/a/uploads/original/1562/15626911/3002107-5032115-04-variant.jpg', 'Hal Morar'),
 (102, 25, 'nulla sed deleniti ipsam', 'Pariatur mollitia reiciendis enim. Ut aut quod sit qui vel. Ipsam quo officia perspiciatis repellendus voluptas alias. Earum totam veniam vero sunt quo modi omnis. Repudiandae reprehenderit ut molestias aperiam. Ut quo eum qui harum eum eaque vitae. Et laborum vel ipsam ut.', 'https://cdn001.tintin.com/public/tintin/img/static/the-shooting-star/the-shooting-star.jpg', 'Jessie Wilderman'),
 (103, 33, 'molestiae', 'Qui architecto voluptas doloribus est veritatis. Fugiat aliquid officiis quae accusantium. In ea necessitatibus enim cum. Necessitatibus aut unde ex accusantium autem sapiente similique recusandae.', 'https://cdn001.tintin.com/public/tintin/img/static/the-shooting-star/the-shooting-star.jpg', 'Macey Windler'),
@@ -646,7 +671,10 @@ INSERT INTO `comic` (`id`, `category_id`, `name`, `description`, `picture`, `aut
 (198, 21, 'explicabo quidem placeat', 'Soluta ut inventore fugiat optio debitis odio corrupti. Quaerat fugiat optio autem et enim. Nihil qui necessitatibus non perspiciatis quis. Sed quia ipsa ut repellendus quo est. Facere numquam libero sit nobis illum minus non rem.', 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengers50_infinitysaga_variant.jpg', 'Coy Klocko'),
 (199, 29, 'aliquid dolores', 'Eum quo ut necessitatibus sequi odit ipsa. Rerum aliquid maxime molestias sed quasi numquam quia. Est occaecati repudiandae corporis est repellat voluptatem consequatur amet.', 'https://cdn2.originalcomics.fr/26776/buffy-contre-les-vampires-saison-8-tome-1-vf.jpg', 'Leonard Wilkinson'),
 (200, 22, 'ducimus corporis dolorem est', 'Id delectus voluptas officiis accusamus. Mollitia consequatur molestiae hic quia fuga ut impedit. Tempore officiis odit aliquid expedita repellat.', 'https://cdn2.originalcomics.fr/26776/buffy-contre-les-vampires-saison-8-tome-1-vf.jpg', 'Orin Towne');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -664,6 +692,7 @@ CREATE TABLE `comic_category` (
 --
 
 INSERT INTO `comic_category` (`id`, `name`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (91, 'Action / Aventure'),
 (92, 'Humoristique'),
@@ -684,6 +713,8 @@ INSERT INTO `comic_category` (`id`, `name`) VALUES
 (107, 'Guerre'),
 (108, 'Western');
 =======
+=======
+>>>>>>> alessio
 (19, 'Action / Aventure'),
 (20, 'Humoristique'),
 (21, 'Fantastique'),
@@ -702,7 +733,10 @@ INSERT INTO `comic_category` (`id`, `name`) VALUES
 (34, 'Ados'),
 (35, 'Guerre'),
 (36, 'Western');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -722,10 +756,14 @@ CREATE TABLE `doctrine_migration_versions` (
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 <<<<<<< HEAD
+<<<<<<< HEAD
 ('DoctrineMigrations\\Version20220111102052', '2022-01-11 10:21:09', 1214);
 =======
 ('DoctrineMigrations\\Version20220110220327', '2022-01-10 22:03:51', 1035);
 >>>>>>> walid
+=======
+('DoctrineMigrations\\Version20220110220327', '2022-01-10 22:03:51', 1035);
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -752,6 +790,7 @@ CREATE TABLE `event` (
 -- Déchargement des données de la table `event`
 --
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 INSERT INTO `event` (`id`, `category_id`, `place_id`, `owner_id`, `activity_id`, `name`, `description`, `picture`, `start_at`, `end_at`, `capacity`, `game_level`) VALUES
 (201, 32, 418, 1243, 22, 'iure ut quisquam vel ab consequatur similique', 'Et reiciendis in veniam soluta sit omnis sint. Nam voluptatem ab laudantium animi sit. Et voluptas aut in omnis reiciendis. Ipsa voluptatem illo et corrupti. Excepturi omnis cum fugiat voluptatem qui. Sit odio ut quo in et tenetur deserunt. Ab aut itaque id voluptas et. Libero accusantium labore reprehenderit itaque. Incidunt architecto consectetur numquam omnis soluta. Est magni perferendis quod ut laboriosam autem itaque cumque. Quisquam officiis velit placeat. Neque enim ut velit dolores dignissimos. Nulla nemo dolorum quos ut. Quia non expedita et nisi aut. Ea omnis ut harum sit. Excepturi aut vel eveniet quis et nisi qui. Nisi ipsum doloremque molestiae ut veritatis. At dolor culpa blanditiis. Quaerat ex voluptatem itaque aspernatur. Et quia voluptatem rem ipsum eos placeat est.', 'https://pbs.twimg.com/media/EECAyk7W4AAQP9w.jpg', '2022-06-26 02:10:17', '2022-06-28 11:44:08', 331, 'Occasionnel'),
@@ -878,6 +917,8 @@ INSERT INTO `event_activity` (`id`, `name`) VALUES
 (24, 'Comics'),
 (25, 'Toutes activités');
 =======
+=======
+>>>>>>> alessio
 INSERT INTO `event` (`id`, `category_id`, `place_id`, `owner_id`, `name`, `description`, `picture`, `start_at`, `end_at`, `capacity`, `game_level`) VALUES
 (1, 12, 148, 267, 'temporibus veritatis ab tempore minima natus veniam qui ex nam', 'Qui necessitatibus voluptatem voluptatem. Corrupti rerum totam et. Qui deserunt tempore vitae iusto maiores quo. Pariatur placeat laboriosam maxime. Et inventore at quia nihil sunt. Molestiae magni hic facilis sapiente velit magnam deserunt. Dolores magni quos accusamus praesentium minus dolor pariatur dolor. Consequatur praesentium enim aut consequuntur voluptate consectetur. Est voluptatum voluptas similique esse et non. Laudantium aut ut cupiditate. Quidem facere nesciunt ut deleniti quia laboriosam. Non cum voluptatem consequatur consectetur commodi. Et id ut voluptatibus sunt quo.', 'https://fr.web.img2.acsta.net/newsv7/20/06/30/12/28/5740456.jpg', '2022-03-06 21:45:16', '2022-03-07 06:46:13', 82, 'Professionnel'),
 (2, 14, 130, 32, 'perspiciatis ut eos explicabo omnis rerum', 'Est accusantium excepturi ut facilis explicabo recusandae ipsam. In iusto qui cumque sit. Natus quia laborum enim sed asperiores. Eveniet omnis maxime odit qui suscipit. Non dolor ut atque quam quia eaque aut ut. Commodi nihil sint neque sed voluptatibus. Qui dolore qui quod tenetur molestiae necessitatibus tempore voluptatem. Voluptas reiciendis dolorem et laboriosam ex sint. Praesentium porro sapiente et ipsum est dolorem. Maxime in beatae error maxime nemo. Illum rem dicta doloribus non. Qui eum excepturi voluptatem qui. Ipsum praesentium error itaque aut dolore et. Blanditiis illo quis iste libero sequi dolores dolor. Hic facere ut id occaecati. Temporibus eveniet aspernatur qui porro libero. Et assumenda fugiat sit aut. Est qui necessitatibus iste culpa fuga id sequi.', 'https://i0.wp.com/www.nintendo-town.fr/wp-content/uploads/2019/04/H2x1_NSwitch_MortalKombat11_image1600w.jpg?fit=1600%2C800&ssl=1', '2022-06-28 21:39:24', '2022-06-30 04:51:15', 74, 'Occasionnel'),
@@ -980,7 +1021,10 @@ INSERT INTO `event` (`id`, `category_id`, `place_id`, `owner_id`, `name`, `descr
 (98, 9, 123, 184, 'vel inventore vel', 'Quam ut temporibus hic adipisci. Cupiditate laboriosam officia eius. Voluptatibus pariatur et nemo deserunt inventore blanditiis. Odit sunt sed quaerat autem. Velit veniam enim nobis officia praesentium qui qui. Repellendus adipisci voluptates rem quibusdam ut. Sapiente repudiandae asperiores explicabo ipsum eos. Aliquam voluptatibus placeat velit voluptates quisquam illo quo. Reiciendis quaerat officia tempore nobis. Dolorem quas molestiae doloribus eius non numquam. Quia omnis sint dolore fugit. Et tenetur enim veritatis consequuntur dicta praesentium in. Consequatur explicabo iure aliquam deleniti quos qui vitae. Et magni aliquid est est corrupti modi. Facilis ut tempore praesentium qui quaerat.', 'https://cdn.akamai.steamstatic.com/steam/apps/851590/capsule_616x353.jpg?t=1631538454', '2022-04-08 21:17:54', '2022-04-10 15:38:46', 363, 'Intermédiaire'),
 (99, 11, 183, 50, 'sint ea expedita expedita ut molestiae', 'Quibusdam sit quae eligendi sit ex occaecati. Quas sunt repellat aut doloribus dolore. Molestiae ut et est et qui. Quo et repellat aliquam impedit ut iure impedit. Maiores enim earum mollitia molestiae expedita. Mollitia exercitationem temporibus odit delectus repellendus expedita nihil illum. Possimus eos quisquam optio. Laboriosam aut enim omnis. Explicabo error cupiditate minima libero aut inventore aperiam. Autem et aut explicabo sapiente. Inventore laborum error voluptas sequi officia. Odit ut aspernatur at corporis error nihil aut. Aspernatur dolore molestias dolorem rerum. Perspiciatis perspiciatis at porro iste nemo animi. Rerum et ea harum incidunt.', 'https://previews.123rf.com/images/microone/microone2006/microone200600047/148520518-board-game-evening-friends-meeting-happy-players-characters-isolated-teenagers-or-adults-playing-car.jpg', '2022-05-07 04:44:41', '2022-05-08 02:53:08', 104, 'Intermédiaire'),
 (100, 12, NULL, 209, 'ut et ut', 'Corrupti et non consequuntur non delectus eos nesciunt explicabo. Totam facilis facere est consequuntur. Rerum debitis provident non sit rerum iure esse. Fugiat quas non eos iste. Et molestiae cupiditate quia voluptatibus. Voluptatem dolorum sit voluptatem adipisci suscipit porro omnis. Quo atque corporis aut neque sit repellat vitae laboriosam. Qui sunt consequatur commodi deserunt. Aut tenetur quis ratione at unde. Et velit et corrupti est. Quae sint non impedit tempora illum non velit. Sint sed a vero molestiae. Consequatur non in voluptas vitae. Ipsam dolorum omnis et laudantium. Voluptatibus reiciendis illum omnis est.', 'https://www.manga-news.com/public/images/events/geek-unchained-4.jpg', '2022-06-28 09:25:45', '2022-06-29 10:03:08', 42, 'Débutant');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -999,6 +1043,7 @@ CREATE TABLE `event_category` (
 
 INSERT INTO `event_category` (`id`, `name`) VALUES
 <<<<<<< HEAD
+<<<<<<< HEAD
 (29, 'Convention'),
 (30, 'Partie en ligne'),
 (31, 'Partie en local (LAN Party)'),
@@ -1007,6 +1052,8 @@ INSERT INTO `event_category` (`id`, `name`) VALUES
 (34, 'Vente aux enchères / troc'),
 (35, 'Conférence');
 =======
+=======
+>>>>>>> alessio
 (8, 'Convention'),
 (9, 'Partie en ligne'),
 (10, 'Partie en local (LAN Party)'),
@@ -1014,7 +1061,10 @@ INSERT INTO `event_category` (`id`, `name`) VALUES
 (12, 'Meeting'),
 (13, 'Vente aux enchères / troc'),
 (14, 'Conférence');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -1036,6 +1086,7 @@ CREATE TABLE `manga` (
 --
 
 INSERT INTO `manga` (`id`, `category_id`, `name`, `description`, `picture`, `author`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (401, 27, 'officia laudantium fugiat quia', 'Quia doloremque placeat dolor omnis necessitatibus. Aperiam dolor numquam incidunt omnis. Incidunt non dignissimos sit aspernatur quos asperiores minus.', 'https://images-na.ssl-images-amazon.com/images/I/91yiBtD0imL.jpg', 'Alyson Ullrich'),
 (402, 30, 'ea', 'Illum harum sit beatae occaecati. Unde esse cupiditate quis quia rem hic. Id neque consequuntur sit numquam. Maxime et porro tempore deleniti voluptas ut. Rerum voluptatem sint ex nam sequi voluptas omnis. Labore sed accusantium non nesciunt ut sit.', 'https://images-na.ssl-images-amazon.com/images/I/818SKXrgHaL.jpg', 'Alvina Murphy'),
@@ -1138,6 +1189,8 @@ INSERT INTO `manga` (`id`, `category_id`, `name`, `description`, `picture`, `aut
 (499, 29, 'consequatur architecto', 'Animi maxime neque in nemo nemo asperiores. Id aliquid ipsam maiores eius quia repudiandae. Enim mollitia tenetur quidem ex explicabo. Delectus et autem cumque aliquid sunt.', 'https://images-na.ssl-images-amazon.com/images/I/81VDeAyH1GL.jpg', 'Lacy Stamm'),
 (500, 27, 'perferendis', 'Vel nostrum sed quisquam et. Vel est fuga doloremque ut dolore. Iste sed et qui nobis illum quo fuga. Id hic consequuntur non qui omnis dolore soluta. Et aut occaecati molestias qui est.', 'https://images-na.ssl-images-amazon.com/images/I/81VDeAyH1GL.jpg', 'Talon Frami');
 =======
+=======
+>>>>>>> alessio
 (101, 8, 'mollitia', 'At tempore consequuntur est quo voluptatem sint at. Itaque sunt non laboriosam nostrum illum architecto laudantium. Itaque quis distinctio eum ut porro magnam voluptas. Et amet qui nostrum voluptas sed magnam culpa.', 'https://www.pika.fr/sites/default/files/images/livres/couv/9782811607135-T.jpg', 'Destinee Heller'),
 (102, 7, 'nihil praesentium consequatur', 'Fuga quos culpa quisquam eum. Fuga excepturi nihil et molestiae aut soluta. Repellendus eaque consequuntur eius et qui aut. Earum officia quia est aut error omnis.', 'https://images-na.ssl-images-amazon.com/images/I/91xNW4qPPfL.jpg', 'Nia Stiedemann'),
 (103, 9, 'molestiae', 'Debitis id architecto id. Facere molestiae odio ab et aut quia. Ut ullam quisquam distinctio perferendis.', 'https://images-na.ssl-images-amazon.com/images/I/91a19RuprqL.jpg', 'Kurt Abernathy'),
@@ -1238,7 +1291,10 @@ INSERT INTO `manga` (`id`, `category_id`, `name`, `description`, `picture`, `aut
 (198, 10, 'fuga', 'Sit dolores velit sint sequi. Est rerum quis nihil deserunt nobis consequatur ut. Vel cupiditate voluptatem quo sed. Aut et saepe assumenda nihil ab.', 'https://images-na.ssl-images-amazon.com/images/I/91xNW4qPPfL.jpg', 'Kaitlin Langosh'),
 (199, 7, 'vel dolorem ipsa', 'Eum consequatur amet aut ab itaque nihil. Vitae veniam optio voluptates id ratione ipsum qui. Sint sapiente qui aliquid impedit inventore enim. Laudantium aut asperiores temporibus laudantium rerum et quia.', 'https://images-na.ssl-images-amazon.com/images/I/91hcXocudXL.jpg', 'Ramiro Baumbach'),
 (200, 8, 'id vitae libero', 'Beatae ea adipisci eveniet numquam sunt aliquam. Dolorum qui aut rerum et id ratione reprehenderit. Esse nostrum et quis soluta incidunt. Sunt et reiciendis libero vel doloremque autem.', 'https://images-na.ssl-images-amazon.com/images/I/81VDeAyH1GL.jpg', 'Darien Hintz');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -1257,18 +1313,24 @@ CREATE TABLE `manga_category` (
 
 INSERT INTO `manga_category` (`id`, `name`) VALUES
 <<<<<<< HEAD
+<<<<<<< HEAD
 (26, 'Kodomo'),
 (27, 'Shonen'),
 (28, 'Shojo'),
 (29, 'Seinen'),
 (30, 'Josei');
 =======
+=======
+>>>>>>> alessio
 (6, 'Kodomo'),
 (7, 'Shonen'),
 (8, 'Shojo'),
 (9, 'Seinen'),
 (10, 'Josei');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -1290,6 +1352,7 @@ CREATE TABLE `place` (
 --
 
 INSERT INTO `place` (`id`, `name`, `street`, `zipcode`, `city`, `country`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (401, 'Gay', 'rue Thibaut Blanc', '35 469', 'Colin', 'France'),
 (402, 'Lamy', '738, boulevard de Lemaire', '69828', 'David-sur-Clerc', 'France'),
@@ -1392,6 +1455,8 @@ INSERT INTO `place` (`id`, `name`, `street`, `zipcode`, `city`, `country`) VALUE
 (499, 'Francois Herve S.A.R.L.', '8, rue Wagner', '64 879', 'Alves', 'France'),
 (500, 'Bodin SA', '9, chemin de Bourdon', '79 076', 'Lefevre', 'France');
 =======
+=======
+>>>>>>> alessio
 (101, 'Lucas', '1, impasse Nath Marion', '49353', 'GrosVille', 'France'),
 (102, 'Devaux SARL', '38, rue Rodriguez', '06479', 'Hernandez-sur-Bonnin', 'France'),
 (103, 'Coste', '64, chemin de Renault', '66869', 'Ferreira', 'France'),
@@ -1492,7 +1557,10 @@ INSERT INTO `place` (`id`, `name`, `street`, `zipcode`, `city`, `country`) VALUE
 (198, 'Perret Fouquet S.A.R.L.', '230, place de Guillaume', '40971', 'Germaindan', 'France'),
 (199, 'Pruvost Lebon SAS', '35, boulevard Paris', '27 121', 'Dufour-la-Forêt', 'France'),
 (200, 'Fischer SAS', '104, rue de Laurent', '42 310', 'BretonBourg', 'France');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -1511,6 +1579,7 @@ CREATE TABLE `platform` (
 
 INSERT INTO `platform` (`id`, `name`) VALUES
 <<<<<<< HEAD
+<<<<<<< HEAD
 (46, 'Playstation 4'),
 (47, 'Playstation 5'),
 (48, 'Xbox One'),
@@ -1521,6 +1590,8 @@ INSERT INTO `platform` (`id`, `name`) VALUES
 (53, 'Stadia'),
 (54, 'Wii U');
 =======
+=======
+>>>>>>> alessio
 (10, 'Playstation 4'),
 (11, 'Playstation 5'),
 (12, 'Xbox One'),
@@ -1530,7 +1601,10 @@ INSERT INTO `platform` (`id`, `name`) VALUES
 (16, 'MAC'),
 (17, 'Stadia'),
 (18, 'Wii U');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -1548,17 +1622,22 @@ CREATE TABLE `user` (
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthdate` date NOT NULL,
 <<<<<<< HEAD
+<<<<<<< HEAD
   `picture` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL
 =======
   `profile` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 >>>>>>> walid
+=======
+  `profile` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+>>>>>>> alessio
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 INSERT INTO `user` (`id`, `profile_id`, `level_id`, `email`, `roles`, `password`, `username`, `birthdate`, `picture`, `city`) VALUES
 (1001, 20, 23, 'juliette33@gmail.com', '[\"ROLE_USER\"]', '$2y$10$FG3bTiQHjXaF20nJ0KTem.bXPb56RYJa0p8TCUwckXaHUMC.hIpP.', 'pineau.hugues', '1990-06-13', 'https://cdn-icons.flaticon.com/png/512/2671/premium/2671422.png?token=exp=1641899777~hmac=5ab4dd5190ff90327964da4573142588', 'Guerin-sur-Collet'),
@@ -2064,6 +2143,8 @@ INSERT INTO `user` (`id`, `profile_id`, `level_id`, `email`, `roles`, `password`
 (1499, 20, 25, 'aime.marchand@yahoo.fr', '[\"ROLE_USER\"]', '$2y$10$JG3la.GWI1MjpmcmQ5k.FOdhSIfq5WLz9sIKKZiNjvkEWqtuT73X.', 'alix.buisson', '1989-09-08', 'https://cdn-icons-png.flaticon.com/512/1674/1674291.png', 'Brunet'),
 (1500, NULL, 23, 'raynaud.joseph@yahoo.fr', '[\"ROLE_USER\"]', '$2y$10$QZE1t00csr34EQ3vJ45n9uZEgIoQ1u/PZWtN2GmKxnKYYtf.9GrAi', 'verdier.emmanuel', '1965-02-12', 'https://cdn-icons.flaticon.com/png/512/1985/premium/1985783.png?token=exp=1641899777~hmac=467dad371dbd0417fc9f459b8fcfa7d0', 'Bouvier-sur-Schneider');
 =======
+=======
+>>>>>>> alessio
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `username`, `birthdate`, `profile`) VALUES
 (1, 'adelaide.dupre@garnier.fr', '[\"ROLE_USER\"]', '$2y$10$tBzgtOVyAdPSEEf310w2zufXee7vFmMirlREdy0ubYjwhEDikDVae', 'fdevaux', '1964-06-15', 'Joueur de jeux de société'),
 (2, 'gregoire.adele@berger.fr', '[\"ROLE_USER\"]', '$2y$10$iPvXpEgiGEPj7HnR2B.dQOwyWI4.yTcDILxMzItpvqhXvRjeV82uS', 'dominique31', '2007-05-04', 'Lecteur de mangas'),
@@ -2566,7 +2647,10 @@ INSERT INTO `user` (`id`, `email`, `roles`, `password`, `username`, `birthdate`,
 (498, 'anne30@chauvet.fr', '[\"ROLE_USER\"]', '$2y$10$DX5anpZuq4mG2I2mSyNXj.uXbmcnLfk3hKHZat2.1W1kW6jM/Biv6', 'agathe.berthelot', '1998-02-23', 'Lecteur de comics'),
 (499, 'francoise26@perrier.net', '[\"ROLE_USER\"]', '$2y$10$sG21aHu5RGgjYONLOHmJQuhMrZRYLBfW8zibOLb19tl8cmHjCH4ZS', 'hlefebvre', '1967-06-29', 'Joueur de jeux de société'),
 (500, 'guy.teixeira@dbmail.com', '[\"ROLE_USER\"]', '$2y$10$K/suBo9vansBT6fevoYN6Ogwm7wVcmRNYRxnrJnTjY4GK262AdnIC', 'vincent.marine', '1965-07-05', 'Joueur de jeux de société');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -2584,6 +2668,7 @@ CREATE TABLE `user_board_game` (
 --
 
 INSERT INTO `user_board_game` (`user_id`, `board_game_id`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (1001, 465),
 (1002, 466),
@@ -3015,6 +3100,8 @@ INSERT INTO `user_board_game` (`user_id`, `board_game_id`) VALUES
 (1499, 428),
 (1500, 459);
 =======
+=======
+>>>>>>> alessio
 (1, 181),
 (2, 196),
 (3, 162),
@@ -3444,7 +3531,10 @@ INSERT INTO `user_board_game` (`user_id`, `board_game_id`) VALUES
 (498, 128),
 (499, 107),
 (500, 175);
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -3462,6 +3552,7 @@ CREATE TABLE `user_comic` (
 --
 
 INSERT INTO `user_comic` (`user_id`, `comic_id`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (1001, 484),
 (1002, 489),
@@ -3861,6 +3952,8 @@ INSERT INTO `user_level` (`id`, `name`) VALUES
 (24, 'Confirmé'),
 (25, 'Professionnel');
 =======
+=======
+>>>>>>> alessio
 (1, 181),
 (2, 109),
 (3, 132),
@@ -4236,7 +4329,10 @@ INSERT INTO `user_level` (`id`, `name`) VALUES
 (497, 157),
 (498, 160),
 (499, 173);
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -4254,6 +4350,7 @@ CREATE TABLE `user_manga` (
 --
 
 INSERT INTO `user_manga` (`user_id`, `manga_id`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (1001, 477),
 (1002, 422),
@@ -4677,6 +4774,8 @@ INSERT INTO `user_profile` (`id`, `name`) VALUES
 (19, 'Lecteur de mangas'),
 (20, 'Lecteur de comics');
 =======
+=======
+>>>>>>> alessio
 (1, 115),
 (2, 124),
 (3, 109),
@@ -5077,7 +5176,10 @@ INSERT INTO `user_profile` (`id`, `name`) VALUES
 (497, 176),
 (498, 127),
 (499, 169);
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -5095,6 +5197,7 @@ CREATE TABLE `user_video_game` (
 --
 
 INSERT INTO `user_video_game` (`user_id`, `video_game_id`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (1001, 441),
 (1002, 488),
@@ -5431,6 +5534,8 @@ INSERT INTO `user_video_game` (`user_id`, `video_game_id`) VALUES
 (1499, 441),
 (1500, 428);
 =======
+=======
+>>>>>>> alessio
 (1, 134),
 (2, 143),
 (4, 182),
@@ -5765,7 +5870,10 @@ INSERT INTO `user_video_game` (`user_id`, `video_game_id`) VALUES
 (497, 197),
 (499, 199),
 (500, 145);
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -5786,6 +5894,7 @@ CREATE TABLE `video_game` (
 --
 
 INSERT INTO `video_game` (`id`, `category_id`, `name`, `description`, `picture`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (401, 104, 'distinctio rem veniam', 'Sequi voluptate voluptate ullam voluptatem. Porro occaecati quasi assumenda quia dolor. Perferendis odio id dolorem impedit iure laudantium. Ex voluptas saepe quae ea totam non ut quia.', 'https://image.jeuxvideo.com/medias/163353/1633528483-9809-jaquette-avant.jpg'),
 (402, 104, 'odio reiciendis', 'Ea corrupti voluptatem animi ut quia ut natus. Dolor omnis sit eum excepturi. Repellendus hic qui assumenda voluptate facere eaque consequuntur. Molestiae sequi sed omnis est tenetur.', 'https://image.jeuxvideo.com/medias/163708/1637080607-7753-jaquette-avant.gif'),
@@ -5888,6 +5997,8 @@ INSERT INTO `video_game` (`id`, `category_id`, `name`, `description`, `picture`)
 (499, 108, 'adipisci est dignissimos hic', 'Sapiente possimus quia aspernatur rerum porro quis expedita. Dolores consequatur eligendi tenetur nihil culpa. Culpa aspernatur necessitatibus minus doloremque.', 'https://image.jeuxvideo.com/medias/158826/1588264397-5261-jaquette-avant.jpg'),
 (500, 109, 'nam architecto', 'Odio placeat quidem vel tempora consectetur facilis eligendi. Quod est aliquid odit aliquam. Tempore quo veritatis officia qui id quasi quibusdam commodi. Velit vel recusandae ut ad aut ut qui. Magni nesciunt incidunt sequi voluptatibus tenetur recusandae. Et dolorum iusto sed dolores ad non.', 'https://image.jeuxvideo.com/medias/161616/1616164719-8684-jaquette-avant.jpg');
 =======
+=======
+>>>>>>> alessio
 (101, 27, 'porro est', 'Tempore aut ea cum totam nihil. Recusandae qui dolorem et voluptates voluptates autem saepe et. Ad sunt fugit est dolores. Quam in pariatur inventore ut dolorum culpa quia. Similique excepturi omnis dolores laudantium. Adipisci distinctio odio dolores tenetur placeat facilis.', 'https://image.jeuxvideo.com/medias/163214/1632143636-6808-jaquette-avant.jpg'),
 (102, 36, 'sed consequuntur', 'Facere ut et corporis ab. Quia et cum possimus hic. Ratione eos ut iste non quidem nulla quod nulla. Tempore laborum nemo ratione molestiae debitis aperiam. Eveniet quas molestiae ut. Excepturi consequuntur saepe accusantium.', 'https://image.jeuxvideo.com/images/jaquettes/00048634/jaquette-les-sims-4-pc-cover-avant-g-1409904702.jpg'),
 (103, 24, 'doloribus', 'Sint quo repellat laboriosam et exercitationem necessitatibus non. Quod sequi placeat ut eum sint tenetur. Porro nisi quis sed illum sed. Quibusdam adipisci voluptatum laboriosam repellat veritatis rerum dolores.', 'https://image.jeuxvideo.com/medias/151689/1516893501-9622-jaquette-avant.jpg'),
@@ -5988,7 +6099,10 @@ INSERT INTO `video_game` (`id`, `category_id`, `name`, `description`, `picture`)
 (198, 22, 'dignissimos commodi assumenda autem', 'Vero ut voluptates occaecati et dolore. Quia tempore maxime sit illo. Et deserunt quod aliquam exercitationem blanditiis sed. Enim et laborum vitae. Qui consectetur est eius voluptatem. In reiciendis dolor id provident iure qui. Qui ut qui et autem minima. Illo sit perferendis officia nihil.', 'https://image.jeuxvideo.com/medias/163353/1633528483-9809-jaquette-avant.jpg'),
 (199, 23, 'facilis delectus', 'Inventore ipsam nemo rem sapiente. At totam blanditiis a cupiditate dolorem. Optio expedita et aut vitae eos minus eum. Esse minima et autem dolor blanditiis. Ad et ut suscipit possimus.', 'https://media.senscritique.com/media/000020040912/source_big/Resident_Evil_Village.png'),
 (200, 37, 'reiciendis nisi', 'Tempora omnis similique impedit dignissimos et esse assumenda. Nostrum eveniet ut unde dolorem maiores qui. Assumenda nihil repellat facilis. Excepturi et architecto sequi illum quae.', 'https://global-img.gamergen.com/red-dead-redemption-2-pc-mediamarkt_0900909672.jpg');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -6006,6 +6120,7 @@ CREATE TABLE `video_game_category` (
 --
 
 INSERT INTO `video_game_category` (`id`, `name`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (101, 'FPS / TPS'),
 (102, 'Combat'),
@@ -6028,6 +6143,8 @@ INSERT INTO `video_game_category` (`id`, `name`) VALUES
 (119, 'Course'),
 (120, 'Sports');
 =======
+=======
+>>>>>>> alessio
 (21, 'FPS / TPS'),
 (22, 'Combat'),
 (23, 'RTS'),
@@ -6048,7 +6165,10 @@ INSERT INTO `video_game_category` (`id`, `name`) VALUES
 (38, 'Rythme'),
 (39, 'Course'),
 (40, 'Sports');
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 -- --------------------------------------------------------
 
@@ -6066,6 +6186,7 @@ CREATE TABLE `video_game_platform` (
 --
 
 INSERT INTO `video_game_platform` (`video_game_id`, `platform_id`) VALUES
+<<<<<<< HEAD
 <<<<<<< HEAD
 (401, 47),
 (401, 48),
@@ -6654,6 +6775,8 @@ INSERT INTO `video_game_platform` (`video_game_id`, `platform_id`) VALUES
 (500, 50),
 (500, 51);
 =======
+=======
+>>>>>>> alessio
 (101, 11),
 (101, 12),
 (101, 13),
@@ -7259,7 +7382,10 @@ INSERT INTO `video_game_platform` (`video_game_id`, `platform_id`) VALUES
 (200, 16),
 (200, 17),
 (200, 18);
+<<<<<<< HEAD
 >>>>>>> walid
+=======
+>>>>>>> alessio
 
 --
 -- Index pour les tables déchargées
@@ -7435,55 +7561,76 @@ ALTER TABLE `video_game_platform`
 --
 ALTER TABLE `board_game`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `board_game_category`
 --
 ALTER TABLE `board_game_category`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `booking`
 --
 ALTER TABLE `booking`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `comic`
 --
 ALTER TABLE `comic`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `comic_category`
 --
 ALTER TABLE `comic_category`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
+<<<<<<< HEAD
 <<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
 
@@ -7495,61 +7642,85 @@ ALTER TABLE `event_activity`
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `event_category`
 --
 ALTER TABLE `event_category`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `manga`
 --
 ALTER TABLE `manga`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `manga_category`
 --
 ALTER TABLE `manga_category`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `place`
 --
 ALTER TABLE `place`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `platform`
 --
 ALTER TABLE `platform`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
+<<<<<<< HEAD
 <<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1501;
 
@@ -7567,26 +7738,37 @@ ALTER TABLE `user_profile`
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `video_game`
 --
 ALTER TABLE `video_game`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+>>>>>>> alessio
 
 --
 -- AUTO_INCREMENT pour la table `video_game_category`
 --
 ALTER TABLE `video_game_category`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 >>>>>>> walid
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+>>>>>>> alessio
 
 --
 -- Contraintes pour les tables déchargées
