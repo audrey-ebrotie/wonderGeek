@@ -7,10 +7,6 @@ form{
     flex-direction: column;
     color: white;
 }
-.form-row{
-    align-self: center;
-    width: 10vw;
-}
 .form-end{
     margin-top: 2rem;
     align-self: center;
