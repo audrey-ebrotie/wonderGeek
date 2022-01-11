@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des jeux - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/game/list.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="py-2">Les jeux</h1>
+
+    <div class="videoGames">
+        {% for videoGame in videoGames %}
+            <article class="videoGame">
+                <div class="videoGame-picture text-center p-1">    
+                    <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
+                </div>
+                <div class="videoGame-summary">
+                    <h2>{{ videoGame.name }}</h2>
+                    <p>{{ videoGame.description|slice(0, 70) }} ...</p>
+                    <aside>
+                        <ul>
+                            <li>
+                                Genre : {{ videoGame.category.name }}
+                            </li>
+                            <li>
+                                {# Platforme : {{ videoGame.platform.name }} #}
+                            </li>
+                        </ul>
+                    </aside>
+                    <div class="videoGame-action">
+                        <a href="{{ path('video_game_show', {id: videoGame.id}) }}" class="button">Plus de détails</a>
+                    </div>
+                </div>
+            </article>
+            
+        {% endfor %}
+    </div>
+
+{% endblock %}
