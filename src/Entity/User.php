@@ -74,8 +74,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class, orphanRemoval: true)]
     private $bookings;
 
-    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255)]
+    private $picture;
+
+    #[ORM\ManyToOne(targetEntity: UserProfile::class, inversedBy: 'users')]
     private $profile;
+
+    #[ORM\ManyToOne(targetEntity: UserLevel::class, inversedBy: 'users')]
+    private $level;
+
+    #[ORM\Column(type: 'string', length: 60)]
+    private $city;
 
     public function __construct()
     {
@@ -319,14 +328,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getProfile(): ?string
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getProfile(): ?UserProfile
     {
         return $this->profile;
     }
 
-    public function setProfile(?string $profile): self
+    public function setProfile(?UserProfile $profile): self
     {
         $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function getLevel(): ?UserLevel
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?UserLevel $level): self
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

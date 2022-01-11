@@ -52,6 +52,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 $place = $this->getReference('place_' . $faker->numberBetween(1, 100));
                 $owner = $this->getReference('user_' . $faker->numberBetween(1, 500));
                 $eventCategory = $this->getReference('eventCategory_' . $faker->numberBetween(1, 6));
+                $eventActivity = $this->getReference('eventActivity_' . $faker->numberBetween(1, 4));
 
                 $event = new Event();
 
@@ -75,6 +76,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 $event->setOwner($owner);
                 $event->setCategory($eventCategory);
                 $event->setGameLevel($faker->randomElement($gameLevelArray));
+                $event->setActivity($eventActivity);
             
                 $manager->persist($event);
 
@@ -89,6 +91,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 UserFixtures::class,
                 PlaceFixtures::class,
                 EventCategoryFixtures::class,
+                EventActivityFixtures::class
             ];
         }
 }

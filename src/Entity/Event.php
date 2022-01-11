@@ -88,6 +88,10 @@ class Event
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $gameLevel;
 
+    #[ORM\ManyToOne(targetEntity: EventActivity::class, inversedBy: 'events')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $activity;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
@@ -242,6 +246,18 @@ class Event
     public function setGameLevel(?string $gameLevel): self
     {
         $this->gameLevel = $gameLevel;
+
+        return $this;
+    }
+
+    public function getActivity(): ?EventActivity
+    {
+        return $this->activity;
+    }
+
+    public function setActivity(?EventActivity $activity): self
+    {
+        $this->activity = $activity;
 
         return $this;
     }
