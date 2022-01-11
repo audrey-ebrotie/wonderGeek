@@ -12,6 +12,13 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
         {
+            $userProfileArray = [
+                'Gamer',
+                'Joueur de jeux de société',
+                'Lecteur de mangas',
+                'Lecteur de comics'
+            ];
+
             $faker = Factory::create('fr_FR');
             $roles[] = 'ROLE_USER';
 
@@ -54,6 +61,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             } else {
                 NULL;
             }
+
+            $user->setProfile($faker->randomElement($userProfileArray));
 
             $manager->persist($user);
 

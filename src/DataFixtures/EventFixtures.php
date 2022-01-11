@@ -36,6 +36,15 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'https://previews.123rf.com/images/microone/microone2006/microone200600047/148520518-board-game-evening-friends-meeting-happy-players-characters-isolated-teenagers-or-adults-playing-car.jpg'
             ];
 
+            $gameLevelArray = [
+                'Tous niveaux',
+                'Débutant',
+                'Occasionnel',
+                'Intermédiaire',
+                'Confirmé', 
+                'Professionnel'
+            ];
+
 
             $faker = Factory::create('fr_FR');
 
@@ -65,6 +74,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
 
                 $event->setOwner($owner);
                 $event->setCategory($eventCategory);
+                $event->setGameLevel($faker->randomElement($gameLevelArray));
             
                 $manager->persist($event);
 

@@ -85,6 +85,9 @@ class Event
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Booking::class, orphanRemoval: true)]
     private $bookings;
 
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    private $gameLevel;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
@@ -227,6 +230,18 @@ class Event
                 $booking->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGameLevel(): ?string
+    {
+        return $this->gameLevel;
+    }
+
+    public function setGameLevel(?string $gameLevel): self
+    {
+        $this->gameLevel = $gameLevel;
 
         return $this;
     }

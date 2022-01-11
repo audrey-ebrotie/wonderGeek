@@ -2,19 +2,65 @@ body {
   margin: 0;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
-  background-color: #002a35;
   color: white;
+  background-color: #c8d6e5;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-header .button {
+  color: white;
+  background-color: #3d7f3c;
+  transition: all 0.4s ease-in-out;
+}
+
+.main-header .button:hover {
+  color: white;
+  background-color: #002a35;
+}
+
+h1 {
+  color: #002a35;
+}
+
 .events .event {
   margin: 2% 0;
   display: flex;
-  gap: 15px;
+  gap: 1%;
   background-color: #212529;
   box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+  border: 2px solid #212529;
+}
+
+.events .event .event-picture {
+  position: relative;
+}
+
+.events .event .event-status {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  padding: 2% 2%;
+  border-radius: 5px;
+}
+
+.event-status.red {
+  background-color: #e61f2a;
+}
+
+.event-status.green {
+  background-color: #3d7f3c;
+}
+
+.event-status.blue {
+  background-color: #535ba8;
 }
 
 .events .event img {
@@ -26,7 +72,7 @@ body {
 .events .event .event-summary {
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
+  margin: 1% 0;
   flex: 1;
 }
 
@@ -43,7 +89,7 @@ body {
 }
 
 .events .event aside i {
-  color: #3d7f3c;
+  color: #535ba8;
   font-size: 1.2rem;
   margin-right: 1rem;
 }

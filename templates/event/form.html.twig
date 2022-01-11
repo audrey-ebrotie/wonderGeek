@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Évenements {% endblock %}
+{% block title %} Créer un évènement - {{ parent() }} {% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
@@ -13,7 +13,7 @@
             <div class="col-6">
 
                 <h2 class="text-light py-3">Créer un évenement </h2>
-
+                {{ form(form) }}
                 <form>
                     <div class="form-row">
                         <div class="col-6 my-2">

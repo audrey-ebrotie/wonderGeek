@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ asset('css/event/show.css') }}">
 {% endblock %}
 
+{% block mainClasses %}no-spaces{% endblock %}
+
 {% block body %}
     <article class="event">
         <div class="event-view">
@@ -13,40 +15,38 @@
             <h1>{{ event.name }}</h1>
         </div>
         <div class="event-summary">
-            <p class="event-summary__description">
-                Détail de l'évènement : {{ event.description }}
-            </p>
-            <aside class="event-summary__detail">
-                <ul>
-                    <li>
-                    <i class="fas fa-calendar-alt"></i>
-                        Début : {{ event.startAt|date('d/m/Y H:i') }}
-                    </li>
-                    <li>
-                    <i class="fas fa-calendar-alt"></i>
-                        Fin : {{ event.endAt|date('d/m/Y H:i') }}
-                    </li>
-                    <li></li>
-                    <i class="fas fa-map-marker-alt"></i>
-                        Lieu : {% if event.place %}
-                            {{ event.place.name }}<br>
-                            {{ event.place.street }}<br>
-                            {{ event.place.zipcode }} - {{ event.place.city }}
-                        {% else %}
-                            A distance    
-                        {% endif %}    
-                    </li><br><br>
-                    <i class="fas fa-user-clock"></i>
-                        Organisateur : {{ event.owner.username }}
-                    </li>
-                </ul>
-            </aside>
-        </div>
+                <p class="event-summary__description">
+                    {{ event.description }}
+                </p>
+                <aside class="event-summary__detail">
+                    <ul>
+                        <li data-icon="&#xf274">
+                            Début : {{ event.startAt|date('d/m/Y H:i') }}
+                        </li>
+                        <li data-icon="&#xf273">
+                            Fin : {{ event.endAt|date('d/m/Y H:i') }}
+                        </li>
+                        <li data-icon="&#xf3c5">
+                            Lieu : {% if event.place %}
+                                {{ event.place.name }}<br>
+                                {{ event.place.street }}<br>
+                                {{ event.place.zipcode }} - {{ event.place.city }}
+                            {% else %}
+                                En ligne  
+                            {% endif %}    
+                        </li>
+                        <li data-icon="&#xf4fd">
+                            Organisateur : {{ event.owner.username }}
+                        </li>
+                    </ul>
+                </aside>
+            </div>
         <div class="event-register">
             <span>
                 <i class="fas fa-ticket-alt"></i>
                 Nombre de places restantes : {{ event.capacity }}
             </span>
+            <a href="#" class="button">Réserver</a>
         </div>
     </article>
 {% endblock %}
