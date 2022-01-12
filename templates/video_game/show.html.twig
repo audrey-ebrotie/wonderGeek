@@ -9,9 +9,9 @@
 {% block mainClasses %}no-spaces{% endblock %}
 
 {% block body %}
-    <article class="videoGame container-fluid">
-        <h1 class="py-3 text-center">{{ videoGame.name }}</h1>
-        <div class="row">
+    <article class="videoGame container-fluid text-center">
+        <h1 class="py-3">{{ videoGame.name }}</h1>
+        <div class="row justify-content-center">
             <div class="col col-lg-6">
                 <div class="videoGame-view">
                     <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
