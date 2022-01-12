@@ -11,14 +11,56 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-6">
-
-                <h2 class="text-light py-3">Créer un évenement </h2>
+            <div class="col-sm-12 col-md-8 offset-md-2">
+                <h2 class="text-light text-center py-3">Créer un évenement </h2>
                 {{form_start(form)}}
-                    <div class="form-row">
-                        <div class="col-6 my-2">
-                            {{ form_row(form.name) }}
+                <div class="container-fluid d-flex flex-column">
+                    <div class="row text-center">
+
+                        {# Name #}
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.name) }}
+                            {{ form_widget(form.name) }}
+                            {{ form_errors(form.name) }}
+                            {{ form_help(form.name) }}
                         </div>
+<<<<<<< HEAD
+
+                        {# description #}
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description) }}
+                            {{ form_errors(form.description) }}
+                            {{ form_help(form.description) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.pictureUrl) }}
+                            {{ form_widget(form.pictureUrl) }}
+                            {{ form_errors(form.pictureUrl) }}
+                            {{ form_help(form.pictureUrl) }}
+                        </div>
+                    
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.place) }}
+                            {{ form_widget(form.place) }}
+                            {{ form_errors(form.place) }}
+                            {{ form_help(form.place) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.category) }}
+                            {{ form_widget(form.category) }}
+                            {{ form_errors(form.category) }}
+                            {{ form_help(form.category) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.GameLevel) }}
+                            {{ form_widget(form.GameLevel) }}
+                            {{ form_errors(form.GameLevel) }}
+                            {{ form_help(form.GameLevel) }}
+=======
                         <div class="col-6 my-2">
                             {{ form_row(form.category) }}
                         </div>
@@ -33,26 +75,48 @@
                         </div>
                         <div class="col-6 my-2">
                             {{ form_row(form.picture) }}
+>>>>>>> 93d972a6d8249fa30dcb30e263e45d8374ea71f1
                         </div>
-                        <div class="col-6 my-2">
-                            {{ form_row(form.startAt) }}
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.startAt) }}
+                            {{ form_widget(form.startAt) }}
+                            {{ form_errors(form.startAt) }}
+                            {{ form_help(form.startAt) }}
                         </div>
-                        <div class="col-6 my-2">
-                            {{ form_row(form.endAt) }}
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.endAt) }}
+                            {{ form_widget(form.endAt) }}
+                            {{ form_errors(form.endAt) }}
+                            {{ form_help(form.endAt) }}
                         </div>
+<<<<<<< HEAD
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.capacity) }}
+                            {{ form_widget(form.capacity) }}
+                            {{ form_errors(form.capacity) }}
+                            {{ form_help(form.capacity) }}
+=======
                         <div class="col-6 my-2">
                             {{ form_row(form.place) }}
                         </div>
                         <div class="col-6 my-2">
                             {{ form_row(form.capacity) }}
+>>>>>>> 93d972a6d8249fa30dcb30e263e45d8374ea71f1
                         </div>
-                        <div class="col-6 my-2">
+
+                        <div class="col my-2 text-center py-2 my-3">
                             {{ form_row(form.submit) }}
                         </div>
                         <div class="form-end">
-                        {{ form_end(form) }}
+                            {{ form_end(form) }}
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>    
     </div>
 
 {% endblock %}
