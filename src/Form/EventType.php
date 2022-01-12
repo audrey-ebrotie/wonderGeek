@@ -47,24 +47,29 @@ class EventType extends AbstractType
                 'label' => 'Lieu',
                 'placeholder' => 'A distance',
             ])
-            //->add('place', PlaceType::class, [
-            //    'label' => 'Lieu',
-            //])
+            ->add('activity', ChoiceType::class, [
+                'choices'  => [
+                    'Toutes activités' => null,
+                    'Jeux de société' => false,
+                    'Jeux vidéos' => false,
+                    'Manga' => false,
+                    'Comic' => false,
+            ]])            
+            ->add('GameLevel', ChoiceType::class,[
+                'choices'  => [
+                    'Tous niveaux' => null,
+                    'Debutant' => false,
+                    'Occasionnel' => false,
+                    'Intermediaire' => false,
+                    'Confirmé' => false,
+                    'Professionnel' => false,
+            ]])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
                 'attr' => [
                     'class' => 'button',
                 ]
             ])
-            ->add('GameLevel', ChoiceType::class,[
-                'choices'  => [
-                    'Tous niveaux' => null,
-                    'Debutant' => true,
-                    'Occasionnel' => true,
-                    'Intermediaire' => false,
-                    'Confirmé' => true,
-                    'Professionnel' => true,
-            ]])
         ;
     }
 
