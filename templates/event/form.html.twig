@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Créer un évènement - {{ parent() }} {% endblock %}
+{% block title %} 
+    {{ isNew ? 'Créer' : 'Modifier' }} un évènement - {{ parent() }} 
+{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">

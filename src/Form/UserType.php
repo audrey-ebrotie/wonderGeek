@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,34 +21,44 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username', null,[
+            ->add('username', TextType::class,[
                 'label' => 'Nom d\'utilisateur',
             ])
             ->add('email', EmailType::class, [
                 'label' => 'E-mail'
             ])
-            ->add('Password', PasswordType::class,[
+            ->add('plainPassword', PasswordType::class,[
                 'label' => 'Mot de passe',
             ])
             ->add('birthdate', BirthdayType::class, [
                 'label'=>'Date de naissance',
                 'widget' => 'single_text',
             ])
-            ->add('picture', UrlType::class,[
+            ->add('picture', UrlType::class, [
                 'label' => 'Image',
                 'help' => 'Url de l\'image'
             ])
-            ->add('city', null,[
+            ->add('city', null, [
                 'label' => 'Votre ville'
             ])
-            ->add('profile', ChoiceType::class,[
+            ->add('profile', ChoiceType::class, [
                 'choices'  => [
                     'Gamer' => 'Gamer',
                     'Joueur de jeux de société' => 'Joueur de jeux de société',
                     'Lecteur de mangas' => 'Lecteur de mangas',
-                    'Lecteur de comics' => 'Lecteur de comics',
+                    'Lecteur de comics' => 'Lecteur de comics'
                 ],
                 'label'=> 'Votre profil',
+            ])
+            ->add('level', ChoiceType::class, [
+                'choices'  => [
+                    'Débutant' => 'Débutant',
+                    'Occasionnel' => 'Occasionnel',
+                    'Intermédiaire' => 'Intermédiaire',
+                    'Confirmé' => 'Confirmé',
+                    'Professionnel' => 'Professionnel'
+                ],
+                'label'=> 'Votre niveau d\'expérience',
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
@@ -71,6 +82,9 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ]
         ]);
     }
 }
