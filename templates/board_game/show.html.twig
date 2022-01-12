@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ boardGame.name }} - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/board_game/show.css') }}">
+{% endblock %}
+
+{% block mainClasses %}no-spaces{% endblock %}
+
+{% block body %}
+    <article class="boardGame container-fluid">
+        <h1 class="py-3 text-center">{{ boardGame.name }}</h1>
+        <div class="boardGame-view">
+            <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
+        </div>
+        <div class="boardGame-summary d-flex flex-column">
+                <p class="boardGame-summary__description my-3">
+                    {{ boardGame.description }}
+                </p>
+                <aside class="boardGame-summary__detail my-3">
+                    <ul>
+                        <li>
+                            <i class="fas fa-tags"></i>
+                            Genre : {{ boardGame.category.name }}
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+    </article>
+{% endblock %}
+
