@@ -85,15 +85,13 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 $event->setCategory($eventCategory);
                 $event->setActivity($eventActivity);
 
-                // ??? Si activity != video game et board game, set level = null 
+                $activityName = $eventActivity->getName();
 
-                // $activityName = $event->getActivity();
-
-                // if($activityName == 'Comics' || $activityName == 'Mangas') {
-                //     $event->setGameLevel(NULL);
-                // } else {
-                //     $event->setGameLevel($faker->randomElement($gameLevelArray));
-                // }
+                if($activityName == 'Comics' || $activityName == 'Mangas') {
+                    $event->setGameLevel(NULL);
+                } else {
+                    $event->setGameLevel($faker->randomElement($gameLevelArray));
+                }
                 
                 $manager->persist($event);
 

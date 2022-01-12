@@ -66,7 +66,7 @@ class VideoGameFixtures extends Fixture implements DependentFixtureInterface
                 $videoGame = new VideoGame();
 
                 $videoGame->setName($faker->words(mt_rand(1,4), true));
-                $videoGame->setDescription($faker->text(300));
+                $videoGame->setDescription($faker->text(600));
                 $videoGame->setPicture($faker->randomElement($videoGamePicturesArray));
                 $videoGame->setCategory($videoGameCategory);
 

@@ -41,7 +41,7 @@ class ComicFixtures extends Fixture implements DependentFixtureInterface
                 $comic = new Comic();
 
                 $comic->setName($faker->words(mt_rand(1,4), true));
-                $comic->setDescription($faker->text(300));
+                $comic->setDescription($faker->text(600));
                 $comic->setPicture($faker->randomElement($comicPicturesArray));
                 $comic->setCategory($comicCategory);
 
