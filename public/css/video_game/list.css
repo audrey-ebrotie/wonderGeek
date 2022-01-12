@@ -27,9 +27,8 @@ h1 {
 }
 
 .videoGames .videoGame img {
-  width: 350px;
-  height: auto;
-  object-fit: cover;
+  width: 100%;
+  height: 500px;
 }
 
 .videoGames .videoGame .videoGame-summary {
@@ -55,12 +54,6 @@ h1 {
   color: #535ba8;
   font-size: 1.2rem;
   margin-right: 1rem;
-}
-
-.videoGames .videoGame .videoGame-action {
-  display: flex;
-  justify-content: center;
-  padding: 2%;
 }
 
 .videoGames .videoGame .videoGame-action .button {
