@@ -32,7 +32,7 @@ class UserType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
                 'attr' => [
-                    'class' => 'button',
+                    'class' => 'btn btn-primary',
                 ]
             ])
         ;

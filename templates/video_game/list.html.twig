@@ -3,62 +3,71 @@
 {% block title %}Liste des jeux - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/game/list.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/video_game/list.css') }}">
 {% endblock %}
 
 {% block body %}
 
     <h1 class="py-2">Les jeux</h1>
 
-    <div class="videoGames">
-        {% for videoGame in videoGames %}
-            <article class="videoGame">
-                <div class="videoGame-picture text-center p-1">    
-                    <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
-                </div>
-                <div class="videoGame-summary">
-                    <h2>{{ videoGame.name }}</h2>
-                    <p>{{ videoGame.description|slice(0, 70) }} ...</p>
-                    <aside>
-                        <ul>
-                            <li>
-                                <i class="fas fa-tags"></i>
-                                Genre : {{ videoGame.category.name }}
-                            </li>
-                            Disponible sur :
-                            {% for platform in videoGame.platform %}
-                                <li>
-                                    {% if platform.name == "Playstation 4" or platform.name == "Playstation 5" %}
-                                        <i class="fab fa-playstation"></i>
-                                            
-                                        {% elseif platform.name == "Xbox One" or platform.name == "Xbox Series" %}
-                                        <i class="fab fa-xbox"></i>
+    <div class="videoGames container-fluid">
+        <div class="row">
+            {% for videoGame in videoGames %}
+            <div class="col col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <article class="videoGame">
+                            <div class="videoGame-picture text-center p-1">    
+                                <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
+                            </div>
+                            <div class="videoGame-summary">
+                                <h2>{{ videoGame.name }}</h2>
+                                <p>{{ videoGame.description|slice(0, 70) }} ...</p>
+                                <aside>
+                                    <div class="row">
+                                        <div class="col">
+                                            <i class="fas fa-tags"></i>
+                                            Genre : {{ videoGame.category.name }}
+                                        </div>
+                                        <div class="col">
+                                            Disponible sur :
+                                            {% for platform in videoGame.platform %}
+                                                <li>
+                                                    {% if platform.name == "Playstation 4" or platform.name == "Playstation 5" %}
+                                                        <i class="fab fa-playstation"></i>
+                                                            
+                                                        {% elseif platform.name == "Xbox One" or platform.name == "Xbox Series" %}
+                                                        <i class="fab fa-xbox"></i>
 
-                                        {% elseif platform.name == "Nintendo Switch" or platform.name == "Wii U" %}
-                                        <i class="fas fa-gamepad"></i>
+                                                        {% elseif platform.name == "Nintendo Switch" or platform.name == "Wii U" %}
+                                                        <i class="fas fa-gamepad"></i>
 
-                                        {% elseif platform.name == "PC" %}
-                                        <i class="fab fa-windows"></i>
+                                                        {% elseif platform.name == "PC" %}
+                                                        <i class="fab fa-windows"></i>
 
-                                        {% elseif platform.name == "MAC" %}
-                                        <i class="fab fa-apple"></i>
+                                                        {% elseif platform.name == "MAC" %}
+                                                        <i class="fab fa-apple"></i>
 
-                                        {% else %}
-                                        <i class="fab fa-google-wallet"></i>
-                                            
-                                    {% endif %}
-                                    {{ platform.name }}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </aside>
-                    <div class="videoGame-action">
-                        <a href="{{ path('video_game_show', {id: videoGame.id}) }}" class="button">Plus de détails</a>
+                                                        {% else %}
+                                                        <i class="fab fa-google-wallet"></i>
+                                                            
+                                                    {% endif %}
+                                                    {{ platform.name }}
+                                                </li>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </aside>
+                                <div class="videoGame-action">
+                                    <a href="{{ path('video_game_show', {id: videoGame.id}) }}" class="button">Plus de détails</a>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
-            </article>
-            
-        {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}

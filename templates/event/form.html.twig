@@ -90,11 +90,10 @@
                         <div class="col my-2 text-center py-2 my-3">
                             {{ form_row(form.submit) }}
                         </div>
-                        <div class="form-end">
-                            {{ form_end(form) }}
-                        </div>
                     </div>
                 </div>
+                {{ form_end(form, {'render_rest': false}) }}
+
             </div>
         </div>    
     </div>
