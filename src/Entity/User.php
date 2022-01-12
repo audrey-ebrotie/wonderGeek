@@ -74,6 +74,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class, orphanRemoval: true)]
     private $bookings;
 
+    /** 
+    * @Assert\NotBlank(message = "Vous devez ajouter une URL d'image")
+    * @Assert\Url(message = "Vous devez ajouter une URL valide")
+    **/
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 

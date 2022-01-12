@@ -12,7 +12,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-#[Route('/user', name: 'user_')]
+
+
+    #[Route('/user', name: 'user_')]
+
 class UserController extends AbstractController
 {
     private $em;
@@ -67,12 +70,14 @@ class UserController extends AbstractController
 
     #[Route('/logout', name: 'logout')]
     public function logout():Response{
+
         return $this->redirectToRoute('main_index');
     }
 
     private function disallowAccess():Response
     {
         $this->addFlash('info', 'Vous êtes déjà connecté, déconnectez vous pour changer de compte');
+
         return $this->redirectToRoute('main_index');
     }
 

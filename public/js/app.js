@@ -12,3 +12,15 @@ function show(){
 function close(){
     mainMenu.style.top = '-100%';
 }
+
+const notifications = document.querySelectorAll('.notification-manager .notification');
+
+setTimeout(() => {
+    for(const notification of notifications){
+        notification.style.opacity = 0;
+        setTimeout(() => {
+            notification.remove();
+        }, 500);
+    }
+}, 5000);
+

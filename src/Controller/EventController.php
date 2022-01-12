@@ -57,6 +57,9 @@ class EventController extends AbstractController
             $event->setOwner($user);
             $this->em->persist($event);
             $this->em->flush();
+
+            $this->addFlash('notice', 'Votre évènement a été créé');
+            return $this->redirectToRoute('main_index');
         }
 
         return $this->render('event/form.html.twig', [
