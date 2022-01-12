@@ -38,4 +38,5 @@ class VideoGameController extends AbstractController
             'videoGame' => $videoGame
         ]);
     }
+
 }

@@ -49,7 +49,7 @@ class MangaFixtures extends Fixture implements DependentFixtureInterface
                 $manga = new Manga();
 
                 $manga->setName($faker->words(mt_rand(1,4), true));
-                $manga->setDescription($faker->text(300));
+                $manga->setDescription($faker->text(600));
                 $manga->setPicture($faker->randomElement($mangaPicturesArray));
                 $manga->setCategory($mangaCategory);
 

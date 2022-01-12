@@ -4,11 +4,12 @@ namespace App\Form;
 
 use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class EventType extends AbstractType
 {
@@ -23,21 +24,32 @@ class EventType extends AbstractType
                     'rows' => 10,
                 ]
             ])
-            ->add('pictureUrl', UrlType::class,[
+            ->add('picture', UrlType::class,[
                 'label' => 'Image',
                 'help' => 'Url de l\'image'
             ])
-            ->add('startAt', null, [
+            ->add('startAt', DateTimeType::class, [
                 'label' => 'Date de début',
-                'date_widget' => 'single_text',
-                'time_widget' => 'single_text'
+                'date_widget' => 'single_text'
             ])
-            ->add('endAt', null, [
+            ->add('endAt', DateTimeType::class, [
                 'label' => 'Date de fin',
-                'date_widget' => 'single_text',
-                'time_widget' => 'single_text'
+                'date_widget' => 'single_text'
             ])
-            ->add('capacity')
+            ->add('capacity', null, [
+                'label' => 'Places disponibles'
+            ])
+            ->add('gameLevel', ChoiceType::class, [
+                'choices'  => [
+                    'Tous niveaux' => 'Tous niveaux',
+                    'Débutant' => 'Débutant',
+                    'Occasionnel' => 'Occasionnel',
+                    'Intermédiaire' => 'Intermédiaire',
+                    'Confirmé' => 'Confirmé',
+                    'Professionnel' => 'Professionnel'
+                ],
+                'label' => 'Niveau de jeu requis'
+            ])
             ->add('category', null, [
                 'choice_label' => 'name',
                 'label' => 'Categorie',
@@ -45,25 +57,12 @@ class EventType extends AbstractType
             ->add('place', null, [
                 'choice_label' => 'name',
                 'label' => 'Lieu',
-                'placeholder' => 'A distance',
+                'placeholder' => 'En ligne',
             ])
-            ->add('activity', ChoiceType::class, [
-                'choices'  => [
-                    'Toutes activités' => null,
-                    'Jeux de société' => false,
-                    'Jeux vidéos' => false,
-                    'Manga' => false,
-                    'Comic' => false,
-            ]])            
-            ->add('GameLevel', ChoiceType::class,[
-                'choices'  => [
-                    'Tous niveaux' => null,
-                    'Debutant' => false,
-                    'Occasionnel' => false,
-                    'Intermediaire' => false,
-                    'Confirmé' => false,
-                    'Professionnel' => false,
-            ]])
+            ->add('activity', null, [
+                'choice_label' => 'name',
+                'label' => 'Activité'
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
                 'attr' => [
@@ -77,6 +76,9 @@ class EventType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Event::class,
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ]
         ]);
     }
 }
