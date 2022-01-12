@@ -53,7 +53,7 @@ class EventController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
 
-            $user = $this->em->getRepository(User::class)->find(4011);  /* TODO : A remplacer par l'utilisateur connecter */
+            $user = $this->em->getRepository(User::class)->find(1492);  /* TODO : A remplacer par l'utilisateur connecter */
             $event->setOwner($user);
             $this->em->persist($event);
             $this->em->flush();

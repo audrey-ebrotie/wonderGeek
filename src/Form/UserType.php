@@ -5,10 +5,11 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -38,6 +39,15 @@ class UserType extends AbstractType
             ])
             ->add('city', null,[
                 'label' => 'Votre ville'
+            ])
+            ->add('profile', ChoiceType::class,[
+                'choices'  => [
+                    'Gamer' => 'Gamer',
+                    'Joueur de jeux de société' => 'Joueur de jeux de société',
+                    'Lecteur de mangas' => 'Lecteur de mangas',
+                    'Lecteur de comics' => 'Lecteur de comics',
+                ],
+                'label'=> 'Votre profil',
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
