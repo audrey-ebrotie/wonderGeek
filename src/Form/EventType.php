@@ -7,7 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
@@ -16,10 +18,10 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', null, [
+            ->add('name', TextType::class, [
                 'label' => 'Nom de l\'évènement'
             ])
-            ->add('description', null, [
+            ->add('description', TextType::class, [
                 'attr' => [
                     'rows' => 10,
                 ]
@@ -36,7 +38,7 @@ class EventType extends AbstractType
                 'label' => 'Date de fin',
                 'date_widget' => 'single_text'
             ])
-            ->add('capacity', null, [
+            ->add('capacity', NumberType::class, [
                 'label' => 'Places disponibles'
             ])
             ->add('gameLevel', ChoiceType::class, [
@@ -50,16 +52,16 @@ class EventType extends AbstractType
                 ],
                 'label' => 'Niveau de jeu requis'
             ])
-            ->add('category', null, [
+            ->add('category', TextType::class, [
                 'choice_label' => 'name',
                 'label' => 'Categorie',
             ])
-            ->add('place', null, [
+            ->add('place', TextType::class, [
                 'choice_label' => 'name',
                 'label' => 'Lieu',
                 'placeholder' => 'En ligne',
             ])
-            ->add('activity', null, [
+            ->add('activity', TextType::class, [
                 'choice_label' => 'name',
                 'label' => 'Activité'
             ])
