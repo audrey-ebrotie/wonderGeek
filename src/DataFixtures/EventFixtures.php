@@ -45,6 +45,14 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'Professionnel'
             ];
 
+            $eventActivitiesArray = [
+                'Jeux vidéos',
+                'Jeux de société',
+                'Mangas',
+                'Comics',
+                'Toutes activités'
+            ];
+
 
             $faker = Factory::create('fr_FR');
 
@@ -75,9 +83,18 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
 
                 $event->setOwner($owner);
                 $event->setCategory($eventCategory);
-                $event->setGameLevel($faker->randomElement($gameLevelArray));
                 $event->setActivity($eventActivity);
-            
+
+                // ??? Si activity != video game et board game, set level = null 
+
+                // $activityName = $event->getActivity();
+
+                // if($activityName == 'Comics' || $activityName == 'Mangas') {
+                //     $event->setGameLevel(NULL);
+                // } else {
+                //     $event->setGameLevel($faker->randomElement($gameLevelArray));
+                // }
+                
                 $manager->persist($event);
 
                 $this->setReference('event_' . $nbrEvents, $event);
