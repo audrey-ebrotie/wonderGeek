@@ -68,7 +68,7 @@ class EventType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
                 'attr' => [
-                    'class' => 'button',
+                    'class' => 'button btn-primary text-light',
                 ]
             ])
         ;

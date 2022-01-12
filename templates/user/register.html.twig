@@ -13,6 +13,7 @@
     {{ form_start(form) }}
 
     <div class="row text-center">
+<<<<<<< HEAD
         <div class="py-2">
             {{ form_row(form.username) }}
         </div>
@@ -27,6 +28,33 @@
         </div>
         <div class="py-2">
             {{ form_row(form.birthdate) }}
+=======
+        <div class="col col-md-8 offset-md-2">
+            <div class="form-group py-2 my-2">
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username) }}
+                {{ form_errors(form.username) }}
+                {{ form_help(form.username) }}
+            </div>
+            <div class="form-group py-2 my-2">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_help(form.email) }}
+            </div>
+            <div class="form-group py-2 my-2">
+                {{ form_label(form.Password) }}
+                {{ form_widget(form.Password) }}
+                {{ form_errors(form.Password) }}
+                {{ form_help(form.Password) }}
+            </div>
+            <div class="form-group py-2 my-2">
+                {{ form_label(form.birthdate) }}
+                {{ form_widget(form.birthdate) }}
+                {{ form_errors(form.birthdate) }}
+                {{ form_help(form.birthdate) }}
+            </div>
+>>>>>>> walid
         </div>
         <div class="py-2">
             {{ form_row(form.picture) }}
@@ -35,7 +63,7 @@
             {{ form_row(form.cgu) }}
         </div>
     </div>
-    <div class="form-end">
+    <div class="form-end my-2">
         {{ form_row(form.submit) }}
     </div>
 
