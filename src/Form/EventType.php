@@ -52,16 +52,16 @@ class EventType extends AbstractType
                 ],
                 'label' => 'Niveau de jeu requis'
             ])
-            ->add('category', TextType::class, [
+            ->add('category', null, [
                 'choice_label' => 'name',
                 'label' => 'Categorie',
             ])
-            ->add('place', TextType::class, [
+            ->add('place', null, [
                 'choice_label' => 'name',
                 'label' => 'Lieu',
                 'placeholder' => 'En ligne',
             ])
-            ->add('activity', TextType::class, [
+            ->add('activity', null, [
                 'choice_label' => 'name',
                 'label' => 'Activité'
             ])
