@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des jeux de société - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/board_game/list.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="py-2">Les jeux de société</h1>
+
+    <div class="boardGames">
+        {% for boardGame in boardGames %}
+            <article class="boardGame">
+                <div class="boardGame-picture text-center p-1">    
+                    <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
+                </div>
+                <div class="boardGame-summary">
+                    <h2>{{ boardGame.name }}</h2>
+                    <p>{{ boardGame.description|slice(0, 70) }} ...</p>
+                    <aside>
+                        <ul>
+                            <li>
+                                <i class="fas fa-tags"></i>
+                                Genre : {{ boardGame.category.name }}
+                            </li>
+                        </ul>
+                    </aside>
+                    <div class="boardGame-action">
+                        <a href="{{ path('board_game_show', {id: boardGame.id}) }}" class="button">Plus de détails</a>
+                    </div>
+                </div>
+            </article>
+            
+        {% endfor %}
+    </div>
+
+{% endblock %}

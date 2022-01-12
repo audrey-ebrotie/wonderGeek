@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des jeux - {{ parent() }}{% endblock %}
+{% block title %}Liste des jeux vidéos - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/game/list.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/video_game/list.css') }}">
 {% endblock %}
 
 {% block body %}
 
-    <h1 class="py-2">Les jeux</h1>
+    <h1 class="py-2">Les jeux vidéos</h1>
 
     <div class="videoGames">
         {% for videoGame in videoGames %}

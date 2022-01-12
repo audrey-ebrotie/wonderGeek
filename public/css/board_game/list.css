@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  background-color: #c8d6e5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #002a35;
+}
+
+.boardGames .boardGame {
+  margin: 2% 0;
+  display: flex;
+  gap: 1%;
+  background-color: #212529;
+  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+  border: 2px solid #212529;
+}
+
+.boardGames .boardGame .boardGame-picture {
+  position: relative;
+}
+
+.boardGames .boardGame img {
+  width: 350px;
+  height: auto;
+  object-fit: cover;
+}
+
+.boardGames .boardGame .boardGame-summary {
+  display: flex;
+  flex-direction: column;
+  margin: 1% 0;
+  flex: 1;
+}
+
+.boardGames .boardGame aside {
+  width: 100%;
+  padding-top: 2%;
+}
+
+.boardGames .boardGame aside ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.boardGames .boardGame aside i {
+  color: #535ba8;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.boardGames .boardGame .boardGame-action {
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}
+
+.boardGames .boardGame .boardGame-action .button {
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.boardGames .boardGame .boardGame-action .button:hover {
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+  color: white;
+}
+
+@media (max-width: 720px) {
+  .boardGame {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-header {
+    display: flex;
+    flex-direction: column;
+  }
+}
