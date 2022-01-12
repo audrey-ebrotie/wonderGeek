@@ -28,7 +28,7 @@ class UserController extends AbstractController
     public function register(Request $request): Response
     {
         if($this->getUser()){
-            return $this->disallowAccess();
+            return $this->disallowAccess;
         }
 
         $user = new User();
@@ -36,14 +36,14 @@ class UserController extends AbstractController
         
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            $hashed = $this->hasher->hashPassword($user, $user->getPassword());
+            $hashed = $this->hasher->hashPassword($user, $user->getPlainPassword());
             $user->setPassword($hashed);
             
             $this->em->persist($user);
             $this->em->flush();
 
-            $this->addFlash('notice', 'Votre compte a été créé');
-            return $this->redirectToRoute('main_index');
+            $this->addFlash('notice', 'Votre compte a bien été créé, vous pouvez vous connecter');
+            return $this->redirectToRoute('user_login');
         }
 
         return $this->render('user/register.html.twig', [
@@ -76,9 +76,9 @@ class UserController extends AbstractController
         return $this->redirectToRoute('main_index');
     }
 
-    #[Route('/profil', name: 'profil')]
-    public function profil():Response
-    {
-        return $this->render('user/profil.html.twig');
-    }
+    // #[Route('/profil', name: 'profil')]
+    // public function profil():Response
+    // {
+    //     return $this->render('user/profil.html.twig');
+    // }
 }
