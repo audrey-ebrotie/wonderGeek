@@ -198,8 +198,9 @@ class Event
 
         return $this;
     }
-
-    # @return Collection|Booking[]
+    /** 
+    * @return Collection|Booking[]
+    */
     public function getBookings(): Collection
     {
         return $this->bookings;
