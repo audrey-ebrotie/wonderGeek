@@ -119,13 +119,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     # A visual identifier that represents this user.
 
-    # @see UserInterface
+    /**  
+     * @see UserInterface
+     */
+
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
     }
 
-    # @see UserInterface
+    /** 
+    * @see UserInterface
+    */
+
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -141,8 +147,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @see PasswordAuthenticatedUserInterface
+    /** 
+    * @see PasswordAuthenticatedUserInterface
+    */
     public function getPassword(): string
     {
         return $this->password;
@@ -167,7 +174,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    # @see UserInterface
+    /** 
+    * @see UserInterface 
+    */
 
     public function eraseCredentials()
     {
@@ -199,8 +208,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
-    # @return Collection|Event[]
+    /** 
+    * @return Collection|Event[]
+    */
     public function getOwnedEvents(): Collection
     {
         return $this->ownedEvents;
@@ -227,8 +237,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|VideoGame[]
+    /**
+    * @return Collection|VideoGame[] 
+    */
     public function getFavoriteVideoGame(): Collection
     {
         return $this->favoriteVideoGame;
@@ -249,8 +260,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|BoardGame[]
+    /** 
+    * @return Collection|BoardGame[]
+    */
     public function getFavoriteBoardGame(): Collection
     {
         return $this->favoriteBoardGame;
@@ -271,8 +283,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|Manga[]
+    /** 
+    * @return Collection|Manga[]
+    */
     public function getFavoriteManga(): Collection
     {
         return $this->favoriteManga;
@@ -293,8 +306,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|Comic[]
+    /** 
+    * @return Collection|Comic[]
+    */
     public function getFavoriteComic(): Collection
     {
         return $this->favoriteComic;
