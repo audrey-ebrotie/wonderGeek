@@ -38,13 +38,13 @@
                         <li data-icon="&#xf4fd">
                             Organisateur : {{ event.owner.username }}
                         </li>
-                        {% if is_granted('EVENT_FORM', event) %}
                         <li>
+                        {% if is_granted('event_edit', event) %}
                             <a href="{{ path('event_edit', {id: event.id}) }}" class="button">
                                 Modifier
                             </a>
+                        {% endif %}
                         </li>
-                    {% endif %}
                     </ul>
                 </aside>
             </div>
