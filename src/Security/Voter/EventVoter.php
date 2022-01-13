@@ -4,6 +4,7 @@ namespace App\Security\Voter;
 
 use App\Entity\User;
 use App\Entity\Event;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -12,6 +13,13 @@ class EventVoter extends Voter
 {
     const EVENT_EDIT = 'event_edit';
     const EVENT_DELETE = 'event_delete';
+
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
     
     protected function supports(string $attribute, $event): bool
     {
@@ -26,6 +34,10 @@ class EventVoter extends Voter
         if (!$user instanceof UserInterface){   // Si le user n'est pas connecté, on return false, sinon -> switch
             return false;
         }
+
+        if($this->security->isGranted('ROLE_ADMIN')) return true;   // on vérifie que l'utilisateur est admin
+
+        if(null === $event->getOwner()) return false;   // on vérifie si levent a un owner
 
         switch ($attribute) {
             case self::EVENT_EDIT:
