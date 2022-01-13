@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Booking;
+use App\Entity\Avatar;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
@@ -36,7 +38,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
           min:6,
           max:40,
           minMessage:"Votre mot de passe doit contenir au minimum {{ limit }} caractères",
-          maxMessage:"Votre mot de passe doit contenir au maximum {{ limit }} caractères"
+          maxMessage:"Votre mot de passe doit contenir au maximum {{ limit }} caractères")]
+
+    #[Assert\Regex("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/",
+           message : "Votre nom d'utilisateur doit contenir au moins 6 caractères, au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial "
      )]
 
     private $plainPassword;
@@ -48,7 +53,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
           max:50,
           minMessage : "Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
           maxMessage : "Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères" )]
-    #[Assert\Regex("/^[a-zA-Z0-9_]*$/", message : "Votre nom d'utilisateur doit contenir uniquement des caractères alphanumériques")]
 
     #[ORM\Column(type: 'string', length: 50)]
     private $username;
@@ -56,6 +60,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
     #[Assert\NotBlank(message : "Vous devez renseigner votre date de naissance")]
     #[Assert\LessThanOrEqual("-13 years", message : "Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")]
+    #[Assert\GreaterThanOrEqual("-119 years", message:"Vote date de naissance est erronée")]
+
     #[ORM\Column(type : "date")]
     private $birthdate;
 
@@ -406,6 +412,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 
 }
