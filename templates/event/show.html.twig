@@ -10,11 +10,15 @@
 
 {% block body %}
     <article class="event container-fluid">
+
         <h1 class="py-3 text-center">{{ event.name }}</h1>
+
         <div class="event-view">
             <img src="{{ event.picture }}" alt="{{ event.name }}">
         </div>
+
         <div class="event-summary d-flex flex-column">
+<<<<<<< HEAD
                 <p class="event-summary__description my-3">
                     {{ event.description }}
                 </p>
@@ -47,7 +51,35 @@
                         </li>
                     </ul>
                 </aside>
+=======
+            <p class="event-summary__description my-3">
+                {{ event.description }}
+            </p>
+            <div class="event-summary__detail my-3">
+                <ul>
+                    <li data-icon="&#xf274">
+                        Début : {{ event.startAt|date('d/m/Y H:i') }}
+                    </li>
+                    <li data-icon="&#xf273">
+                        Fin : {{ event.endAt|date('d/m/Y H:i') }}
+                    </li>
+                    <li data-icon="&#xf3c5">
+                        Lieu : {% if event.place %}
+                            {{ event.place.name }}<br>
+                            {{ event.place.street }}<br>
+                            {{ event.place.zipcode }} - {{ event.place.city }}
+                        {% else %}
+                            En ligne  
+                        {% endif %}    
+                    </li>
+                    <li data-icon="&#xf4fd">
+                        Organisateur : {{ event.owner.username }}
+                    </li>
+                </ul>
+>>>>>>> walid
             </div>
+        </div>
+
         <div class="event-register my-3 rounded-2">
             <span>
                 <i class="fas fa-ticket-alt"></i>
@@ -55,5 +87,6 @@
             </span>
             <a href="#" class="button">Réserver</a>
         </div>
+        
     </article>
 {% endblock %}
