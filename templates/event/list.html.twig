@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des événements - {{ parent() }}{% endblock %}
+{% block title %}Liste des évènements - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/event/list.css') }}">
@@ -42,6 +42,18 @@
                     <aside>
                         <ul>
                             <li>
+                                {% if event.activity.name == "Mangas" or event.activity.name == "Comics" %}
+                                <i class="fas fa-book-reader"></i>
+                                {% elseif event.activity.name == "Jeux vidéos" %}
+                                    <i class="fas fa-gamepad"></i>
+                                {% elseif event.activity.name == "Jeux de société" %}
+                                    <i class="fas fa-dice"></i>
+                                {% else %}
+                                    <i class="fas fa-boxes"></i>
+                                {% endif %}
+                                    Activité / univers : {{ event.activity.name }}</li>
+
+                            <li>
                                 {% if event.category.name == "Convention" or event.category.name == "Meeting" %}
                                 <i class="fas fa-users"></i>
                                     
@@ -57,6 +69,15 @@
                                 {% endif %}
                                 {{ event.category.name }}
                             </li>
+
+                            {% if event.gameLevel != NULL %}
+                                <li>    
+                                <i class="fas fa-sort-amount-up"></i>
+                                Niveau requis : {{ event.gameLevel }}
+                                </li>
+                            {% else %}
+                            {% endif %}
+
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
                                 {{ event.place ? event.place.name : 'En ligne' }}
