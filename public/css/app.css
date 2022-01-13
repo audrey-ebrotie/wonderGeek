@@ -74,6 +74,10 @@ nav .mainMenu .closeMenu,
   display: none;
   cursor: pointer;
 }
+.icons{
+  display: flex;
+  flex-direction: column;
+}
 
 nav .logo {
   margin: 6px;
@@ -114,41 +118,79 @@ nav .logo {
   background-color: #c0392b;
 }
 
+@media(max-width: 1024px){
+  nav .mainMenu{
+    height: 100vh;
+    position: fixed;
+    top: -100%;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #063541;
+    transition: top 1s ease;
+    display: flex;
+  }
+  nav .mainMenu .closeMenu{
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  nav .openMenu{
+    display: block;
+    visibility: visible;
+  }
+  .icons i{
+    display: inline-block;
+    padding: 12px;
+  }
+  .icons{
+    display: flex;
+    flex-direction: row;
+  }
+}
 
-@media(max-width: 800px) {
-    nav .mainMenu{
-        height: 100vh;
-        position: fixed;
-        top: -100%;
-        right: 0;
-        left: 0;
-        z-index: 10;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: #063541;
-        transition: top 1s ease;
-        display: flex;
-    }
-    nav .mainMenu .closeMenu{
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-    nav .openMenu{
-        display: block;
-        visibility: visible;
-    }
-    .icons i{
-        display: inline-block;
-        padding: 12px;
-    }
+@media(max-width: 720px) {
+  nav .mainMenu{
+    height: 100vh;
+    position: fixed;
+    top: -100%;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #063541;
+    transition: top 1s ease;
+    display: flex;
+  }
+  nav .mainMenu .closeMenu{
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  nav .openMenu{
+    display: block;
+    visibility: visible;
+  }
+  .icons i{
+    display: inline-block;
+    padding: 12px;
+  }
+  .icons{
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 footer{
-    background-color: #04191f;
-    text-align: center;
-    color: #ecf0f1;
-    padding: 10px;
+  background-color: #04191f;
+  text-align: center;
+  color: #ecf0f1;
+  padding: 10px;
 }
