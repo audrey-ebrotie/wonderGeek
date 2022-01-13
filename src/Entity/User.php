@@ -83,13 +83,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class, orphanRemoval: true)]
     private $bookings;
 
-    /** 
-    * @Assert\NotBlank(message = "Vous devez ajouter une URL d'image")
-    * @Assert\Url(message = "Vous devez ajouter une URL valide")
-    **/
-    #[ORM\Column(type: 'string', length: 255)]
-    private $picture;
-
     #[ORM\ManyToOne(targetEntity: UserProfile::class, inversedBy: 'users')]
     private $profile;
 
@@ -98,6 +91,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 60)]
     private $city;
+
+    #[ORM\ManyToOne(targetEntity: Avatar::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private $picture;
 
     public function __construct()
     {
@@ -139,7 +136,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'RULE_USER';
 
         return array_unique($roles);
     }
@@ -353,18 +350,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(string $picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
     public function getProfile(): ?UserProfile
     {
         return $this->profile;
@@ -397,6 +382,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPicture(): ?Avatar
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Avatar $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }

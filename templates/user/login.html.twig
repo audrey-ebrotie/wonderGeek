@@ -33,15 +33,12 @@
             <input type="checkbox" name="_keep_login" id="keepLoginInput">
             <label for="keepLoginInput">Rester connecté(e)</label>
         </div>
-        
-        <input type="hidden" name="_csrf_token"
-        value="{{ csrf_token('authenticate') }}">
-        
         <div class="py-3 text-center">
             <button class="btn btn-lg btn-primary" type="submit">
                 Se connecter
             </button>
         </div>
     </div>
+    <input type="hidden" name="_token" value="{{ csrf_token('authenticate') }}">
 </form>
 {% endblock %}

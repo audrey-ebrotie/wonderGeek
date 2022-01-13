@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\UserLevel;
 use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
@@ -68,7 +69,9 @@ class EventController extends AbstractController
 
             $message = sprintf('Votre évènement a bien été %s' , $isNew ? 'créé' : 'modifié');
             $this->addFlash('notice', $message);
-            return $this->redirectToRoute('event_show');
+            return $this->redirectToRoute('event_show', [
+                'id' => $event->getId(),
+            ]);
         }
 
         return $this->render('event/form.html.twig', [

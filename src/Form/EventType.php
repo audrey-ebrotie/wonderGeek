@@ -3,8 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Event;
+use App\Entity\Place;
+use App\Entity\UserLevel;
+use App\Entity\EventActivity;
+use App\Entity\EventCategory;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -42,26 +47,29 @@ class EventType extends AbstractType
                 'label' => 'Places disponibles'
             ])
             ->add('gameLevel', ChoiceType::class, [
-                'choices'  => [
+                'choices' => [
                     'Tous niveaux' => 'Tous niveaux',
                     'Débutant' => 'Débutant',
                     'Occasionnel' => 'Occasionnel',
                     'Intermédiaire' => 'Intermédiaire',
-                    'Confirmé' => 'Confirmé',
+                    'Confirmé' => 'Confirmé', 
                     'Professionnel' => 'Professionnel'
                 ],
                 'label' => 'Niveau de jeu requis'
             ])
-            ->add('category', null, [
+            ->add('category', EntityType::class, [
+                'class' => EventCategory::class,
                 'choice_label' => 'name',
                 'label' => 'Categorie',
             ])
-            ->add('place', null, [
+            ->add('place', EntityType::class, [
+                'class' => Place::class,
                 'choice_label' => 'name',
                 'label' => 'Lieu',
                 'placeholder' => 'En ligne',
             ])
-            ->add('activity', null, [
+            ->add('activity', EntityType::class, [
+                'class' => EventActivity::class,
                 'choice_label' => 'name',
                 'label' => 'Activité'
             ])
@@ -78,6 +86,7 @@ class EventType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Event::class,
+            'csrf_protection' => false,
             'attr' => [
                 'novalidate' => 'novalidate',
             ]
