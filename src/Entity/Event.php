@@ -218,7 +218,7 @@ class Event
     public function removeBooking(Booking $booking): self
     {
         if ($this->bookings->removeElement($booking)) {
-            // set the owning side to null (unless already changed)
+            
             if ($booking->getEvent() === $this) {
                 $booking->setEvent(null);
             }
