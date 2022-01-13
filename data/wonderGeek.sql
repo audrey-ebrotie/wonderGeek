@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 12 jan. 2022 à 22:36
+-- Généré le : jeu. 13 jan. 2022 à 08:17
 -- Version du serveur : 5.7.34
 -- Version de PHP : 8.0.8
 
@@ -1448,7 +1448,9 @@ INSERT INTO `user` (`id`, `profile_id`, `level_id`, `picture_id`, `email`, `role
 (497, 6, 8, 31, 'gabrielle52@leclercq.com', '[\"ROLE_USER\"]', '$2y$10$G3LifhcDdgvlYDy4rUxNoex814AsZgHZ6NWpaHh1uTp8FaR5T1i9q', 'sblin', '1975-02-15', 'GuillotVille'),
 (498, 6, NULL, 26, 'ploiseau@yahoo.fr', '[\"ROLE_USER\"]', '$2y$10$ICLU/XrLox6IegksstLE9uZ0050EDyRpnMsmJZWYnJspG9gaxtLtC', 'nbourdon', '1968-08-12', 'Vincent'),
 (499, 6, 9, 31, 'chevallier.claude@laposte.net', '[\"ROLE_USER\"]', '$2y$10$suilfRxykRcgksQdKPpQxeQA889gj.4Bw0iNk3srgv7KZNRMK.Toy', 'marianne93', '1995-08-27', 'Duhamelnec'),
-(500, NULL, 10, 27, 'roy.charles@gmail.com', '[\"ROLE_USER\"]', '$2y$10$IsXiopI2gZKBEfDRFZ7jMeuXNGkXEQsskhXpf3nP00uM.i/wQS9Xa', 'lmenard', '2005-04-02', 'Becker');
+(500, NULL, 10, 27, 'roy.charles@gmail.com', '[\"ROLE_USER\"]', '$2y$10$IsXiopI2gZKBEfDRFZ7jMeuXNGkXEQsskhXpf3nP00uM.i/wQS9Xa', 'lmenard', '2005-04-02', 'Becker'),
+(505, 5, 8, 22, 'audrey.ebrotie@gmail.com', '[]', '$2y$13$ZC4yicOkNF05te/qENU6Xu4Z0b6r15fvo0.nz.Cc2.cU6dvwvUP92', 'Dreychou', '1988-01-29', 'Lille'),
+(507, 7, 6, 22, 'aebrotie.dev.tests@gmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$WCa.uhBw.Eu/m8AdsJki3.yz.7tpGiUGX7PFPPt6vj6UzkfGisWYO', 'testadmin', '1990-01-01', 'Lille');
 
 -- --------------------------------------------------------
 
@@ -4074,7 +4076,7 @@ ALTER TABLE `comic_category`
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT pour la table `event_activity`
@@ -4116,7 +4118,7 @@ ALTER TABLE `platform`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=508;
 
 --
 -- AUTO_INCREMENT pour la table `user_level`
