@@ -18,52 +18,45 @@ class Event
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez saisir un nom pour l'événement")
-    * @Assert\Length(
-    *       min = 3,
-    *       max = 100,
-    *       minMessage = "Le nom doit au minimum contenir {{ limit }} caractères",
-    *       maxMessage = "Le nom doit contenir au maximum {{ limit }} caractères"
-    *  )]
-    **/
+    #[Assert\NotBlank(message : "Vous devez saisir un nom pour l'événement")]
+    #[Assert\Length(
+           min : 3,
+           max : 100,
+           minMessage : "Le nom doit au minimum contenir {{ limit }} caractères",
+           maxMessage : "Le nom doit contenir au maximum {{ limit }} caractères" )]
+   
     #[ORM\Column(type: 'string', length: 100)]
     private $name;
 
-    /** 
-    * @Assert\NotBlank(message = "Vous devez saisir une description pour l'événement")
-    * @Assert\Length(
-    *    min = 10,
-    *    max = 1500,
-    *    minMessage = "La description doit au minimum contenir {{ limit }} caractères",
-    *    maxMessage = "La description doit contenir au maximum {{ limit }} caractères"
-    *    )]
-    **/
+    #[Assert\NotBlank(message : "Vous devez saisir une description pour l'événement")]
+    #[Assert\Length(
+        min : 10,
+        max : 1500,
+        minMessage : "La description doit au minimum contenir {{ limit }} caractères",
+        maxMessage : "La description doit contenir au maximum {{ limit }} caractères"
+        )]
+
     #[ORM\Column(type: 'text')]
     private $description;
 
-    /** 
-    * @Assert\NotBlank(message = "Vous devez ajouter une URL d'image")
-    * @Assert\Url(message = "Vous devez ajouter une URL valide")
-    **/
+
+    #[Assert\NotBlank(message : "Vous devez ajouter une URL d'image")]
+    #[Assert\Url(message : "Vous devez ajouter une URL valide")]
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez saisir une date de début")
-    * @Assert\GreaterThan("now", message = "Vous devez saisir une date de début supérieure à la date actuelle")
-     **/
+
+    #[Assert\NotBlank(message : "Vous devez saisir une date de début")]
+    #[Assert\GreaterThan("now", message : "Vous devez saisir une date de début supérieure à la date actuelle")]
     #[ORM\Column(type: 'datetime')]
     private $startAt;
 
-    /** 
-    * @Assert\NotBlank(message = "Vous devez saisir une date de fin")
-    * @Assert\GreaterThan(propertyPath = "startAt", message = "Vous devez saisir une date de fin supérieure à la date de début")
-    **/
+    #[Assert\NotBlank(message : "Vous devez saisir une date de fin")]
+    #[Assert\GreaterThan(propertyPath : "startAt", message : "Vous devez saisir une date de fin supérieure à la date de début")]
     #[ORM\Column(type: 'datetime')]
     private $endAt;
 
-    /* @Assert\Positive(message = "Vous devez saisir un nombre de places positif ou laisser le champ vide pour ne pas imposer de limite") */
+    #[Assert\Positive(message : "Vous devez saisir un nombre de places positif ou laisser le champ vide pour ne pas imposer de limite")]
     #[ORM\Column(type: 'integer', nullable: true)]
     private $capacity;
 
@@ -205,8 +198,9 @@ class Event
 
         return $this;
     }
-
-    # @return Collection|Booking[]
+    /** 
+    * @return Collection|Booking[]
+    */
     public function getBookings(): Collection
     {
         return $this->bookings;

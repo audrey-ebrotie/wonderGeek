@@ -4,15 +4,16 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<style> .card{color:black}</style>
 {% endblock %}
 
 {% block body %}
 <h1> Mon profil </h1>
 
 <div class="card border-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">{{app.user.username}}</div>
+  <div class="card-header"> <!--{{user.picture}}--> {{user.username}} <br> de {{user.city}} né le {{user.birthdate|date('d/m/Y')}}</div>
   <div class="card-body">
-    <h5 class="card-title">Centres d'intêret</h5>
+    <h5 class="card-title">{{user.email}}</h5>
     <p class="card-text"></p>
   </div>
 </div>

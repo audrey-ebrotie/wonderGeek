@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Booking;
+use App\Entity\Avatar;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
@@ -19,11 +21,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez saisir une adresse e-mail")
-    * @Assert\Email(message = "Vous devez saisir une adresse e-mail valide", mode = "strict")
-    * @ORM\Column(type="string", length=255)
-    **/
+    #[Assert\NotBlank(message : "Vous devez saisir une adresse e-mail")]
+    #[Assert\Email(message : "Vous devez saisir une adresse e-mail valide", mode :"strict")]
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
 
@@ -33,36 +32,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez saisir un mot de passe")
-    * @Assert\Length(
-    *      min=6,
-    *      max=40,
-    *      minMessage="Votre mot de passe doit contenir au minimum {{ limit }} caractères",
-    *      maxMessage="Votre mot de passe doit contenir au maximum {{ limit }} caractères"
-    * )
-    **/
+    
+    #[Assert\NotBlank(message :"Vous devez saisir un mot de passe")]
+    #[Assert\Length(
+          min:6,
+          max:40,
+          minMessage:"Votre mot de passe doit contenir au minimum {{ limit }} caractères",
+          maxMessage:"Votre mot de passe doit contenir au maximum {{ limit }} caractères")]
+
+    #[Assert\Regex("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/",
+           message : "Votre nom d'utilisateur doit contenir au moins 6 caractères, au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial "
+     )]
+
     private $plainPassword;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez saisir un nom d'utilisateur")
-    * @Assert\Length(
-    *      min=3,
-    *      max=50,
-    *      minMessage = "Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
-    *      maxMessage = "Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères"
-    * )
-    * @Assert\Regex("/^[a-zA-Z0-9_]*$/", message = "Votre nom d'utilisateur doit contenir uniquement des caractères alphanumériques")
-    **/
+    
+    #[Assert\NotBlank(message : "Vous devez saisir un nom d'utilisateur")]
+    #[Assert\Length(
+          min:3,
+          max:50,
+          minMessage : "Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
+          maxMessage : "Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères" )]
+
     #[ORM\Column(type: 'string', length: 50)]
     private $username;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez renseigner votre date de naissance")
-    * @Assert\LessThanOrEqual("-13 years", message = "Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")
-    * @ORM\Column(type = "date")
-    **/
-    #[ORM\Column(type: 'date')]
+    
+    #[Assert\NotBlank(message : "Vous devez renseigner votre date de naissance")]
+    #[Assert\LessThanOrEqual("-13 years", message : "Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")]
+    #[Assert\GreaterThanOrEqual("-119 years", message:"Vote date de naissance est erronée")]
+
+    #[ORM\Column(type : "date")]
     private $birthdate;
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Event::class)]
@@ -125,13 +125,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     # A visual identifier that represents this user.
 
-    # @see UserInterface
+    /**  
+     * @see UserInterface
+     */
+
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
     }
 
-    # @see UserInterface
+    /** 
+    * @see UserInterface
+    */
+
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -147,8 +153,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @see PasswordAuthenticatedUserInterface
+    /** 
+    * @see PasswordAuthenticatedUserInterface
+    */
     public function getPassword(): string
     {
         return $this->password;
@@ -173,7 +180,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    # @see UserInterface
+    /** 
+    * @see UserInterface 
+    */
 
     public function eraseCredentials()
     {
@@ -205,8 +214,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
-    # @return Collection|Event[]
+    /** 
+    * @return Collection|Event[]
+    */
     public function getOwnedEvents(): Collection
     {
         return $this->ownedEvents;
@@ -233,8 +243,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|VideoGame[]
+    /**
+    * @return Collection|VideoGame[] 
+    */
     public function getFavoriteVideoGame(): Collection
     {
         return $this->favoriteVideoGame;
@@ -255,8 +266,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|BoardGame[]
+    /** 
+    * @return Collection|BoardGame[]
+    */
     public function getFavoriteBoardGame(): Collection
     {
         return $this->favoriteBoardGame;
@@ -277,8 +289,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|Manga[]
+    /** 
+    * @return Collection|Manga[]
+    */
     public function getFavoriteManga(): Collection
     {
         return $this->favoriteManga;
@@ -299,8 +312,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|Comic[]
+    /** 
+    * @return Collection|Comic[]
+    */
     public function getFavoriteComic(): Collection
     {
         return $this->favoriteComic;
@@ -321,8 +335,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|Booking[]
+    /** 
+    * @return Collection|Booking[]
+    */
     public function getBookings(): Collection
     {
         return $this->bookings;
@@ -397,6 +412,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 
 }

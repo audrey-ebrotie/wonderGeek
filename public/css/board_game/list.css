@@ -39,19 +39,19 @@ h1 {
   flex: 1;
 }
 
-.boardGames .boardGame aside {
+.boardGames .boardGame div {
   width: 100%;
   padding-top: 2%;
 }
 
-.boardGames .boardGame aside ul {
+.boardGames .boardGame div ul {
   display: flex;
   list-style-type: none;
   justify-content: space-evenly;
   padding: 0;
 }
 
-.boardGames .boardGame aside i {
+.boardGames .boardGame div i {
   color: #535ba8;
   font-size: 1.2rem;
   margin-right: 1rem;

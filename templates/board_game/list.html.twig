@@ -10,29 +10,32 @@
 
     <h1 class="py-2">Les jeux de société</h1>
 
-    <div class="boardGames">
+    <div class="boardGames row">
         {% for boardGame in boardGames %}
-            <article class="boardGame">
-                <div class="boardGame-picture text-center p-1">    
-                    <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
-                </div>
-                <div class="boardGame-summary">
-                    <h2>{{ boardGame.name }}</h2>
-                    <p>{{ boardGame.description|slice(0, 250) }} ...</p>
-                    <aside>
-                        <ul>
-                            <li>
-                                <i class="fas fa-tags"></i>
-                                Genre : {{ boardGame.category.name }}
-                            </li>
-                        </ul>
-                    </aside>
-                    <div class="boardGame-action">
-                        <a href="{{ path('board_game_show', {id: boardGame.id}) }}" class="button">Plus de détails</a>
+        <div class="col col-md-12 col-lg-6">
+            <article class="card boardGame">
+                <div class="card-body">
+                    <div class="boardGame-picture text-center p-1">    
+                        <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
+                    </div>
+                    <div class="boardGame-summary">
+                        <h2 class="text-center">{{ boardGame.name }}</h2>
+                        <p>{{ boardGame.description|slice(0, 250) }} ...</p>
+                        <div>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-tags"></i>
+                                    Genre : {{ boardGame.category.name }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="boardGame-action">
+                            <a href="{{ path('board_game_show', {id: boardGame.id}) }}" class="button">Plus de détails</a>
+                        </div>
                     </div>
                 </div>
             </article>
-            
+        </div>
         {% endfor %}
     </div>
 

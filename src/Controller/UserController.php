@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,11 +20,13 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends AbstractController
 {
     private $em;
+    private $userRepository;
     private $hasher;
 
-    public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $hasher)
+    public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $hasher, UserRepository $userRepository)
     {
         $this->em = $em;
+        $this->userRepository = $userRepository;
         $this->hasher = $hasher;
     }
     
@@ -81,9 +84,15 @@ class UserController extends AbstractController
         return $this->redirectToRoute('main_index');
     }
 
-    #[Route('/profil', name: 'profil')]
-    public function profil():Response
+    #[Route('/{id}', name: 'profil', requirements: ['id' => '\d+'])]
+    public function profil($id):Response
     {
-        return $this->render('user/profil.html.twig');
+        {
+            $user = $this->userRepository->find($id);
+            
+            return $this->render('user/profil.html.twig', [
+                'user' => $user,
+            ]);
+        }
     }
 }
