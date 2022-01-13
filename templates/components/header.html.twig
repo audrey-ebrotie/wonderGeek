@@ -14,14 +14,8 @@
         <li><a href="{{ path('board_game_list') }}">Jeux de société</a></li>
         <li><a href="{{ path('main_contact') }}">Contact</a></li>
 
-<<<<<<< HEAD
 {% if app.user %}
         <li><a href="{{ path('user_profil', {id: app.user.id}) }}">{{ app.user.username }}</a></li>
-=======
-        {% if app.user %}
-
-        <li><a href="{{ path('user_profil') }}">{{ app.user.username }}</a></li>
->>>>>>> walid
         <li><a href="{{ path('user_logout') }}">Déconnexion</a> </li>
 
         {% else %}
