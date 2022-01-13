@@ -31,6 +31,7 @@ h1 {
 }
 
 .events .event {
+  min-height: 100%;
   margin: 2% 0;
   display: flex;
   gap: 1%;
@@ -76,19 +77,19 @@ h1 {
   flex: 1;
 }
 
-.events .event aside {
+.events .event div {
   width: 100%;
   padding-top: 2%;
 }
 
-.events .event aside ul {
+.events .event div ul {
   display: flex;
   list-style-type: none;
   justify-content: space-evenly;
   padding: 0;
 }
 
-.events .event aside i {
+.events .event div i {
   color: #535ba8;
   font-size: 1.2rem;
   margin-right: 1rem;

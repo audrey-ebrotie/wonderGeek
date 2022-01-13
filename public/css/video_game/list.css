@@ -48,14 +48,14 @@ h1 {
   padding-top: 2%;
 }
 
-.videoGames .videoGame aside ul {
+.videoGames .videoGame div ul {
   display: flex;
   list-style-type: none;
   justify-content: space-evenly;
   padding: 0;
 }
 
-.videoGames .videoGame aside i {
+.videoGames .videoGame div i {
   color: #535ba8;
   font-size: 1.2rem;
   margin-right: 1rem;
