@@ -35,7 +35,7 @@ class EventVoter extends Voter
             return false;
         }
 
-        if($this->security->isGranted('ROLE_ADMIN')) return true;   // on vérifie que l'utilisateur est admin
+        if($this->security->isGranted('ROLE_MODERATOR')) return true;   // on vérifie que l'utilisateur est modérateur ou admin
 
         if(null === $event->getOwner()) return false;   // on vérifie si levent a un owner
 

@@ -79,16 +79,25 @@
                         <li data-icon="&#xf4fd">
                             Organisateur : {{ event.owner.username }}
                         </li>
-
-                        <li>
+                    </ul>
+                    
+                    <div class="buttons-box">
                         {% if is_granted('event_edit', event) %}
-                            <a href="{{ path('event_edit', {id: event.id}) }}" class="button">
+                        <div>
+                            <a href="{{ path('event_edit', {id: event.id}) }}" class="btn btn-primary">
                                 Modifier
                             </a>
+                        </div>
                         {% endif %}
-                        </li>
-
-                    </ul>
+                        
+                        {% if is_granted('event_delete', event) %}
+                        <div>
+                            <a href="{{ path('event_delete', {id: event.id}) }}" class="btn btn-danger">
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                        {% endif %}
                 </aside>
             </div>
         </div>

@@ -56,13 +56,13 @@ class EventController extends AbstractController
             $isNew = false;
         } else {
             $event = new Event();
+            $event->setOwner($this->getUser());  /* On définit le onwer une fois à la création de l'event pour éviter un chgt de owner en cas d'edit */
             $isNew = true;
         }
         $form = $this->createForm(EventType::class, $event);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
-            $event->setOwner($this->getUser());
 
             $this->em->persist($event);
             $this->em->flush();
@@ -78,5 +78,18 @@ class EventController extends AbstractController
             'form' => $form->createView(),
             'isNew'=>$isNew
         ]);
+    }
+
+    #[Route('/{id}/delete', name: 'delete', requirements: ['id' => '\d+'])]
+    public function delete($id){
+        $event = $this->eventRepository->find($id);
+        $this->em->remove($event);
+        $this->em->flush();
+
+        $response = new Response();
+        $response->send();
+
+        $this->addFlash('notice', 'L\'évènement a bien été annulé.');
+        return $this->redirectToRoute('event_list');
     }
 }
