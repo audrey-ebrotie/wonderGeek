@@ -13,7 +13,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
         {
             $faker = Factory::create('fr_FR');
-            $roles[] = 'ROLE_USER';
 
             for($nbrUsers = 1; $nbrUsers <= 500; $nbrUsers++){
 
@@ -32,7 +31,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $password = password_hash($faker->password(), PASSWORD_BCRYPT);
             $user->setPassword($password);
             $user->setBirthdate($faker->dateTimeBetween('-60 years', '-13 years'));
-            $user->setRoles($roles);
 
             if($nbrUsers % 5)
                 $user->setProfile($profile);
