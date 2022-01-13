@@ -41,7 +41,7 @@ class UserType extends AbstractType
             ->add('plainPassword', PasswordType::class,[
                 'label' => 'Mot de passe',
                 'attr' => [
-                    'placeholder' => 'Renseignez un mot de passe de 6 caractères minimum et contenant au moins une lettre minuscule, une lettre majuscule, un caractère spécial'
+                    'placeholder' => 'Renseignez un mot de passe de 6 caractères minimum et contenant au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial'
                 ]
             ])
             ->add('birthdate', BirthdayType::class, [
