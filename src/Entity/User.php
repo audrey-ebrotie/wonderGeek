@@ -19,11 +19,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez saisir une adresse e-mail")
-    * @Assert\Email(message = "Vous devez saisir une adresse e-mail valide", mode = "strict")
-    * @ORM\Column(type="string", length=255)
-    **/
+    #[Assert\NotBlank(message : "Vous devez saisir une adresse e-mail")]
+    #[Assert\Email(message : "Vous devez saisir une adresse e-mail valide", mode :"strict")]
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
 
@@ -33,36 +30,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez saisir un mot de passe")
-    * @Assert\Length(
-    *      min=6,
-    *      max=40,
-    *      minMessage="Votre mot de passe doit contenir au minimum {{ limit }} caractères",
-    *      maxMessage="Votre mot de passe doit contenir au maximum {{ limit }} caractères"
-    * )
-    **/
+    
+    #[Assert\NotBlank(message :"Vous devez saisir un mot de passe")]
+    #[Assert\Length(
+          min:6,
+          max:40,
+          minMessage:"Votre mot de passe doit contenir au minimum {{ limit }} caractères",
+          maxMessage:"Votre mot de passe doit contenir au maximum {{ limit }} caractères"
+     )]
+
     private $plainPassword;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez saisir un nom d'utilisateur")
-    * @Assert\Length(
-    *      min=3,
-    *      max=50,
-    *      minMessage = "Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
-    *      maxMessage = "Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères"
-    * )
-    * @Assert\Regex("/^[a-zA-Z0-9_]*$/", message = "Votre nom d'utilisateur doit contenir uniquement des caractères alphanumériques")
-    **/
+    
+    #[Assert\NotBlank(message : "Vous devez saisir un nom d'utilisateur")]
+    #[Assert\Length(
+          min:3,
+          max:50,
+          minMessage : "Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
+          maxMessage : "Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères" )]
+    #[Assert\Regex("/^[a-zA-Z0-9_]*$/", message : "Votre nom d'utilisateur doit contenir uniquement des caractères alphanumériques")]
+
     #[ORM\Column(type: 'string', length: 50)]
     private $username;
 
-    /**
-    * @Assert\NotBlank(message = "Vous devez renseigner votre date de naissance")
-    * @Assert\LessThanOrEqual("-13 years", message = "Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")
-    * @ORM\Column(type = "date")
-    **/
-    #[ORM\Column(type: 'date')]
+    
+    #[Assert\NotBlank(message : "Vous devez renseigner votre date de naissance")]
+    #[Assert\LessThanOrEqual("-13 years", message : "Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")]
+    #[ORM\Column(type : "date")]
     private $birthdate;
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Event::class)]
@@ -321,8 +315,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    # @return Collection|Booking[]
+    /** 
+    * @return Collection|Booking[]
+    */
     public function getBookings(): Collection
     {
         return $this->bookings;
