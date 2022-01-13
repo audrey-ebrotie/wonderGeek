@@ -27,36 +27,64 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username', TextType::class,[
-                'label' => 'Nom d\'utilisateur'
+                'label' => 'Nom d\'utilisateur',
+                'attr' => [
+                    'placeholder' => 'Choisissez un nom d\'utilisateur'
+                ] 
             ])
             ->add('email', EmailType::class, [
-                'label' => 'E-mail'
+                'label' => 'E-mail',
+                'attr' => [
+                    'placeholder' => 'Renseignez votre adresse email'
+                ]
             ])
             ->add('plainPassword', PasswordType::class,[
-                'label' => 'Mot de passe'
+                'label' => 'Mot de passe',
+                'attr' => [
+                    'placeholder' => 'Renseignez un mot de passe de 6 caractères minimum et contenant au moins une lettre minuscule, une lettre majuscule, un caractère spécial'
+                ]
             ])
             ->add('birthdate', BirthdayType::class, [
                 'label'=>'Date de naissance',
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'placeholder' => 'Renseignez votre date de naissance',
+                'attr' => [
+                    'class' => 'text-field'
+                ]
             ])
             ->add('picture', EntityType::class, [
                 'class' => Avatar::class,
                 'choice_label' => 'picture',
-                'label' => 'Votre avatar',
+                'label' => 'Avatar',
+                'placeholder' => 'Choisissez votre avatar ou gardez celui par défaut',
+                'attr' => [
+                    'class' => 'text-field'
+                ]
             ])
             ->add('city', TextType::class, [
-                'label' => 'Votre ville'
+                'label' => 'Ville',
+                'attr' => [
+                    'placeholder' => 'Sélectionnez votre ville'
+                ]
             ])
             ->add('profile', EntityType::class, [
                 'class' => UserProfile::class,
                 'choice_label' => 'name',
-                'label'=> 'Votre profil',
-                'by_reference' => 'false'
+                'label'=> 'Profil',
+                'by_reference' => 'false',
+                'placeholder' => 'Sélectionnez votre profil (facultatif)',
+                'attr' => [
+                    'class' => 'text-field'
+                ]
             ])
             ->add('level', EntityType::class, [
                 'class' => UserLevel::class,
                 'choice_label' => 'name',
-                'label'=> 'Votre niveau d\'expérience'
+                'label' => 'Niveau',
+                'placeholder' => 'Sélectionnez votre niveau d\'expérience en tant que joueur',
+                'attr' => [
+                    'class' => 'text-field'
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
