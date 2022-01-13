@@ -18,6 +18,7 @@
                 <div class="card">
 
                     <div class="card-body bg-dark">
+
                         <article class="videoGame">
 
                             <div class="videoGame-picture text-center p-1">    
@@ -26,13 +27,12 @@
 
                             <div class="videoGame-summary">
 
-                                <div>Headr</div>
-                                <div>Content</div>
-                                <div>Footer</div>
-                                <h2 class="text-center py-2">{{ videoGame.name }}</h2>
-                                <p>{{ videoGame.description|slice(0, 70) }} ...</p>
+                                <div class="py-2">
+                                    <h2 class="text-center py-2">{{ videoGame.name }}</h2>
+                                    <p>{{ videoGame.description|slice(0, 70) }} ...</p>
+                                </div>
 
-                                <aside class="row text-center">
+                                <div class="row text-center py-2">
                                     <div class="col-sm-12 py-2">
                                         <i class="fas fa-tags"></i>
                                         Genre : {{ videoGame.category.name }}
@@ -64,18 +64,17 @@
                                             </li>
                                         {% endfor %}
                                     </div>
-                                </aside>
+                                </div>
 
-                                <div class="videoGame-action row align-self-center">
+                                <div class="videoGame-action text-center">
                                     <a href="{{ path('video_game_show', {id: videoGame.id}) }}" class="button">Plus de détails</a>
                                 </div>
+
                             </div>
 
                         </article>
                     </div>
-
                 </div>
-
             </div>
             {% endfor %}
         </div>

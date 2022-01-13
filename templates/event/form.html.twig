@@ -18,6 +18,7 @@
                     <div class="row text-center">
 
                         <div class="form-group py-2 my-2">
+                            {#<label for="{{ form_label(form.name)}}" hidden>{{ form_label(form.name)}}</label>#}
                             {{ form_label(form.name) }}
                             {{ form_widget(form.name) }}
                             {{ form_errors(form.name) }}
