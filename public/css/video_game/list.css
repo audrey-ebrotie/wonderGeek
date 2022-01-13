@@ -36,9 +36,9 @@ h1 {
   flex-direction: column;
   margin: 1% 0;
   flex: 1;
-  min-height: 50vh;
+  min-height: 100%;
 }
-.videoGames .videoGame .videoGame-summary .videoGame-action{
+.videoGames .videoGame .videoGame-summary .vg-body{
   flex: 1;
 }
 
@@ -59,7 +59,6 @@ h1 {
   font-size: 1.2rem;
   margin-right: 1rem;
 }
-
 
 .videoGames .videoGame .videoGame-action .button {
   border-radius: 20px;
