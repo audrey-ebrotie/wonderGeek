@@ -12,6 +12,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
@@ -52,15 +53,6 @@ class UserType extends AbstractType
                     'class' => 'text-field'
                 ]
             ])
-            ->add('picture', EntityType::class, [
-                'class' => Avatar::class,
-                'choice_label' => 'picture',
-                'label' => 'Avatar',
-                'placeholder' => 'Choisissez votre avatar ou gardez celui par défaut',
-                'attr' => [
-                    'class' => 'text-field'
-                ]
-            ])
             ->add('city', TextType::class, [
                 'label' => 'Ville',
                 'attr' => [
@@ -81,16 +73,14 @@ class UserType extends AbstractType
                 'class' => UserLevel::class,
                 'choice_label' => 'name',
                 'label' => 'Niveau',
-                'placeholder' => 'Sélectionnez votre niveau d\'expérience en tant que joueur',
+                'placeholder' => 'Sélectionnez votre niveau d\'expérience en tant que joueur (facultatif)',
                 'attr' => [
                     'class' => 'text-field'
                 ]
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Valider',
-                'attr' => [
-                    'class' => 'btn btn-primary'
-                ]
+            ->add('pictureFile', FileType::class, [
+                'mapped' => false,
+                'label' => 'Avatar'
             ])
             ->add('cgu', CheckboxType::class, [
                 'label' => 'J\'accepte les conditions générales d\'utilisation',
@@ -99,6 +89,12 @@ class UserType extends AbstractType
                     new IsTrue([
                         'message' => 'Vous devez accepter nos CGU'
                     ]),
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider',
+                'attr' => [
+                    'class' => 'btn btn-primary'
                 ]
             ])
         ;

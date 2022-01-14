@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Avatar;
 use App\Form\UserType;
+use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,10 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-
-
-    #[Route('/user', name: 'user_')]
-
+#[Route('/user', name: 'user_')]
 class UserController extends AbstractController
 {
     private $em;
@@ -42,6 +41,18 @@ class UserController extends AbstractController
         
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+
+            $uploadedFile = $form['pictureFile']->getData();
+
+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/avatar';
+            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+            $uploadedFile->move(
+                $destination,
+                $newFilename
+            );
+            $user->setPicture($newFilename);
+
             $hashed = $this->hasher->hashPassword($user, $user->getPlainPassword());
             $user->setPassword($hashed);
             

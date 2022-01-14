@@ -13,7 +13,6 @@
     {{ form_start(form) }}
 
     <div class="row text-center">
-
         <div class="col col-md-8 offset-md-2">
             <div class="form-group py-2 my-2">
                 {{ form_label(form.username) }}
@@ -39,11 +38,11 @@
                 {{ form_errors(form.birthdate) }}
                 {{ form_help(form.birthdate) }}
             </div>
-            <div class="form-group py-2 my-2">
-                {{ form_label(form.picture) }}
-                {{ form_widget(form.picture) }}
-                {{ form_errors(form.picture) }}
-                {{ form_help(form.picture) }}
+            <div class="py-2">
+                {{ form_label(form.city) }}
+                {{ form_widget(form.city) }}
+                {{ form_errors(form.city) }}
+                {{ form_help(form.city) }}
             </div>
             <div class="py-2">
                 {{ form_label(form.profile) }}
@@ -57,11 +56,17 @@
                 {{ form_errors(form.level) }}
                 {{ form_help(form.level) }}
             </div>
-            <div class="py-2">
-                {{ form_label(form.city) }}
-                {{ form_widget(form.city) }}
-                {{ form_errors(form.city) }}
-                {{ form_help(form.city) }}
+            {# <div class="form-group py-2 my-2">
+                {{ form_label(form.picture) }}
+                {{ form_widget(form.picture) }}
+                {{ form_errors(form.picture) }}
+                {{ form_help(form.picture) }}
+            </div> #}
+            <div class="form-group py-2 my-2">
+                {{ form_label(form.pictureFile) }}
+                {{ form_widget(form.pictureFile) }}
+                {{ form_errors(form.pictureFile) }}
+                {{ form_help(form.pictureFile) }}
             </div>
             <div class="py-2">
                 {{ form_label(form.cgu) }}
