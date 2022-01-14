@@ -11,7 +11,13 @@
 <h1> Mon profil </h1>
 
 <div class="card border-light mb-3" style="max-width: 18rem;">
-  <div class="card-header"> <!--{{user.picture}}--> {{user.username}} <br> de {{user.city}} né le {{user.birthdate|date('d/m/Y')}}</div>
+  <div class="card-header">
+    {% if user.picture matches '{^http}' %}
+            <img src="{{ user.picture }}" alt="{{ user.name }}">
+        {% else %}
+            <img src="{{ asset('uploads/user_avatars/' ~ user.picture) }}" alt="{{ user.username }}">
+        {% endif %}
+        </div> {{user.username}} <br> de {{user.city}} né le {{user.birthdate|date('d/m/Y')}}</div>
   <div class="card-body">
     <h5 class="card-title">{{user.email}}</h5>
     <p class="card-text"></p>
