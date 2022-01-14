@@ -13,6 +13,10 @@ h1 {
   color: #002a35;
 }
 
+li {
+  list-style-type: none;
+}
+
 .videoGames .videoGame {
   margin: 2% 0;
   display: flex;
@@ -37,7 +41,7 @@ h1 {
   min-height: 100%;
 }
 
-.videoGames .videoGame .videoGame-summary .vg-body{
+.videoGames .videoGame .videoGame-summary .vg-body {
   flex: 1;
 }
 
