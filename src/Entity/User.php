@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Entity\Booking;
-use App\Entity\Avatar;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
@@ -35,24 +34,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
     #[Assert\NotBlank(message :"Vous devez saisir un mot de passe")]
     #[Assert\Length(
-          min:6,
-          max:40,
-          minMessage:"Votre mot de passe doit contenir au minimum {{ limit }} caractères",
-          maxMessage:"Votre mot de passe doit contenir au maximum {{ limit }} caractères")]
+        min:6,
+        max:40,
+        minMessage:"Votre mot de passe doit contenir au minimum {{ limit }} caractères",
+        maxMessage:"Votre mot de passe doit contenir au maximum {{ limit }} caractères")]
 
     #[Assert\Regex("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/",
-           message : "Votre nom d'utilisateur doit contenir au moins 6 caractères, au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial "
-     )]
+        message : "Votre mot de passe doit contenir au moins 6 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial "
+    )]
 
     private $plainPassword;
 
     
     #[Assert\NotBlank(message : "Vous devez saisir un nom d'utilisateur")]
     #[Assert\Length(
-          min:3,
-          max:50,
-          minMessage : "Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
-          maxMessage : "Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères" )]
+        min:3,
+        max:50,
+        minMessage : "Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
+        maxMessage : "Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères" )]
 
     #[ORM\Column(type: 'string', length: 50)]
     private $username;
@@ -92,9 +91,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 60)]
     private $city;
 
-    #[ORM\ManyToOne(targetEntity: Avatar::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $picture;
+    
 
     public function __construct()
     {
@@ -401,16 +400,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPicture(): ?Avatar
+    public function getPicture(): ?string
     {
         return $this->picture;
     }
 
-    public function setPicture(?Avatar $picture): self
+    public function setPicture(string $picture): self
     {
         $this->picture = $picture;
 
         return $this;
     }
+
 
 }
