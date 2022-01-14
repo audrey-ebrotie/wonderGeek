@@ -21,7 +21,7 @@
                 <p class="event-summary__description my-3">
                     {{ event.description }}
                 </p>
-                <aside class="event-summary__detail my-3">
+                <div class="event-summary__detail my-3">
                     <ul>
                         <li>
                             {% if event.activity.name == "Mangas" or event.activity.name == "Comics" %}
@@ -33,47 +33,47 @@
                             {% else %}
                                 <li data-icon="&#xf522">
                             {% endif %}
-                                Activité / univers : {{ event.activity.name }}</li>
+                                Activité / univers : {{ event.activity.name }}
+                        </li>
 
-                            <li>
-                                {% if event.category.name == "Convention" or event.category.name == "Meeting" %}
-                                <li data-icon="&#xf0c0">
-                                    
-                                {% elseif event.category.name == "Vente aux enchères / troc" %}
-                                <li data-icon="&#xf0e3">
+                        <li>
+                            {% if event.category.name == "Convention" or event.category.name == "Meeting" %}
+                            <li data-icon="&#xf0c0">
+                                
+                            {% elseif event.category.name == "Vente aux enchères / troc" %}
+                            <li data-icon="&#xf0e3">
 
-                                {% elseif event.category.name == "Conférence" %}
-                                <li data-icon="&#xf0a1">
+                            {% elseif event.category.name == "Conférence" %}
+                            <li data-icon="&#xf0a1">
 
-                                {% else %}
-                                <li data-icon="&#xf11b">
-                                    
-                                {% endif %}
-                                {{ event.category.name }}
-                            </li>
-                            
-                            {% if event.gameLevel != NULL %}
-                                <li data-icon="&#xf161">
-                                    Niveau requis : {{ event.gameLevel }}
-                                </li>
                             {% else %}
+                            <li data-icon="&#xf11b">
+                                
                             {% endif %}
+                            {{ event.category.name }}
+                        </li>
+                            
+                        {% if event.gameLevel != NULL %}
+                            <li data-icon="&#xf161">
+                                Niveau requis : {{ event.gameLevel }}
+                            </li>
+                        {% else %}
+                        {% endif %}
+                            <li data-icon="&#xf274">
+                                Début : {{ event.startAt|date('d/m/Y H:i') }}
+                            </li>
+                            <li data-icon="&#xf273">
+                                Fin : {{ event.endAt|date('d/m/Y H:i') }}
+                            </li>
+                            <li data-icon="&#xf3c5">
 
-                                <li data-icon="&#xf274">
-                                    Début : {{ event.startAt|date('d/m/Y H:i') }}
-                                </li>
-                                <li data-icon="&#xf273">
-                                    Fin : {{ event.endAt|date('d/m/Y H:i') }}
-                                </li>
-                                <li data-icon="&#xf3c5">
-
-                            Lieu : {% if event.place %}
-                                    {{ event.place.name }}<br>
-                                    {{ event.place.street }}<br>
-                                    {{ event.place.zipcode }} - {{ event.place.city }}
-                            {% else %}
-                                En ligne  
-                            {% endif %}    
+                        Lieu : {% if event.place %}
+                                {{ event.place.name }}<br>
+                                {{ event.place.street }}<br>
+                                {{ event.place.zipcode }} - {{ event.place.city }}
+                        {% else %}
+                            En ligne  
+                        {% endif %}
                         </li>
 
                         <li data-icon="&#xf4fd">
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                         {% endif %}
-                </aside>
+                </div>
             </div>
         </div>
 

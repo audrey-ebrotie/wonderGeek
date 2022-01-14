@@ -37,8 +37,8 @@
                     </div>
                     
                     <div class="event-summary">
-                        <h2>{{ event.name }}</h2>
-                        <p>{{ event.description|slice(0, 150) }} ...</p>
+                        <h2 class="p-3">{{ event.name }}</h2>
+                        <p class="px-3">{{ event.description|slice(0, 150) }} ...</p>
                         <div class="list-category">
                             <ul>
                                 <li class="px-3">
@@ -73,7 +73,7 @@
                                     {{ event.endAt|date('d/m/Y H:i') }}
                                 </li>
                             </ul>
-                        </aside>
+                        </div>
                         <div class="event-action">
                             <a href="{{ path('event_show', {id: event.id}) }}" class="button">Voir l'évènement</a>
                         </div>

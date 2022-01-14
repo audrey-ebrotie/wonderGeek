@@ -36,6 +36,7 @@ h1 {
   flex: 1;
   min-height: 100%;
 }
+
 .videoGames .videoGame .videoGame-summary .vg-body{
   flex: 1;
 }
