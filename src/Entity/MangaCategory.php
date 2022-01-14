@@ -16,15 +16,13 @@ class MangaCategory
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir une catégorie de manga")
-     * @Assert\Length(
-     *      min=3,
-     *      max=50,
-     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
-     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
-     * )
-     */
+    #[Assert\NotBlank(message:"Vous devez saisir une catégorie de manga")]
+    #[Assert\Length(
+        min:3,
+        max:50,
+        minMessage:"Le nom doit contenir au minimum {{ limit }} caractères",
+        maxMessage:"Le nom doit contenir au maximum {{ limit }} caractères"
+    )]
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 
@@ -52,10 +50,9 @@ class MangaCategory
 
         return $this;
     }
-
-    /**
-     * @return Collection|Manga[]
-     */
+    /** 
+    * @return Collection|Manga[]
+    */
     public function getMangas(): Collection
     {
         return $this->mangas;

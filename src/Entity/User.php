@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Booking;
+use App\Entity\Avatar;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -18,53 +21,52 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir une adresse e-mail")
-     * @Assert\Email(message="Vous devez saisir une adresse e-mail valide", mode="strict")
-     * @ORM\Column(type="string", length=255)
-     */
+    #[Assert\NotBlank(message : "Vous devez saisir une adresse e-mail")]
+    #[Assert\Email(message : "Vous devez saisir une adresse e-mail valide", mode :"strict")]
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir un mot de passe")
-     * @Assert\Length(
-     *      min=8,
-     *      max=40,
-     *      minMessage="Votre mot de passe doit contenir au minimum {{ limit }} caractères",
-     *      maxMessage="Votre mot de passe doit contenir au maximum {{ limit }} caractères"
-     * )
-     * @Assert\Regex("/^(?=.*[A-Za-z])(?=.*\d)(?=.*?[@$!%*#?&])/", message="Votre mot de passe doit au minmum contenir un chiffre, une lettre et un caractère spécial")
-     * @Assert\NotCompromisedPassword(message="Ce mot de passe a été compromis lors d'une fuite de donnée d'un autre service")
-     */
     #[ORM\Column(type: 'string')]
     private $password;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur")
-     * @Assert\Length(
-     *      min=2,
-     *      max=20,
-     *      minMessage="Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
-     *      maxMessage="Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères"
-     * )
-     */
-    #[ORM\Column(type: 'string', length: 20)]
+    
+    #[Assert\NotBlank(message :"Vous devez saisir un mot de passe")]
+    #[Assert\Length(
+          min:6,
+          max:40,
+          minMessage:"Votre mot de passe doit contenir au minimum {{ limit }} caractères",
+          maxMessage:"Votre mot de passe doit contenir au maximum {{ limit }} caractères")]
+
+    #[Assert\Regex("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/",
+           message : "Votre nom d'utilisateur doit contenir au moins 6 caractères, au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial "
+     )]
+
+    private $plainPassword;
+
+    
+    #[Assert\NotBlank(message : "Vous devez saisir un nom d'utilisateur")]
+    #[Assert\Length(
+          min:3,
+          max:50,
+          minMessage : "Votre nom d'utilisateur doit contenir au minimum {{ limit }} caractères",
+          maxMessage : "Votre nom d'utilisateur doit contenir au maximum {{ limit }} caractères" )]
+
+    #[ORM\Column(type: 'string', length: 50)]
     private $username;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez renseigner votre date de naissance")
-     * @Assert\LessThanOrEqual("-13 years", message="Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")
-     * @ORM\Column(type="date")
-     */
-    #[ORM\Column(type: 'date')]
+    
+    #[Assert\NotBlank(message : "Vous devez renseigner votre date de naissance")]
+    #[Assert\LessThanOrEqual("-13 years", message : "Vous devez avoir au minimum 13 ans pour pouvoir vous inscrire")]
+    #[Assert\GreaterThanOrEqual("-119 years", message:"Vote date de naissance est erronée")]
+
+    #[ORM\Column(type : "date")]
     private $birthdate;
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Event::class)]
-    private $OwnedEvents;
+    private $ownedEvents;
 
     #[ORM\ManyToMany(targetEntity: VideoGame::class, inversedBy: 'users')]
     private $favoriteVideoGame;
@@ -81,9 +83,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class, orphanRemoval: true)]
     private $bookings;
 
+    #[ORM\ManyToOne(targetEntity: UserProfile::class, inversedBy: 'users')]
+    private $profile;
+
+    #[ORM\ManyToOne(targetEntity: UserLevel::class, inversedBy: 'users')]
+    private $level;
+
+    #[ORM\Column(type: 'string', length: 60)]
+    private $city;
+
+    #[ORM\ManyToOne(targetEntity: Avatar::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private $picture;
+
     public function __construct()
     {
-        $this->OwnedEvents = new ArrayCollection();
+        $this->ownedEvents = new ArrayCollection();
         $this->favoriteVideoGame = new ArrayCollection();
         $this->favoriteBoardGame = new ArrayCollection();
         $this->favoriteManga = new ArrayCollection();
@@ -108,19 +123,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
+    # A visual identifier that represents this user.
+
+    /**  
      * @see UserInterface
      */
+
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     */
+    /** 
+    * @see UserInterface
+    */
+
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -136,10 +153,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
+    /** 
+    * @see PasswordAuthenticatedUserInterface
+    */
     public function getPassword(): string
     {
         return $this->password;
@@ -152,9 +168,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
+    public function getPlainPassword(): string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    /** 
+    * @see UserInterface 
+    */
+
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
@@ -178,25 +207,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->birthdate;
     }
 
-    public function setBirthdate(\DateTimeInterface $birthdate): self
+    public function setBirthdate(?\DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Event[]
-     */
+    /** 
+    * @return Collection|Event[]
+    */
     public function getOwnedEvents(): Collection
     {
-        return $this->OwnedEvents;
+        return $this->ownedEvents;
     }
 
     public function addOwnedEvent(Event $ownedEvent): self
     {
-        if (!$this->OwnedEvents->contains($ownedEvent)) {
-            $this->OwnedEvents[] = $ownedEvent;
+        if (!$this->ownedEvents->contains($ownedEvent)) {
+            $this->ownedEvents[] = $ownedEvent;
             $ownedEvent->setOwner($this);
         }
 
@@ -205,7 +234,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeOwnedEvent(Event $ownedEvent): self
     {
-        if ($this->OwnedEvents->removeElement($ownedEvent)) {
+        if ($this->ownedEvents->removeElement($ownedEvent)) {
             // set the owning side to null (unless already changed)
             if ($ownedEvent->getOwner() === $this) {
                 $ownedEvent->setOwner(null);
@@ -214,10 +243,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
     /**
-     * @return Collection|VideoGame[]
-     */
+    * @return Collection|VideoGame[] 
+    */
     public function getFavoriteVideoGame(): Collection
     {
         return $this->favoriteVideoGame;
@@ -238,10 +266,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    /**
-     * @return Collection|BoardGame[]
-     */
+    /** 
+    * @return Collection|BoardGame[]
+    */
     public function getFavoriteBoardGame(): Collection
     {
         return $this->favoriteBoardGame;
@@ -262,10 +289,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    /**
-     * @return Collection|Manga[]
-     */
+    /** 
+    * @return Collection|Manga[]
+    */
     public function getFavoriteManga(): Collection
     {
         return $this->favoriteManga;
@@ -286,10 +312,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    /**
-     * @return Collection|Comic[]
-     */
+    /** 
+    * @return Collection|Comic[]
+    */
     public function getFavoriteComic(): Collection
     {
         return $this->favoriteComic;
@@ -310,10 +335,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    /**
-     * @return Collection|Booking[]
-     */
+    /** 
+    * @return Collection|Booking[]
+    */
     public function getBookings(): Collection
     {
         return $this->bookings;
@@ -340,4 +364,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getProfile(): ?UserProfile
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(?UserProfile $profile): self
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function getLevel(): ?UserLevel
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?UserLevel $level): self
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPicture(): ?Avatar
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Avatar $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
 }

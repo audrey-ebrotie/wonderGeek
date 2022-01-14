@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des évènements - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/event/list.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="main-header">
+        <h1 class="py-2">Nos événements</h1>
+        
+        <div class="create-event__button my-2">
+            <a href="{{ path('event_new') }}" class="button">Créer un évènement</a>
+        </div>
+    </div>
+    
+
+    <div class="events">
+        <div class="row">
+            {% for event in events %}
+            <div class="col col-md-12 col-lg-6">
+                <article class="card event">
+                    <div class="card-body event-picture text-center p-4">    
+                        {% if event.endAt < date() %}
+                        {% set statusText = 'Passé' %}
+                        {% set statusColor = 'red' %}
+                        {% elseif  event.startAt < date() %}
+                        {% set statusText = 'En cours' %}
+                        {% set statusColor = 'blue' %}
+                        {% else %}
+                        {% set statusText = 'A venir' %}
+                        {% set statusColor = 'green' %}
+                        {% endif %}
+                        <span class="event-status {{ statusColor }}">
+                            {{ statusText }}
+                        </span>
+                            <img src="{{ event.picture }}" alt="{{ event.name }}">
+                    </div>
+                    
+                    <div class="event-summary">
+                        <h2>{{ event.name }}</h2>
+                        <p>{{ event.description|slice(0, 150) }} ...</p>
+                        <aside>
+                            <ul>
+                                <li>
+                                    {% if event.activity.name == "Mangas" or event.activity.name == "Comics" %}
+                                    <i class="fas fa-book-reader"></i>
+                                    {% elseif event.activity.name == "Jeux vidéos" %}
+                                        <i class="fas fa-gamepad"></i>
+                                    {% elseif event.activity.name == "Jeux de société" %}
+                                        <i class="fas fa-dice"></i>
+                                    {% else %}
+                                        <i class="fas fa-boxes"></i>
+                                    {% endif %}
+                                        Activité / univers : {{ event.activity.name }}</li>
+
+                                <li>
+                                    {% if event.category.name == "Convention" or event.category.name == "Meeting" %}
+                                    <i class="fas fa-users"></i>
+                                        
+                                    {% elseif event.category.name == "Vente aux enchères / troc" %}
+                                    <i class="fas fa-gavel"></i>
+
+                                    {% elseif event.category.name == "Conférence" %}
+                                    <i class="fas fa-bullhorn"></i>
+
+                                    {% else %}
+                                    <i class="fas fa-gamepad"></i>
+                                        
+                                    {% endif %}
+                                    {{ event.category.name }}
+                                </li>
+
+                                {% if event.gameLevel != NULL %}
+                                    <li>    
+                                    <i class="fas fa-sort-amount-up"></i>
+                                    Niveau requis : {{ event.gameLevel }}
+                                    </li>
+                                {% else %}
+                                {% endif %}
+
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{ event.place ? event.place.name : 'En ligne' }}
+                                </li>
+                                <li>
+                                    <i class="far fa-calendar-check"></i>
+                                    {{ event.startAt|date('d/m/Y H:i') }}
+                                </li>
+                                <li>
+                                    <i class="far fa-calendar-times"></i>
+                                    {{ event.endAt|date('d/m/Y H:i') }}
+                                </li>
+                            </ul>
+                        </aside>
+                        <div class="event-action">
+                            <a href="{{ path('event_show', {id: event.id}) }}" class="button">Voir l'évènement</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

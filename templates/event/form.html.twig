@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} 
+    {{ isNew ? 'Créer' : 'Modifier' }} un évènement - {{ parent() }} 
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/event/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/component/form.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 offset-md-2">
+                <h2 class="text-light text-center py-3">Créer un évenement </h2>
+                {{form_start(form)}}
+                <div class="container-fluid d-flex flex-column">
+                    <div class="row text-center">
+
+                        <div class="form-group py-2 my-2">
+                            {#<label for="{{ form_label(form.name)}}" hidden>{{ form_label(form.name)}}</label>#}
+                            {{ form_label(form.name) }}
+                            {{ form_widget(form.name) }}
+                            {{ form_errors(form.name) }}
+                            {{ form_help(form.name) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.activity) }}
+                            {{ form_widget(form.activity) }}
+                            {{ form_errors(form.activity) }}
+                            {{ form_help(form.activity) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.category) }}
+                            {{ form_widget(form.category) }}
+                            {{ form_errors(form.category) }}
+                            {{ form_help(form.category) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.gameLevel) }}
+                            {{ form_widget(form.gameLevel) }}
+                            {{ form_errors(form.gameLevel) }}
+                            {{ form_help(form.gameLevel) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description) }}
+                            {{ form_errors(form.description) }}
+                            {{ form_help(form.description) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.picture) }}
+                            {{ form_widget(form.picture) }}
+                            {{ form_errors(form.picture) }}
+                            {{ form_help(form.picture) }}
+                        </div>
+                    
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.place) }}
+                            {{ form_widget(form.place) }}
+                            {{ form_errors(form.place) }}
+                            {{ form_help(form.place) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.startAt) }}
+                            {{ form_widget(form.startAt) }}
+                            {{ form_errors(form.startAt) }}
+                            {{ form_help(form.startAt) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.endAt) }}
+                            {{ form_widget(form.endAt) }}
+                            {{ form_errors(form.endAt) }}
+                            {{ form_help(form.endAt) }}
+                        </div>
+
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.capacity) }}
+                            {{ form_widget(form.capacity) }}
+                            {{ form_errors(form.capacity) }}
+                            {{ form_help(form.capacity) }}
+                        </div>
+
+                        <div class="col my-2 text-center py-2 my-3">
+                            {{ form_row(form.submit) }}
+                        </div>
+                    </div>
+                </div>
+                {{ form_end(form, {'render_rest': false}) }}
+
+            </div>
+        </div>    
+    </div>
+
+{% endblock %}
+        

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,16 +14,19 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
+
     #[Route('/user', name: 'user_')]
 
 class UserController extends AbstractController
 {
     private $em;
+    private $userRepository;
     private $hasher;
 
-    public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $hasher)
+    public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $hasher, UserRepository $userRepository)
     {
         $this->em = $em;
+        $this->userRepository = $userRepository;
         $this->hasher = $hasher;
     }
     
@@ -30,7 +34,7 @@ class UserController extends AbstractController
     public function register(Request $request): Response
     {
         if($this->getUser()){
-            return $this->disallowAccess();
+            return $this->disallowAccess;
         }
 
         $user = new User();
@@ -38,14 +42,14 @@ class UserController extends AbstractController
         
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            $hashed = $this->hasher->hashPassword($user, $user->getPassword());
+            $hashed = $this->hasher->hashPassword($user, $user->getPlainPassword());
             $user->setPassword($hashed);
             
             $this->em->persist($user);
             $this->em->flush();
 
-            $this->addFlash('notice', 'Votre compte a été créé');
-            return $this->redirectToRoute('main_index');
+            $this->addFlash('notice', 'Votre compte a bien été créé, vous pouvez vous connecter');
+            return $this->redirectToRoute('user_login');
         }
 
         return $this->render('user/register.html.twig', [
@@ -67,9 +71,28 @@ class UserController extends AbstractController
         ]);
     }
 
-    private function disallowAccess(): Response
+    #[Route('/logout', name: 'logout')]
+    public function logout():Response{
+
+        return $this->redirectToRoute('main_index');
+    }
+
+    private function disallowAccess():Response
     {
         $this->addFlash('info', 'Vous êtes déjà connecté, déconnectez vous pour changer de compte');
+
         return $this->redirectToRoute('main_index');
+    }
+
+    #[Route('/{id}', name: 'profil', requirements: ['id' => '\d+'])]
+    public function profil($id):Response
+    {
+        {
+            $user = $this->userRepository->find($id);
+            
+            return $this->render('user/profil.html.twig', [
+                'user' => $user,
+            ]);
+        }
     }
 }

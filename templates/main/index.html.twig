@@ -11,164 +11,87 @@
 {% block mainClasses %}no-spaces{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid px-3">
         <div class="landing row">
-            <div class="landing-content col-6 py-5">
+            <div class="landing-content col py-5">
                 <h1>Bienvenue sur WonderGeek</h1>
                 <h2>Le site référence de la PopCulture</h2>
-                <a href="#" class="button">
+                <a href="{{ path('event_list') }}" class="button">
                     Voir nos événements
                 </a>
             </div>
-            <div class="text-center col-6">
+            <div class="text-center col">
                 <h2 class="text-light py-5"> A la une </h2>
-                <img src={{ asset('img/dota2.jpg') }} alt="jeu a la une">
-            </div>
-        </div>
-
-        <div class="row landing-option">
-            <h3 class="text-light py-4"> Evenements qui pourraient vous plaire </h3>
-            <div class="col">
-                <div class="card h-100 w-80">
-                    <img src={{ asset('img/finalfantasy.jpg') }} class="card-img-top" alt="Final fantasy XIV">
-                    <div class="card-body bg-dark">
-                        <h4 class="card-title text-light">Farming plaine Félicité</h4>
-                        <div class="row d-flex flex-row">
-                            <h5 class="text-light">Warrario</h5>
-                            <div class="col-6">
-                                <p class="card-text text-light text-center pt-4">Final Fantasy XIV</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-light text-center pt-4"> Le 21/01/22</p>
-                            </div>
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img src={{ asset('img/dota2.jpg') }} class="d-block w-100" alt="évènements">
+                        </div>
+                        <div class="carousel-item">
+                        <img src={{ asset('img/magic.jpg') }} class="d-block w-100" alt="évènements">
+                        </div>
+                        <div class="carousel-item">
+                        <img src={{ asset('img/lol.jpg') }} class="d-block w-100" alt="évènements">
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 w-80">
-                    <img src={{ asset('img/halo.jpg') }} class="card-img-top" alt="Halo">
-                    <div class="card-body bg-dark">
-                        <h4 class="card-title text-light">5v5 different maps</h4>
-                        <div class="row d-flex flex-row">
-                            <h5 class="text-light">Extr3mZ</h5>
-                            <div class="col-6">
-                                <p class="card-text text-light text-center pt-4">Halo Infinite</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-light text-center pt-4"> Le 20/01/22</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 w-80">
-                    <img src={{ asset('img/lol.jpg') }} class="card-img-top" alt="LoL">
-                    <div class="card-body bg-dark">
-                        <h4 class="card-title text-light">Platine en match classé</h4>
-                        <div class="row d-flex flex-row">
-                            <h5 class="text-light">Grinding elo</h5>
-                            <div class="col-6">
-                                <p class="card-text text-light text-center pt-4">League of Legends</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-light text-center pt-4"> Le 12/01/22</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 w-80">
-                    <img src={{ asset('img/warzone.jpg') }} class="card-img-top" alt="Warzone">
-                    <div class="card-body bg-dark">
-                        <h4 class="card-title text-light">Team domination matches</h4>
-                        <div class="row d-flex flex-row">
-                            <h5 class="text-light">Brokly</h5>
-                            <div class="col-6">
-                                <p class="card-text text-light text-center pt-4">Call of Duty Warzone</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-light text-center pt-4"> Le 10/01/22</p>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="row landing-option">
-            <h3 class="text-light py-4"> Catégories qui pourraient vous plaire </h3>
-            <div class="col">
-                <div class="card h-100">
-                    <img src={{ asset('img/hearthstone.jpg') }} class="card-img-top" alt="Hearthstone">
-                    <div class="card-body bg-dark">
-                        <h4 class="card-title text-light">Venez on est bien</h4>
-                        <div class="row d-flex flex-row">
-                            <h5 class="text-light">Le mister B</h5>
-                            <div class="col-6">
-                                <p class="card-text text-light text-center pt-4">Hearthstone</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-light text-center pt-4"> Le 21/01/22</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src={{ asset('img/magic.jpg') }} class="card-img-top" alt="Magic">
-                    <div class="card-body bg-dark">
-                        <h4 class="card-title text-light">Tournoi amical</h4>
-                        <div class="row d-flex flex-row">
-                            <h5 class="text-light">House of cards</h5>
-                            <div class="col-6">
-                                <p class="card-text text-light text-center pt-4">Magic</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-light text-center pt-4"> Le 16/01/22</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src={{ asset('img/yu-gi-oh.jpg') }} class="card-img-top" alt="Yu-Gi-Oh">
-                    <div class="card-body bg-dark">
-                        <h4 class="card-title text-light">Vive les dragons</h4>
-                        <div class="row d-flex flex-row">
-                            <h5 class="text-light">Gilician</h5>
-                            <div class="col-6">
-                                <p class="card-text text-light text-center pt-4">Yu-Gi-Oh</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-light text-center pt-4"> Le 14/01/22</p>
+        <h3 class="text-light py-4"> Evenements qui pourraient vous plaire </h3>
+
+        
+        <div class="row row-cols-1 row-cols-xl-4 row-cols-md-2 landing-option">
+            {% for event in events|slice(0, 4) %}
+                <div class="col my-3">
+                    <div class="card h-100 w-80">
+                        <img src={{ event.picture }} class="card-img-top" alt="{{event.name}}">
+                        <div class="card-body bg-dark">
+                            <h4 class="card-title text-light">{{event.name}}</h4>
+                            <div class="row d-flex flex-row">
+                                <h5 class="text-light">{{event.description|slice(0, 150)}}</h5>
+                                <div class="row icone pt-3">
+                                    <div class="col-6 d-flex flex-row align-items-center">
+                                        
+                                    <p class="card-text text-light px-3">{{event.category.name}}
+                                    
+                                    {% if event.category.name == "Convention" or event.category.name == "Meeting" %}
+                                    <i class="fas fa-users"></i>
+
+                                    {% elseif event.category.name == "Vente aux enchères / troc" %}
+                                    <i class="fas fa-gavel"></i>
+
+                                    {% elseif event.category.name == "Conférence" %}
+                                    <i class="fas fa-bullhorn"></i>
+
+                                    {% else %}
+                                    <i class="fas fa-gamepad"></i>
+
+                                    {% endif %} 
+                                    </p>
+                                    </div>
+                                    <div class="col-6 d-flex flex-row align-items-center">
+                                        <p class="text-light mb-0 px-3"> 
+                                            <i class="far fa-calendar-check"></i> 
+                                            Début : {{event.startat|date('d/m/Y h:i')}} <br><br>
+                                        
+                                            <i class="far fa-calendar-times"></i>
+                                            Fin estimée : {{event.endat|date('d/m/Y h:i')}} </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src={{ asset('img/pokemon.jpg') }} class="card-img-top" alt="Pokemon">
-                    <div class="card-body bg-dark">
-                        <h4 class="card-title text-light">Attrapez les tous</h4>
-                        <div class="row d-flex flex-row">
-                            <h5 class="text-light">Gorgorama</h5>
-                            <div class="col-6">
-                                <p class="card-text text-light text-center pt-4">Pokemon</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-light text-center pt-4"> Le 22/01/22</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-    </div>
     
 {% endblock %}

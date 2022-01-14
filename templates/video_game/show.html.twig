@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ videoGame.name }} - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/video_game/show.css') }}">
+{% endblock %}
+
+{% block mainClasses %}no-spaces{% endblock %}
+
+{% block body %}
+    <article class="videoGame container-fluid text-center">
+        <h1 class="py-3">{{ videoGame.name }}</h1>
+        <div class="row justify-content-center">
+            <div class="col col-lg-6">
+                <div class="videoGame-view">
+                    <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
+                </div>
+            
+                <div class="videoGame-summary d-flex flex-column">
+                    <p class="videoGame-summary__description my-3">
+                        {{ videoGame.description }}
+                    </p>
+                    <aside class="videoGame-summary__detail my-3">
+                        <ul>
+                            <li>
+                            <i class="fas fa-tags"></i>
+                            Genre : {{ videoGame.category.name }}
+                            </li>
+                            <div>
+                                Disponible sur :
+                                {% for platform in videoGame.platform %}
+                                <li>
+                                    {% if platform.name == "Playstation 4" or platform.name == "Playstation 5" %}
+                                    <i class="fab fa-playstation"></i>
+                                    
+                                    {% elseif platform.name == "Xbox One" or platform.name == "Xbox Series" %}
+                                    <i class="fab fa-xbox"></i>
+                                    
+                                    {% elseif platform.name == "Nintendo Switch" or platform.name == "Wii U" %}
+                                    <i class="fas fa-dice-d6"></i>
+                                    
+                                    {% elseif platform.name == "PC" %}
+                                    <i class="fab fa-windows"></i>
+                                    
+                                    {% elseif platform.name == "MAC" %}
+                                    <i class="fab fa-apple"></i>
+                                    
+                                    {% else %}
+                                    <i class="fab fa-google-wallet"></i>
+                                    
+                                    {% endif %}
+                                    {{ platform.name }}
+                                </li>
+                                {% endfor %}
+                            </div>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}
+

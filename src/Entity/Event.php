@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\EventRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EventRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\EventActivity;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
@@ -16,69 +18,45 @@ class Event
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir un nom pour l'événement")
-     * @Assert\Length(
-     *      min=5,
-     *      max=50,
-     *      minMessage="Le nom doit contenir au minimum {{ limit }} caractères",
-     *      maxMessage="Le nom doit contenir au maximum {{ limit }} caractères"
-     * )
-     */
-    #[ORM\Column(type: 'string', length: 50)]
+    #[Assert\NotBlank(message : "Vous devez saisir un nom pour l'événement")]
+    #[Assert\Length(
+           min : 3,
+           max : 100,
+           minMessage : "Le nom doit au minimum contenir {{ limit }} caractères",
+           maxMessage : "Le nom doit contenir au maximum {{ limit }} caractères" )]
+   
+    #[ORM\Column(type: 'string', length: 100)]
     private $name;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir une description pour l'événement")
-     * @Assert\Length(
-     *      min=10,
-     *      max=1500,
-     *      minMessage="La description doit contenir au minimum {{ limit }} caractères",
-     *      maxMessage="La description doit contenir au maximum {{ limit }} caractères"
-     * )
-     */
+    #[Assert\NotBlank(message : "Vous devez saisir une description pour l'événement")]
+    #[Assert\Length(
+        min : 10,
+        max : 1500,
+        minMessage : "La description doit au minimum contenir {{ limit }} caractères",
+        maxMessage : "La description doit contenir au maximum {{ limit }} caractères"
+        )]
+
     #[ORM\Column(type: 'text')]
     private $description;
 
+
+    #[Assert\NotBlank(message : "Vous devez ajouter une URL d'image")]
+    #[Assert\Url(message : "Vous devez ajouter une URL valide")]
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
 
-    /**
-     * @Assert\Url(message="Vous devez saisir une URL valide")
-     */
-    private $pictureUrl;
 
-    /**
-     * @Assert\Expression(
-     *     "this.getPictureUrl() or this.getPictureFIle()",
-     *     message="Vous devez importer une image ou fournir une URL"
-     * )
-     * @Assert\File(
-     *     maxSize="2M",
-     *     mimeTypes={"image/jpeg", "image/png"},
-     *     maxSizeMessage="Les imports sont limités à {{ limit }}{{ suffix }}",
-     *     mimeTypesMessage="Les imports sont limités au JPEG et PNG"
-     * )
-     */
-    private $pictureFile;
-
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir une date de début")
-     * @Assert\GreaterThan("now", message="Vous devez saisir une date de début supérieure à la date actuelle")
-     */
+    #[Assert\NotBlank(message : "Vous devez saisir une date de début")]
+    #[Assert\GreaterThan("now", message : "Vous devez saisir une date de début supérieure à la date actuelle")]
     #[ORM\Column(type: 'datetime')]
     private $startAt;
 
-    /**
-     * @Assert\NotBlank(message="Vous devez saisir une date de fin")
-     * @Assert\GreaterThan(propertyPath="startAt", message="Vous devez saisir une date de fin supérieur à la date de début")
-     */
+    #[Assert\NotBlank(message : "Vous devez saisir une date de fin")]
+    #[Assert\GreaterThan(propertyPath : "startAt", message : "Vous devez saisir une date de fin supérieure à la date de début")]
     #[ORM\Column(type: 'datetime')]
     private $endAt;
 
-    /**
-     * @Assert\Positive(message="Vous devez saisir une capacité positive ou laisser le champ vide pour ne pas imposer de limite")
-     */
+    #[Assert\Positive(message : "Vous devez saisir un nombre de places positif ou laisser le champ vide pour ne pas imposer de limite")]
     #[ORM\Column(type: 'integer', nullable: true)]
     private $capacity;
 
@@ -95,6 +73,13 @@ class Event
 
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Booking::class, orphanRemoval: true)]
     private $bookings;
+
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    private $gameLevel;
+
+    #[ORM\ManyToOne(targetEntity: EventActivity::class, inversedBy: 'events')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $activity;
 
     public function __construct()
     {
@@ -147,7 +132,7 @@ class Event
         return $this->startAt;
     }
 
-    public function setStartAt(\DateTimeInterface $startAt): self
+    public function setStartAt(?\DateTimeInterface $startAt): self
     {
         $this->startAt = $startAt;
 
@@ -159,7 +144,7 @@ class Event
         return $this->endAt;
     }
 
-    public function setEndAt(\DateTimeInterface $endAt): self
+    public function setEndAt(?\DateTimeInterface $endAt): self
     {
         $this->endAt = $endAt;
 
@@ -213,10 +198,9 @@ class Event
 
         return $this;
     }
-
-    /**
-     * @return Collection|Booking[]
-     */
+    /** 
+    * @return Collection|Booking[]
+    */
     public function getBookings(): Collection
     {
         return $this->bookings;
@@ -235,11 +219,35 @@ class Event
     public function removeBooking(Booking $booking): self
     {
         if ($this->bookings->removeElement($booking)) {
-            // set the owning side to null (unless already changed)
+            
             if ($booking->getEvent() === $this) {
                 $booking->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGameLevel(): ?string
+    {
+        return $this->gameLevel;
+    }
+
+    public function setGameLevel(?string $gameLevel): self
+    {
+        $this->gameLevel = $gameLevel;
+
+        return $this;
+    }
+
+    public function getActivity(): ?EventActivity
+    {
+        return $this->activity;
+    }
+
+    public function setActivity(?EventActivity $activity): self
+    {
+        $this->activity = $activity;
 
         return $this;
     }
