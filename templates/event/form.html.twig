@@ -20,7 +20,6 @@
                     <div class="row text-center">
 
                         <div class="form-group py-2 my-2">
-                            {#<label for="{{ form_label(form.name)}}" hidden>{{ form_label(form.name)}}</label>#}
                             {{ form_label(form.name) }}
                             {{ form_widget(form.name) }}
                             {{ form_errors(form.name) }}
@@ -54,13 +53,6 @@
                             {{ form_errors(form.description) }}
                             {{ form_help(form.description) }}
                         </div>
-
-                        <div class="form-group py-2 my-2">
-                            {{ form_label(form.picture) }}
-                            {{ form_widget(form.picture) }}
-                            {{ form_errors(form.picture) }}
-                            {{ form_help(form.picture) }}
-                        </div>
                     
                         <div class="form-group py-2 my-2">
                             {{ form_label(form.place) }}
@@ -88,6 +80,13 @@
                             {{ form_widget(form.capacity) }}
                             {{ form_errors(form.capacity) }}
                             {{ form_help(form.capacity) }}
+                        </div>
+                        
+                        <div class="form-group py-2 my-2">
+                            {{ form_label(form.pictureFile) }}
+                            {{ form_widget(form.pictureFile) }}
+                            {{ form_errors(form.pictureFile) }}
+                            {{ form_help(form.pictureFile) }}
                         </div>
 
                         <div class="col my-2 text-center py-2 my-3">

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Avatar;
 use App\Form\UserType;
+use App\Service\UploaderHelper;
 use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,7 +31,7 @@ class UserController extends AbstractController
     }
     
     #[Route('/register', name: 'register')]
-    public function register(Request $request): Response
+    public function register(Request $request, UploaderHelper $uploaderHelper): Response
     {
         if($this->getUser()){
             return $this->disallowAccess;
@@ -44,13 +45,7 @@ class UserController extends AbstractController
 
             $uploadedFile = $form['pictureFile']->getData();
 
-            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/avatar';
-            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
-            $uploadedFile->move(
-                $destination,
-                $newFilename
-            );
+            $newFilename = $uploaderHelper->uploadUserAvatar($uploadedFile);
             $user->setPicture($newFilename);
 
             $hashed = $this->hasher->hashPassword($user, $user->getPlainPassword());

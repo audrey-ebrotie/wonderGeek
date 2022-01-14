@@ -31,7 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
-    
     #[Assert\NotBlank(message :"Vous devez saisir un mot de passe")]
     #[Assert\Length(
         min:6,
@@ -91,10 +90,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 60)]
     private $city;
 
+    #[Assert\File\NotBlank(message : "Vous devez ajouter une image")]
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
     
-
     public function __construct()
     {
         $this->ownedEvents = new ArrayCollection();

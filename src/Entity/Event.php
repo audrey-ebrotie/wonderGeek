@@ -39,12 +39,8 @@ class Event
     #[ORM\Column(type: 'text')]
     private $description;
 
-
-    #[Assert\NotBlank(message : "Vous devez ajouter une URL d'image")]
-    #[Assert\Url(message : "Vous devez ajouter une URL valide")]
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
-
 
     #[Assert\NotBlank(message : "Vous devez saisir une date de début")]
     #[Assert\GreaterThan("now", message : "Vous devez saisir une date de début supérieure à la date actuelle")]

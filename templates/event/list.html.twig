@@ -36,7 +36,12 @@
                         <span class="event-status {{ statusColor }}">
                             {{ statusText }}
                         </span>
-                            <img src="{{ event.picture }}" alt="{{ event.name }}">
+
+                            {% if event.picture matches '{^http}' %}
+                                <img src="{{ event.picture }}" alt="{{ event.name }}">
+                            {% else %}
+                                <img src="{{ asset('uploads/event_pictures/' ~ event.picture) }}" alt="{{ event.name }}">
+                            {% endif %}
                     </div>
                     
                     <div class="event-summary">

@@ -14,7 +14,11 @@
         <h1 class="py-3 text-center">{{ event.name }}</h1>
 
         <div class="event-view">
+        {% if event.picture matches '{^http}' %}
             <img src="{{ event.picture }}" alt="{{ event.name }}">
+        {% else %}
+            <img src="{{ asset('uploads/event_pictures/' ~ event.picture) }}" alt="{{ event.name }}">
+        {% endif %}
         </div>
 
         <div class="event-summary d-flex flex-column">

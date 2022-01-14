@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -34,12 +35,6 @@ class EventType extends AbstractType
                     'rows' => 10,
                     'placeholder' => 'Vous pouvez indiquer une description pour votre évènement (facultatif)'
                 ],
-            ])
-            ->add('picture', UrlType::class,[
-                'label' => 'Image',
-                'attr' => [
-                    'placeholder' => 'Indiquez une URL d\'image'
-                ]    
             ])
             ->add('startAt', DateTimeType::class, [
                 'label' => 'Date de début',
@@ -99,6 +94,10 @@ class EventType extends AbstractType
                 'attr' => [
                     'class' => 'text-field'
                 ]
+            ])
+            ->add('pictureFile', FileType::class, [
+                'mapped' => false,
+                'label' => 'Image de l\'évènement'
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
