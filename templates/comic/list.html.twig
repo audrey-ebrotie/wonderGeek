@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Comics - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/comic/list.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="py-2">Les Comics</h1>
+
+    <div class="comics row">
+        {% for comic in comics %}
+        <div class="col col-md-12 col-lg-6">
+            <article class="card comic">
+                <div class="card-body">
+                    <div class="comic-picture text-center p-1">    
+                        <img src="{{ comic.picture }}" alt="{{ comic.name }}">
+                    </div>
+                    <div class="comic-summary">
+                        <h2 class="text-center">{{ comic.name }}</h2>
+                        <p>{{ comic.description|slice(0, 250) }} ...</p>
+                        <div>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-tags"></i>
+                                    Genre : {{ comic.category.name }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="comic-action">
+                            <a href="{{ path('comic_show', {id: comic.id}) }}" class="button">Plus de détails</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

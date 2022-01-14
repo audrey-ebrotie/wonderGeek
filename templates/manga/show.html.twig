@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ manga.name }} - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/manga/show.css') }}">
+{% endblock %}
+
+{% block mainClasses %}no-spaces{% endblock %}
+
+{% block body %}
+    <article class="manga container-fluid">
+        <h1 class="py-3 text-center">{{ manga.name }}</h1>
+        <div class="manga-view">
+            <img src="{{ manga.picture }}" alt="{{ manga.name }}">
+        </div>
+        <div class="manga-summary d-flex flex-column">
+                <p class="manga-summary__description my-3">
+                    {{ manga.description }}
+                </p>
+                <aside class="manga-summary__detail my-3">
+                    <ul>
+                        <li>
+                            <i class="fas fa-tags"></i>
+                            Genre : {{ manga.category.name }}
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+    </article>
+{% endblock %}
+

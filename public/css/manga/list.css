@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    background-color: #c8d6e5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    color: #002a35;
+  }
+  
+  .mangas .manga {
+    margin: 2% 0;
+    display: flex;
+    gap: 1%;
+    background-color: #212529;
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    border: 2px solid #212529;
+  }
+  
+  .mangas .manga .manga-picture {
+    position: relative;
+  }
+  
+  .mangas .manga img {
+    width: 350px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .mangas .manga .manga-summary {
+    display: flex;
+    flex-direction: column;
+    margin: 1% 0;
+    flex: 1;
+  }
+  
+  .mangas .manga div {
+    width: 100%;
+    padding-top: 2%;
+  }
+  
+  .mangas .manga div ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly;
+    padding: 0;
+  }
+  
+  .mangas .manga div i {
+    color: #535ba8;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+  
+  .mangas .manga .manga-action {
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+  }
+  
+  .mangas .manga .manga-action .button {
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .mangas .manga .manga-action .button:hover {
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    transform: scale(1.2);
+    color: white;
+  }
+  
+  @media (max-width: 720px) {
+    .manga {
+      display: flex;
+      flex-direction: column;
+    }
+    .main-header {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
