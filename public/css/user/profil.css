@@ -4,19 +4,27 @@ main{
     align-items: center;
 }
 img{
-    width: 3rem;
-    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 60%;
+    object-fit: cover;
 }
 .card{
-    margin-top: 5rem;
-    color:black;
+    margin-top: 1rem;
+    color:white;
     border-radius: 10%;
     background-color: rgb(206, 209, 212);
     width: 50rem;
     height: 30rem;
+    overflow: hidden;
     
 }
 .card-header{
     text-align: center;
     font-size: xx-large;
+    text-decoration: underline;
+    background-color: #212529
+}
+.card-body{
+    background-color: #25515e;
 }
