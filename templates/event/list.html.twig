@@ -8,15 +8,12 @@
 
 {% block body %}
 
-    <div class="main-header">
-        <h1 class="py-2">Nos événements</h1>
-        
-        <div class="create-event__button my-2">
-            <a href="{{ path('event_new') }}" class="button">Créer un évènement</a>
-        </div>
+    <h1 class="py-2 text-center">Nos événements</h1>
+
+    <div class="create-event__button main-header my-2">
+        <a href="{{ path('event_new') }}" class="button text-center">Créer un évènement</a>
     </div>
     
-
     <div class="events">
         <div class="row">
             {% for event in events %}
@@ -41,9 +38,9 @@
                     <div class="event-summary p-4">
                         <h2>{{ event.name }}</h2>
                         <p>{{ event.description|slice(0, 150) }} ...</p>
-                        <div>
+                        <div class="list-category">
                             <ul>
-                                <li>
+                                <li class="px-3">
                                     {% if event.category.name == "Convention" or event.category.name == "Meeting" %}
                                     <i class="fas fa-users"></i>
                                     
@@ -59,15 +56,18 @@
                                     {% endif %}
                                     {{ event.category.name }}
                                 </li>
-                                <li>
+                                <li class="px-3">
                                     <i class="fas fa-map-marker-alt"></i>
                                     {{ event.place ? event.place.name : 'En ligne' }}
                                 </li>
-                                <li>
+                            </ul>
+
+                            <ul>
+                                <li class="px-3">
                                     <i class="far fa-calendar-check"></i>
                                     {{ event.startAt|date('d/m/Y H:i') }}
                                 </li>
-                                <li>
+                                <li class="px-3">
                                     <i class="far fa-calendar-times"></i>
                                     {{ event.endAt|date('d/m/Y H:i') }}
                                 </li>

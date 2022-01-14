@@ -9,12 +9,6 @@ body {
   min-height: 100vh;
 }
 
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .main-header .button {
   color: white;
   background-color: #3d7f3c;
@@ -28,6 +22,12 @@ body {
 
 h1 {
   color: #002a35;
+}
+
+.events .event-summary .list-category{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .events .event {
@@ -119,6 +119,10 @@ h1 {
     flex-direction: column;
   }
   .main-header{
+    display: flex;
+    flex-direction: column;
+  }
+  .events .event-summary .list-category{
     display: flex;
     flex-direction: column;
   }
