@@ -18,30 +18,87 @@
         </div>
 
         <div class="event-summary d-flex flex-column">
-            <p class="event-summary__description my-3">
-                {{ event.description }}
-            </p>
-            <div class="event-summary__detail my-3">
-                <ul>
-                    <li data-icon="&#xf274">
-                        Début : {{ event.startAt|date('d/m/Y H:i') }}
-                    </li>
-                    <li data-icon="&#xf273">
-                        Fin : {{ event.endAt|date('d/m/Y H:i') }}
-                    </li>
-                    <li data-icon="&#xf3c5">
-                        Lieu : {% if event.place %}
-                            {{ event.place.name }}<br>
-                            {{ event.place.street }}<br>
-                            {{ event.place.zipcode }} - {{ event.place.city }}
-                        {% else %}
-                            En ligne  
-                        {% endif %}    
-                    </li>
-                    <li data-icon="&#xf4fd">
-                        Organisateur : {{ event.owner.username }}
-                    </li>
-                </ul>
+                <p class="event-summary__description my-3">
+                    {{ event.description }}
+                </p>
+                <aside class="event-summary__detail my-3">
+                    <ul>
+                        <li>
+                            {% if event.activity.name == "Mangas" or event.activity.name == "Comics" %}
+                                <li data-icon="&#xf5da">
+                            {% elseif event.activity.name == "Video Games" %}
+                                <li data-icon="&#xf11b">
+                            {% elseif event.activity.name == "Jeux de société" %}
+                                    <li data-icon="&#xf522">
+                            {% else %}
+                                <li data-icon="&#xf522">
+                            {% endif %}
+                                Activité / univers : {{ event.activity.name }}</li>
+
+                            <li>
+                                {% if event.category.name == "Convention" or event.category.name == "Meeting" %}
+                                <li data-icon="&#xf0c0">
+                                    
+                                {% elseif event.category.name == "Vente aux enchères / troc" %}
+                                <li data-icon="&#xf0e3">
+
+                                {% elseif event.category.name == "Conférence" %}
+                                <li data-icon="&#xf0a1">
+
+                                {% else %}
+                                <li data-icon="&#xf11b">
+                                    
+                                {% endif %}
+                                {{ event.category.name }}
+                            </li>
+                            
+                            {% if event.gameLevel != NULL %}
+                                <li data-icon="&#xf161">
+                                    Niveau requis : {{ event.gameLevel }}
+                                </li>
+                            {% else %}
+                            {% endif %}
+
+                                <li data-icon="&#xf274">
+                                    Début : {{ event.startAt|date('d/m/Y H:i') }}
+                                </li>
+                                <li data-icon="&#xf273">
+                                    Fin : {{ event.endAt|date('d/m/Y H:i') }}
+                                </li>
+                                <li data-icon="&#xf3c5">
+
+                            Lieu : {% if event.place %}
+                                    {{ event.place.name }}<br>
+                                    {{ event.place.street }}<br>
+                                    {{ event.place.zipcode }} - {{ event.place.city }}
+                            {% else %}
+                                En ligne  
+                            {% endif %}    
+                        </li>
+
+                        <li data-icon="&#xf4fd">
+                            Organisateur : {{ event.owner.username }}
+                        </li>
+                    </ul>
+                    
+                    <div class="buttons-box">
+                        {% if is_granted('event_edit', event) %}
+                        <div>
+                            <a href="{{ path('event_edit', {id: event.id}) }}" class="btn btn-primary">
+                                Modifier
+                            </a>
+                        </div>
+                        {% endif %}
+                        
+                        {% if is_granted('event_delete', event) %}
+                        <div>
+                            <a href="{{ path('event_delete', {id: event.id}) }}" class="btn btn-danger">
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                        {% endif %}
+                </aside>
             </div>
         </div>
 

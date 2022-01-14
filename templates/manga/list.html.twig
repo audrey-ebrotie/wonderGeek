@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Mangas - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/manga/list.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="py-2">Les Mangas</h1>
+
+    <div class="mangas row">
+        {% for manga in mangas %}
+        <div class="col col-md-12 col-lg-6">
+            <article class="card manga">
+                <div class="card-body">
+                    <div class="manga-picture text-center p-1">    
+                        <img src="{{ manga.picture }}" alt="{{ manga.name }}">
+                    </div>
+                    <div class="manga-summary">
+                        <h2 class="text-center">{{ manga.name }}</h2>
+                        <p>{{ manga.description|slice(0, 250) }} ...</p>
+                        <div>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-tags"></i>
+                                    Genre : {{ manga.category.name }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="manga-action">
+                            <a href="{{ path('manga_show', {id: manga.id}) }}" class="button">Plus de détails</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

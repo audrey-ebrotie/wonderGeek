@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des événements - {{ parent() }}{% endblock %}
+{% block title %}Liste des évènements - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/event/list.css') }}">
@@ -33,9 +33,10 @@
                         <span class="event-status {{ statusColor }}">
                             {{ statusText }}
                         </span>
-                        <img src="{{ event.picture }}" alt="{{ event.name }}">
+                            <img src="{{ event.picture }}" alt="{{ event.name }}">
                     </div>
-                    <div class="event-summary p-4">
+                    
+                    <div class="event-summary">
                         <h2>{{ event.name }}</h2>
                         <p>{{ event.description|slice(0, 150) }} ...</p>
                         <div class="list-category">
@@ -43,16 +44,16 @@
                                 <li class="px-3">
                                     {% if event.category.name == "Convention" or event.category.name == "Meeting" %}
                                     <i class="fas fa-users"></i>
-                                    
+                                        
                                     {% elseif event.category.name == "Vente aux enchères / troc" %}
                                     <i class="fas fa-gavel"></i>
-                                    
+
                                     {% elseif event.category.name == "Conférence" %}
                                     <i class="fas fa-bullhorn"></i>
-                                    
+
                                     {% else %}
                                     <i class="fas fa-gamepad"></i>
-                                    
+                                        
                                     {% endif %}
                                     {{ event.category.name }}
                                 </li>
@@ -72,7 +73,7 @@
                                     {{ event.endAt|date('d/m/Y H:i') }}
                                 </li>
                             </ul>
-                        </div>
+                        </aside>
                         <div class="event-action">
                             <a href="{{ path('event_show', {id: event.id}) }}" class="button">Voir l'évènement</a>
                         </div>

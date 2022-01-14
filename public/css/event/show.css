@@ -94,3 +94,9 @@ body {
   transform: scale(1.2);
   color: white;
 }
+
+.buttons-box {
+  display: flex;
+  justify-content: space-around;
+  margin: 2%;
+}

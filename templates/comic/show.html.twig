@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ comic.name }} - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/comic/show.css') }}">
+{% endblock %}
+
+{% block mainClasses %}no-spaces{% endblock %}
+
+{% block body %}
+    <article class="comic container-fluid">
+        <h1 class="py-3 text-center">{{ comic.name }}</h1>
+        <div class="comic-view">
+            <img src="{{ comic.picture }}" alt="{{ comic.name }}">
+        </div>
+        <div class="comic-summary d-flex flex-column">
+                <p class="comic-summary__description my-3">
+                    {{ comic.description }}
+                </p>
+                <aside class="comic-summary__detail my-3">
+                    <ul>
+                        <li>
+                            <i class="fas fa-tags"></i>
+                            Genre : {{ comic.category.name }}
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+    </article>
+{% endblock %}
+

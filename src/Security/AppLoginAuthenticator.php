@@ -11,14 +11,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
-use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 
-class AppLoginAuthenticator extends AbstractLoginFormAuthenticator implements AuthenticationEntryPointInterface
+class AppLoginAuthenticator extends AbstractAuthenticator implements AuthenticationEntryPointInterface
 {
     private $requestStack;
     private $urlGenerator;
@@ -72,7 +72,7 @@ class AppLoginAuthenticator extends AbstractLoginFormAuthenticator implements Au
         return new RedirectResponse($url);
     }
 
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         $session = $this->requestStack->getSession();
         $session->set(Security::AUTHENTICATION_ERROR, $exception);
@@ -80,13 +80,14 @@ class AppLoginAuthenticator extends AbstractLoginFormAuthenticator implements Au
         return null;
     }
 
-    protected function getLoginUrl(Request $request): string
+    public function start(Request $request, AuthenticationException $authException = null): Response
     {
         $session = $this->requestStack->getSession();
         $flashBag = $session->getFlashBag();
         $flashBag->add('info', 'Vous devez être connecté pour créer un évènement');
-
-        return $this->urlGenerator->generate('user_login');  /* Redirige en cas de tentative d'accès à une zone non autorisée à un visiteur anonyme */
+        
+        $url = $this->urlGenerator->generate('user_login');
+        return new RedirectResponse($url);
     }
 
 }
