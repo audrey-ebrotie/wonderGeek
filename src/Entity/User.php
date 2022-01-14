@@ -87,10 +87,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(targetEntity: UserLevel::class, inversedBy: 'users')]
     private $level;
 
+    #[Assert\NotBlank(message : "Vous devez renseigner votre ville")]
     #[ORM\Column(type: 'string', length: 60)]
     private $city;
 
-    #[Assert\File\NotBlank(message : "Vous devez ajouter une image")]
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
     
