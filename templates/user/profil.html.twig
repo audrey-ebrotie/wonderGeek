@@ -19,7 +19,7 @@
     Mail de contact: <a href="mailto:{{user.email}}">{{user.email}}</a><br>
     profil:{{user.profile.name}}<br>
     Niveau du joueur:{{user.level.name}}<br>
-    Evenements créés par l'utilisateur: {{user.ownedEvents}}</p>
+    Evenements créés par l'utilisateur: {{user.ownedEvents.owner|serialize(format = 'json')}}</p>
   </div>
 </div>
 
