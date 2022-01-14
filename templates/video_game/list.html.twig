@@ -14,7 +14,7 @@
         <div class="row">
             {% for videoGame in videoGames %}
             <div class="col-sm-12 col-md-12 col-xl-6 my-2">
-                <div class="card">
+                <div class="card bg-dark">
                     <div class="card-body">
                         <article class="videoGame">
 
@@ -26,7 +26,7 @@
 
                                 <div class="py-2">
                                     <h2 class="text-center py-2">{{ videoGame.name }}</h2>
-                                    <p>{{ videoGame.description|slice(0, 70) }} ...</p>
+                                    <p class="px-4">{{ videoGame.description|slice(0, 70) }} ...</p>
                                 </div>
 
                                 <div class="row text-center py-2 vg-body">
