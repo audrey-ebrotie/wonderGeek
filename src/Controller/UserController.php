@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Avatar;
 use App\Form\UserType;
 use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\UserRepository;
