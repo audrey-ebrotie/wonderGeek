@@ -4,17 +4,22 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<style> .card{color:black}</style>
+<link rel="stylesheet" href="{{ asset('css/user/profil.css') }}">
 {% endblock %}
 
 {% block body %}
 <h1> Mon profil </h1>
 
-<div class="card border-light mb-3" style="max-width: 18rem;">
-  <div class="card-header"> <!--{{user.picture}}--> {{user.username}} <br> de {{user.city}} né le {{user.birthdate|date('d/m/Y')}}</div>
+<div class="card border-light mb-3">
+  <h2 class="card-header"> <img src="/uploads/avatar/{{user.picture}}" alt="Avatar de profil de {{user.username}}">{{user.username}} <br>
+  de {{user.city}} né le {{user.birthdate|date('d/m/Y')}}</h2>
   <div class="card-body">
-    <h5 class="card-title">{{user.email}}</h5>
-    <p class="card-text"></p>
+    <h3 class="card-title">Information de {{user.username}} </h3>
+    <p class="card-text">
+    Mail de contact: <a href="mailto:{{user.email}}">{{user.email}}</a><br>
+    profil:{{user.profile.name}}<br>
+    Niveau du joueur:{{user.level.name}}<br>
+    Evenements créés par l'utilisateur: {{user.ownedEvents}}</p>
   </div>
 </div>
 
