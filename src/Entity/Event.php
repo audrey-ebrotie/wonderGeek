@@ -20,11 +20,11 @@ class Event
 
     #[Assert\NotBlank(message : "Vous devez saisir un nom pour l'événement")]
     #[Assert\Length(
-           min : 3,
-           max : 100,
-           minMessage : "Le nom doit au minimum contenir {{ limit }} caractères",
-           maxMessage : "Le nom doit contenir au maximum {{ limit }} caractères" )]
-   
+        min : 3,
+        max : 100,
+        minMessage : "Le nom doit au minimum contenir {{ limit }} caractères",
+        maxMessage : "Le nom doit contenir au maximum {{ limit }} caractères" )]
+
     #[ORM\Column(type: 'string', length: 100)]
     private $name;
 
@@ -35,7 +35,6 @@ class Event
         minMessage : "La description doit au minimum contenir {{ limit }} caractères",
         maxMessage : "La description doit contenir au maximum {{ limit }} caractères"
         )]
-
     #[ORM\Column(type: 'text')]
     private $description;
 
@@ -56,6 +55,7 @@ class Event
     #[ORM\Column(type: 'integer', nullable: true)]
     private $capacity;
 
+    #[Assert\NotBlank(message : "Vous devez renseigner une catégorie pour l'évènement")]
     #[ORM\ManyToOne(targetEntity: EventCategory::class, inversedBy: 'events')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
@@ -73,6 +73,7 @@ class Event
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $gameLevel;
 
+    #[Assert\NotBlank(message : "Vous devez renseigner le type d'activité")]
     #[ORM\ManyToOne(targetEntity: EventActivity::class, inversedBy: 'events')]
     #[ORM\JoinColumn(nullable: false)]
     private $activity;

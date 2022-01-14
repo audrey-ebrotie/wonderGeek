@@ -10,6 +10,8 @@ use App\Entity\EventCategory;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -30,27 +32,22 @@ class EventType extends AbstractType
                     'placeholder' => 'Exemple: Party Lan Dota 2'
                 ]        
             ])
-            ->add('description', TextType::class, [
-                'attr' => [
-                    'rows' => 10,
-                    'placeholder' => 'Vous pouvez indiquer une description pour votre évènement (facultatif)'
-                ],
-            ])
-            ->add('startAt', DateTimeType::class, [
-                'label' => 'Date de début',
-                'date_widget' => 'single_text'
-            ])
-            ->add('endAt', DateTimeType::class, [
-                'label' => 'Date de fin',
-                'date_widget' => 'single_text',
+            ->add('activity', EntityType::class, [
+                'class' => EventActivity::class,
+                'choice_label' => 'name',
+                'label' => 'Activité', 
+                'placeholder' => 'Sélectionnez le type d\'activité concerné',
                 'attr' => [
                     'class' => 'text-field'
                 ]
             ])
-            ->add('capacity', NumberType::class, [
-                'label' => 'Places disponibles',
+            ->add('category', EntityType::class, [
+                'class' => EventCategory::class,
+                'choice_label' => 'name',
+                'label' => 'Catégorie',
+                'placeholder' => 'Sélectionnez une catégorie pour votre évènement',
                 'attr' => [
-                    'placeholder' => 'Indiquez le nombre de places disponibles. Laissez le champ vide si il n\'y a pas de limite'
+                    'class' => 'text-field'
                 ]
             ])
             ->add('gameLevel', ChoiceType::class, [
@@ -66,38 +63,54 @@ class EventType extends AbstractType
                 'placeholder' => 'Sélectionnez le niveau de jeu requis',
                 'attr' => [
                     'class' => 'text-field'
-                ]
+                ],
+                'help' => 'Facultatif'
             ])
-            ->add('category', EntityType::class, [
-                'class' => EventCategory::class,
-                'choice_label' => 'name',
-                'label' => 'Categorie',
-                'placeholder' => 'Sélectionnez une catégorie pour votre évènement',
+            ->add('description', TextType::class, [
                 'attr' => [
-                    'class' => 'text-field'
-                ]
+                    'rows' => 10,
+                    'placeholder' => 'Vous devez indiquer une description pour votre évènement'
+                ],
             ])
             ->add('place', EntityType::class, [
                 'class' => Place::class,
                 'choice_label' => 'name',
                 'label' => 'Lieu',
-                'placeholder' => 'Sélectionnez un lieu. Laissez le champ vide si l\'évènement se déroule en ligne',
+                'placeholder' => 'Vous pouvez sélectionner un lieu',
+                'help' => 'Facultatif : laissez le champ vide si l\'évènement se déroule à distance',
                 'attr' => [
                     'class' => 'text-field'
                 ]
             ])
-            ->add('activity', EntityType::class, [
-                'class' => EventActivity::class,
-                'choice_label' => 'name',
-                'label' => 'Activité', 
-                'placeholder' => 'Sélectionnez le type d\'activité concerné',
+            ->add('startAt', DateTimeType::class, [
+                'label' => 'Date de début',
+                'date_widget' => 'single_text'
+            ])
+            ->add('endAt', DateTimeType::class, [
+                'label' => 'Date de fin',
+                'date_widget' => 'single_text',
                 'attr' => [
                     'class' => 'text-field'
                 ]
+            ])
+            ->add('capacity', NumberType::class, [
+                'label' => 'Places disponibles',
+                'attr' => [
+                    'placeholder' => 'Vous pouvez indiquer le nombre de places disponibles.'
+                ],
+                'help' => 'Facultatif : laissez le champ vide si il n\'y a pas de limite'
             ])
             ->add('pictureFile', FileType::class, [
                 'mapped' => false,
-                'label' => 'Image de l\'évènement'
+                'label' => 'Image de l\'évènement',
+                'constraints' => [
+                    new Image([
+                        'maxSize' => '2M'
+                    ]),
+                    new NotNull([
+                        'message'  => 'Vous devez ajouter une image pour l\'évènement'
+                    ])
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',

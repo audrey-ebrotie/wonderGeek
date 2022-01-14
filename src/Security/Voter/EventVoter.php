@@ -23,7 +23,7 @@ class EventVoter extends Voter
     
     protected function supports(string $attribute, $event): bool
     {
-        return in_array($attribute, [self::EVENT_EDIT, self::EVENT_DELETE]) // On vérifie qu'il s'agit bien d'une instance de l'entity Event
+        return in_array($attribute, [self::EVENT_EDIT, self::EVENT_DELETE])     // On vérifie qu'il s'agit bien d'une instance de l'entity Event
             && $event instanceof \App\Entity\Event;
     }
 
