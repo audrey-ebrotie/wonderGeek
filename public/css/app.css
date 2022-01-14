@@ -51,10 +51,19 @@ main.no-spaces {
   border: none;
 }
 
+nav .allMenu .closeMenu i{
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
+}
+
 nav .mainMenu {
   display: flex;
   list-style: none;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
 nav .mainMenu li a {
   display: inline-block;
   padding: 15px;
@@ -62,18 +71,22 @@ nav .mainMenu li a {
   text-transform: uppercase;
   color: white;
 }
+
 nav .openMenu {
   font-size: 2rem;
   margin: 20px;
   visibility: hidden;
   cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
 }
-nav .mainMenu .closeMenu,
-.icons i {
+
+nav .allMenu .icons i {
   font-size: 2rem;
   display: none;
   cursor: pointer;
 }
+
 .icons{
   display: flex;
   flex-direction: column;
@@ -118,6 +131,20 @@ nav .logo {
   background-color: #c0392b;
 }
 
+
+nav .allMenu .closeMenu  i {
+  display: none;
+  transition: top 1s ease;
+  z-index: 999;
+}
+
+.open nav .allMenu .closeMenu  i {
+  display: block;
+}
+.open nav .allMenu .mainMenu .icons i{
+  display: block;
+}
+
 @media(max-width: 1024px){
   nav .mainMenu{
     height: 100vh;
@@ -133,20 +160,33 @@ nav .logo {
     transition: top 1s ease;
     display: flex;
   }
-  nav .mainMenu .closeMenu{
-    display: block;
+
+  nav .allMenu .mainMenu .icons i{
+    display: none;
+  }
+
+  nav .allMenu .closeMenu i{
+    display: none;
     position: absolute;
     top: 20px;
     right: 20px;
+    z-index: 999;
   }
+
+  nav .allMenu{
+    position: relative;
+  }
+
   nav .openMenu{
     display: block;
     visibility: visible;
   }
+
   .icons i{
     display: inline-block;
     padding: 12px;
   }
+  
   .icons{
     display: flex;
     flex-direction: row;

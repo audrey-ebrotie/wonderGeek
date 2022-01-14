@@ -8,9 +8,12 @@ closeMenu.addEventListener('click', close);
 function show(){
     mainMenu.style.display = 'flex';
     mainMenu.style.top = '0';
+
+    document.body.classList.add('open');
 }
 function close(){
     mainMenu.style.top = '-100%';
+    document.body.classList.remove('open');
 }
 
 const notifications = document.querySelectorAll('.notification-manager .notification');
@@ -23,4 +26,6 @@ setTimeout(() => {
         }, 500);
     }
 }, 5000);
+
+
 

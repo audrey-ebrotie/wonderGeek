@@ -13,7 +13,7 @@
     {{ form_start(form) }}
 
     <div class="row text-center">
-        <div class="col col-md-8 offset-md-2">
+        <div class="col col-md-6 offset-md-3">
             <div class="form-group py-2 my-2">
                 {{ form_label(form.username) }}
                 {{ form_widget(form.username) }}
@@ -44,31 +44,50 @@
                 {{ form_errors(form.city) }}
                 {{ form_help(form.city) }}
             </div>
-            <div class="py-2">
+            <div class="form-group py-2 my-2">
                 {{ form_label(form.profile) }}
                 {{ form_widget(form.profile) }}
                 {{ form_errors(form.profile) }}
                 {{ form_help(form.profile) }}
             </div>
-            <div class="py-2">
+            <div class="form-group py-2 my-2">
                 {{ form_label(form.level) }}
                 {{ form_widget(form.level) }}
                 {{ form_errors(form.level) }}
                 {{ form_help(form.level) }}
             </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <div class="form-group py-2 my-2">
+                {{ form_label(form.city) }}
+                {{ form_widget(form.city) }}
+                {{ form_errors(form.city) }}
+                {{ form_help(form.city) }}
+=======
+            {# <div class="form-group py-2 my-2">
+                {{ form_label(form.picture) }}
+                {{ form_widget(form.picture) }}
+                {{ form_errors(form.picture) }}
+                {{ form_help(form.picture) }}
+            </div> #}
+>>>>>>> walid
             <div class="form-group py-2 my-2">
                 {{ form_label(form.pictureFile) }}
                 {{ form_widget(form.pictureFile) }}
                 {{ form_errors(form.pictureFile) }}
                 {{ form_help(form.pictureFile) }}
+>>>>>>> develop
             </div>
-            <div class="py-2">
+            <div class="form-group py-2 my-2">
                 {{ form_label(form.cgu) }}
                 {{ form_widget(form.cgu) }}
                 {{ form_errors(form.cgu) }}
                 {{ form_help(form.cgu) }}
             </div>
+        </div>
     </div>
+
     <div class="form-end my-2">
         {{ form_row(form.submit) }}
     </div>

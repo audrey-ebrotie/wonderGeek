@@ -17,9 +17,6 @@ h1 {
   margin: 2% 0;
   display: flex;
   gap: 1%;
-  background-color: #212529;
-  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
-  border: 2px solid #212529;
 }
 
 .videoGames .videoGame .videoGame-picture {
@@ -39,6 +36,7 @@ h1 {
   flex: 1;
   min-height: 100%;
 }
+
 .videoGames .videoGame .videoGame-summary .vg-body{
   flex: 1;
 }
