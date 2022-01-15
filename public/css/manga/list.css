@@ -7,10 +7,16 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
+  }  
   
   h1 {
     color: #002a35;
+  }
+
+  .fa-search{
+    background-color:  #3d7f3c;
+    color: white;
+    padding:40%;
   }
   
   .mangas .manga {
@@ -72,6 +78,7 @@ body {
     transform: scale(1.2);
     color: white;
   }
+
   
   @media (max-width: 720px) {
     .manga {

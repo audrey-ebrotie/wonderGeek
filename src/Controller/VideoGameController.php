@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\VideoGame;
+use App\Form\SearchVideoGameType;
 use App\Repository\VideoGameRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,13 +21,19 @@ class VideoGameController extends AbstractController
     }
 
     #[Route(' ', name: 'list')]
-    public function videoGamesList(): Response
-    {
-        $videoGames = $this->videoGameRepository->findAll();
-        // dd($videoGames);
+    public function videoGamesList(Request $request): Response
+    {   
+        $searchForm = $this->createForm(SearchVideoGameType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $videoGames = $this->videoGameRepository->search($searchCriteria);
+        
+       
         
         return $this->render('video_game/list.html.twig', [
-            'videoGames' => $videoGames
+            'videoGames' => $videoGames,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Manga;
+use App\Form\SearchMangaType;
 use App\Repository\MangaRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,12 +21,17 @@ class MangaController extends AbstractController
     }
 
     #[Route(' ', name: 'list')]
-    public function mangaList(): Response
+    public function mangaList(Request $request): Response
     {
-        $mangas = $this->MangaRepository->findAll();
+        $searchForm = $this->createForm(SearchMangaType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $mangas = $this->MangaRepository->search($searchCriteria);
 
         return $this->render('manga/list.html.twig', [
             'mangas' => $mangas,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

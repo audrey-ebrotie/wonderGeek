@@ -12,6 +12,12 @@ body {
   h1 {
     color: #002a35;
   }
+
+  .fa-search{
+    background-color:  #3d7f3c;
+    color: white;
+    padding:40%;
+  }
   
   .comics .comic {
     margin: 2% 0;

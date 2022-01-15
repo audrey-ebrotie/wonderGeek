@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Comic;
+use App\Form\SearchComicType;
 use App\Repository\ComicRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,12 +21,17 @@ class ComicController extends AbstractController
     }
 
     #[Route(' ', name: 'list')]
-    public function comicList(): Response
+    public function comicList(Request $request): Response
     {
-        $comics = $this->ComicRepository->findAll();
+        $searchForm = $this->createForm(SearchComicType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $comics = $this->ComicRepository->search($searchCriteria);
 
         return $this->render('comic/list.html.twig', [
             'comics' => $comics,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

@@ -16,6 +16,11 @@ h1 {
 li {
   list-style-type: none;
 }
+.fa-search{
+  background-color:  #3d7f3c;
+  color: white;
+  padding:40%;
+}
 
 .videoGames .videoGame {
   margin: 2% 0;
