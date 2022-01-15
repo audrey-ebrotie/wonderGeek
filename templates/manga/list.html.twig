@@ -9,6 +9,16 @@
 {% block body %}
 
     <h1 class="py-2">Les Mangas</h1>
+    {{ form_start(searchForm) }}
+    <div class="row g-3">
+        <div class="col-sm-7">
+        {{ form_row(searchForm.query) }}  
+        </div>
+        <div class="col-sm">
+        {{ form_row(searchForm.submit) }}
+        </div>
+    </div>
+    {{ form_end(searchForm) }}
 
     <div class="mangas row">
         {% for manga in mangas %}

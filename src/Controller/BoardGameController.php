@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\BoardGame;
+use App\Form\SearchBoardGameType;
 use App\Repository\BoardGameRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,12 +21,17 @@ class BoardGameController extends AbstractController
     }
 
     #[Route(' ', name: 'list')]
-    public function boardGamesList(): Response
+    public function boardGamesList(Request $request): Response
     {
-        $boardGames = $this->boardGameRepository->findAll();
+        $searchForm = $this->createForm(SearchBoardGameType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $boardGames = $this->boardGameRepository->search($searchCriteria);
         
         return $this->render('board_game/list.html.twig', [
-            'boardGames' => $boardGames
+            'boardGames' => $boardGames,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

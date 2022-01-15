@@ -13,6 +13,12 @@ h1 {
   color: #002a35;
 }
 
+.fa-search{
+  background-color:  #3d7f3c;
+  color: white;
+  padding:40%;
+}
+
 .videoGames .videoGame {
   margin: 2% 0;
   display: flex;

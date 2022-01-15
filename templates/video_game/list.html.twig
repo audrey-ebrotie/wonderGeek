@@ -10,6 +10,17 @@
 
     <h1 class="py-2 text-center">Les jeux vidéos</h1>
 
+    {{ form_start(searchForm) }}
+    <div class="row g-3">
+        <div class="col-sm-7">
+        {{ form_row(searchForm.query) }}  
+        </div>
+        <div class="col-sm">
+        {{ form_row(searchForm.submit) }}
+        </div>
+    </div>
+    {{ form_end(searchForm) }}
+    
     <div class="videoGames container-fluid">
         <div class="row">
             {% for videoGame in videoGames %}

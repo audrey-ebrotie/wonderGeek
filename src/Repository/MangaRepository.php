@@ -19,32 +19,15 @@ class MangaRepository extends ServiceEntityRepository
         parent::__construct($registry, Manga::class);
     }
 
-    // /**
-    //  * @return Manga[] Returns an array of Manga objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    public function search($criteria){
+        $stmt = $this->createQueryBuilder('m');
+    
+        if(!empty($criteria['query'])){
+            $stmt->where('m.name LIKE :query');
+            $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+    
+        return $stmt->getQuery()->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Manga
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+    
     }
-    */
-}

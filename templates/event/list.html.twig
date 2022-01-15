@@ -9,13 +9,21 @@
 {% block body %}
 
     <div class="main-header">
-        <h1 class="py-2">Nos événements</h1>
-        
+        <h1 class="py-2">Nos événements</h1>       
         <div class="create-event__button my-2">
             <a href="{{ path('event_new') }}" class="button">Créer un évènement</a>
         </div>
     </div>
-    
+    {{ form_start(searchForm) }}
+    <div class="row g-3">
+        <div class="col-sm-7">
+        {{ form_row(searchForm.query) }}  
+        </div>
+        <div class="col-sm">
+        {{ form_row(searchForm.submit) }}
+        </div>
+    </div>
+    {{ form_end(searchForm) }}
 
     <div class="events">
         <div class="row">
