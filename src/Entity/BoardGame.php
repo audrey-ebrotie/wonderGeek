@@ -23,21 +23,21 @@ class BoardGame
     
     #[Assert\NotBlank(message:"Vous devez saisir le nom du jeu")]
     #[Assert\Length(
-          min:3,
-          max:50,
-          minMessage:"Le nom doit contenir au minimum {{ limit }} caractères",
-          maxMessage:"Le nom doit contenir au maximum {{ limit }} caractères"
-     )]
+        min:3,
+        max:50,
+        minMessage:"Le nom doit contenir au minimum {{ limit }} caractères",
+        maxMessage:"Le nom doit contenir au maximum {{ limit }} caractères"
+    )]
 
     #[ORM\Column(type: 'text')]
     private $description;
     
     #[Assert\NotBlank(message:"Vous devez saisir une description du jeu")]
     #[Assert\Length(
-          min:10,
-          max:1500,
-          minMessage:"La description doit contenir au minimum {{ limit }} caractères",
-          maxMessage:"La description doit contenir au maximum {{ limit }} caractères"
+        min:10,
+        max:1500,
+        minMessage:"La description doit contenir au minimum {{ limit }} caractères",
+        maxMessage:"La description doit contenir au maximum {{ limit }} caractères"
     )]
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
@@ -46,14 +46,14 @@ class BoardGame
     private $pictureUrl;
 
     #[Assert\Expression(
-         "this.getPictureUrl() or this.getPictureFIle()",
-         message:"Vous devez importer une image ou fournir une URL"
-     )]
+    "this.getPictureUrl() or this.getPictureFIle()",
+    message:"Vous devez importer une image ou fournir une URL"
+    )]
     #[Assert\File(
-         maxSize:"2M",
-         mimeTypes:"image/jpeg/png",
-         maxSizeMessage:"Les imports sont limités à {{ limit }}{{ suffix }}",
-         mimeTypesMessage:"Les imports sont limités au JPEG et PNG"
+    maxSize:"2M",
+    mimeTypes:"image/jpeg/png",
+    maxSizeMessage:"Les imports sont limités à {{ limit }}{{ suffix }}",
+    mimeTypesMessage:"Les imports sont limités au JPEG et PNG"
     )]
     private $pictureFile;
 

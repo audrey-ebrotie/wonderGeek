@@ -1,3 +1,4 @@
+// Hamburger menu
 const mainMenu = document.querySelector('.mainMenu');
 const closeMenu = document.querySelector('.closeMenu');
 const openMenu = document.querySelector('.openMenu');
@@ -16,6 +17,7 @@ function close(){
     document.body.classList.remove('open');
 }
 
+// Notifications
 const notifications = document.querySelectorAll('.notification-manager .notification');
 
 setTimeout(() => {
@@ -25,7 +27,7 @@ setTimeout(() => {
             notification.remove();
         }, 500);
     }
-}, 5000);
+}, 600);
 
 
 

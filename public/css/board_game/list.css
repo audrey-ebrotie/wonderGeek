@@ -20,7 +20,7 @@ h1 {
   min-height: 100%;
 }
 
-.pushbtn{
+.pushbtn {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -78,6 +78,26 @@ h1 {
   box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
   transform: scale(1.2);
   color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  margin-left: 2%;
+  background-color: #535ba8;
+  border-radius: 5px;
+}
+
+.pagination li {
+  margin-left: 0.5rem;
+}
+
+.passive {
+  margin-left: 2%;
+  background-color: #002a35;
+  border-radius: 5px;
 }
 
 @media (max-width: 720px) {

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\VideoGame;
 use App\Repository\VideoGameRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,13 +20,19 @@ class VideoGameController extends AbstractController
     }
 
     #[Route(' ', name: 'list')]
-    public function videoGamesList(): Response
+    public function videoGamesList(Request $request): Response
     {
-        $videoGames = $this->videoGameRepository->findAll();
-        // dd($videoGames);
+        $limit = 12;        
+        $page = (int)$request->query->get("page", 1);    
+        
+        $videoGames = $this->videoGameRepository->getPaginatedVideoGames($page, $limit);       
+        $total = $this->videoGameRepository->getTotalVideoGames(); 
         
         return $this->render('video_game/list.html.twig', [
-            'videoGames' => $videoGames
+            'videoGames' => $videoGames,
+            'total' => $total,
+            'limit' => $limit,
+            'page' => $page
         ]);
     }
 

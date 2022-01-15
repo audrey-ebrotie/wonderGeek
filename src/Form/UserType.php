@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use App\Entity\Avatar;
 use App\Entity\UserLevel;
 use App\Entity\UserProfile;
 use Symfony\Component\Form\AbstractType;
@@ -70,7 +69,6 @@ class UserType extends AbstractType
                     'class' => 'text-field'
                 ]
             ])
-            
             ->add('level', EntityType::class, [
                 'class' => UserLevel::class,
                 'choice_label' => 'name',

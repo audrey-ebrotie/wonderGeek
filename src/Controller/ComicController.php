@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comic;
 use App\Repository\ComicRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,27 +12,34 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/comic', name: 'comic_')]
 class ComicController extends AbstractController
 {
-    private $ComicRepository;
+    private $comicRepository;
 
-    public function __construct(ComicRepository $ComicRepository)
+    public function __construct(ComicRepository $comicRepository)
     {
-        $this->ComicRepository = $ComicRepository;
+        $this->comicRepository = $comicRepository;
     }
 
     #[Route(' ', name: 'list')]
-    public function comicList(): Response
+    public function comicList(Request $request): Response
     {
-        $comics = $this->ComicRepository->findAll();
+        $limit = 12;        
+        $page = (int)$request->query->get("page", 1);    
+        
+        $comics = $this->comicRepository->getPaginatedComics($page, $limit);       
+        $total = $this->comicRepository->getTotalComics();   
 
         return $this->render('comic/list.html.twig', [
             'comics' => $comics,
+            'total' => $total,
+            'limit' => $limit,
+            'page' => $page
         ]);
     }
 
     #[Route('/{id}', name: 'show', requirements: ['id' => '\d+'])]
     public function showComic($id): Response
     {
-        $comic = $this->ComicRepository->find($id);
+        $comic = $this->comicRepository->find($id);
         
         return $this->render('comic/show.html.twig', [
             'comic' => $comic

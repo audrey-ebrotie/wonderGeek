@@ -75,6 +75,26 @@ li {
   color: white;
 }
 
+a {
+  text-decoration: none;
+}
+
+.active {
+  margin-left: 2%;
+  background-color: #535ba8;
+  border-radius: 5px;
+}
+
+.pagination li {
+  margin-left: 0.5rem;
+}
+
+.passive {
+  margin-left: 2%;
+  background-color: #002a35;
+  border-radius: 5px;
+}
+
 @media (max-width: 720px) {
   .videoGame {
     display: flex;

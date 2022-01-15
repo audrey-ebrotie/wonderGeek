@@ -19,6 +19,30 @@ class ComicRepository extends ServiceEntityRepository
         parent::__construct($registry, Comic::class);
     }
 
+    /**
+     * Returns 12 comics per page
+     * @return void
+     */
+    public function getPaginatedComics($page, $limit){
+        $query = $this->createQueryBuilder('c')
+        ->setFirstResult(($page * $limit) - $limit)
+        ->setMaxResults($limit)
+
+    ;
+    return $query->getQuery()->getResult();
+}
+
+/**
+ * Returns the total number of comics
+ * @return void
+ */
+public function getTotalComics(){
+    $query = $this->createQueryBuilder('c')
+        ->select('COUNT(c)')
+    ;
+    return $query->getQuery()->getSingleScalarResult();
+}
+
     // /**
     //  * @return Comic[] Returns an array of Comic objects
     //  */

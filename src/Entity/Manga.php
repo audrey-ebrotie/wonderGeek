@@ -45,14 +45,14 @@ class Manga
     private $pictureUrl;
 
     #[Assert\Expression(
-       "this.getPictureUrl() or this.getPictureFIle()",
-       message:"Vous devez importer une image ou fournir une URL"
+    "this.getPictureUrl() or this.getPictureFIle()",
+    message:"Vous devez importer une image ou fournir une URL"
     )]
     #[Assert\File(
-       maxSize:"2M",
-       mimeTypes:"image/jpeg/png",
-       maxSizeMessage:"Les imports sont limités à {{ limit }}{{ suffix }}",
-       mimeTypesMessage:"Les imports sont limités au JPEG et PNG"
+    maxSize:"2M",
+    mimeTypes:"image/jpeg/png",
+    maxSizeMessage:"Les imports sont limités à {{ limit }}{{ suffix }}",
+    mimeTypesMessage:"Les imports sont limités au JPEG et PNG"
     )]
     private $pictureFile;
 

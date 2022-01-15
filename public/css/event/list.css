@@ -24,7 +24,7 @@ h1 {
   color: #002a35;
 }
 
-.events .event-summary .list-category{
+.events .event-summary .list-category {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -114,16 +114,36 @@ h1 {
   color: white;
 }
 
-@media (max-width:720px) {
-  .event{
+a {
+  text-decoration: none;
+}
+
+.active {
+  margin-left: 2%;
+  background-color: #535ba8;
+  border-radius: 5px;
+}
+
+.pagination li {
+  margin-left: 0.5rem;
+}
+
+.passive {
+  margin-left: 2%;
+  background-color: #002a35;
+  border-radius: 5px;
+}
+
+@media (max-width: 720px) {
+  .event {
     display: flex;
     flex-direction: column;
   }
-  .main-header{
+  .main-header {
     display: flex;
     flex-direction: column;
   }
-  .events .event-summary .list-category{
+  .events .event-summary .list-category {
     display: flex;
     flex-direction: column;
   }

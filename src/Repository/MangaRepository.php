@@ -19,6 +19,30 @@ class MangaRepository extends ServiceEntityRepository
         parent::__construct($registry, Manga::class);
     }
 
+    /**
+     * Returns 12 mangas per page
+     * @return void
+     */
+    public function getPaginatedMangas($page, $limit){
+        $query = $this->createQueryBuilder('m')
+        ->setFirstResult(($page * $limit) - $limit)
+        ->setMaxResults($limit)
+
+    ;
+    return $query->getQuery()->getResult();
+}
+
+/**
+ * Returns the total number of mangas
+ * @return void
+ */
+public function getTotalMangas(){
+    $query = $this->createQueryBuilder('m')
+        ->select('COUNT(m)')
+    ;
+    return $query->getQuery()->getSingleScalarResult();
+}
+
     // /**
     //  * @return Manga[] Returns an array of Manga objects
     //  */

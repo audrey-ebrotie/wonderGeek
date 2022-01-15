@@ -19,6 +19,30 @@ class BoardGameRepository extends ServiceEntityRepository
         parent::__construct($registry, BoardGame::class);
     }
 
+    /**
+     * Returns 12 board games per page
+     * @return void
+     */
+    public function getPaginatedBoardGames($page, $limit){
+        $query = $this->createQueryBuilder('b')
+        ->setFirstResult(($page * $limit) - $limit)
+        ->setMaxResults($limit)
+
+    ;
+    return $query->getQuery()->getResult();
+}
+
+/**
+ * Returns the total number of board games
+ * @return void
+ */
+public function getTotalBoardGames(){
+    $query = $this->createQueryBuilder('b')
+        ->select('COUNT(b)')
+    ;
+    return $query->getQuery()->getSingleScalarResult();
+}
+
     // /**
     //  * @return BoardGame[] Returns an array of BoardGame objects
     //  */

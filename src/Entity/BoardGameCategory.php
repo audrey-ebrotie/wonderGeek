@@ -19,11 +19,11 @@ class BoardGameCategory
 
     #[Assert\NotBlank(message:"Vous devez saisir une catégorie de jeu de société")]
     #[Assert\Length(
-          min:3,
-          max:50,
-          minMessage:"Le nom doit contenir au minimum {{ limit }} caractères",
-          maxMessage:"Le nom doit contenir au maximum {{ limit }} caractères"
-     )]
+        min:3,
+        max:50,
+        minMessage:"Le nom doit contenir au minimum {{ limit }} caractères",
+        maxMessage:"Le nom doit contenir au maximum {{ limit }} caractères"
+    )]
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 

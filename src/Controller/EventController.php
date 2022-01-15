@@ -29,12 +29,19 @@ class EventController extends AbstractController
     }
 
     #[Route(' ', name: 'list')]
-    public function eventsList(): Response
+    public function eventsList(Request $request): Response
     {
-        $events = $this->eventRepository->findAll();
+        $limit = 12;        
+        $page = (int)$request->query->get("page", 1);    
         
+        $events = $this->eventRepository->getPaginatedEvents($page, $limit);       
+        $total = $this->eventRepository->getTotalEvents();     
+
         return $this->render('event/list.html.twig', [
-            'events' => $events
+            'events' => $events,
+            'total' => $total,
+            'limit' => $limit,
+            'page' => $page
         ]);
     }
 

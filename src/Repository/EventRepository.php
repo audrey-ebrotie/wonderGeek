@@ -19,6 +19,30 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+    /**
+     * Returns 12 events per page
+     * @return void
+     */
+    public function getPaginatedEvents($page, $limit){
+            $query = $this->createQueryBuilder('e')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+
+        ;
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * Returns the total number of events
+     * @return void
+     */
+    public function getTotalEvents(){
+        $query = $this->createQueryBuilder('e')
+            ->select('COUNT(e)')
+        ;
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */
