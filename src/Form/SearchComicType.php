@@ -17,7 +17,7 @@ class SearchComicType extends AbstractType
         ->add('query', SearchType::class, [
             'label' => false,
             'attr' => [
-                'placeholder' => 'Nom du jeu de société recherché',
+                'placeholder' => 'Nom du manga recherché',
             ],
         ])
         ->add('submit', SubmitType::class, [
