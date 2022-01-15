@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/user', name: 'user_')]
 class UserController extends AbstractController
@@ -104,5 +105,42 @@ class UserController extends AbstractController
                 'user' => $user,
             ]);
         }
+    }
+
+    /**
+     * Editer pour pouvoir afficher le formulaire de modif' de profil
+     */
+    #[Route('/{id}/edit', name: 'edit', requirements: ['id' => '\d+'])]
+    #[IsGranted('ROLE_USER')]
+    public function userForm(Request $request, $id = null): Response
+    {
+        $user = $this->userRepository->find($id);
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $this->em->persist($user);
+            $this->em->flush();
+
+            $message = sprintf('Votre compte a bien été modifié');
+            $this->addFlash('notice', $message);
+          
+        }  return $this->redirectToRoute('user_profil',[
+                'id' => $user->getId()
+            ]);      
+    }
+    
+    #[Route('/{id}/delete', name: 'delete', requirements: ['id' => '\d+'])]
+    public function delete($id){
+        $user = $this->userRepository->find($id);
+        $this->em->remove($user);
+        $this->em->flush();
+
+        $response = new Response();
+        $response->send();
+
+        $this->addFlash('notice', 'Votre compte a été supprimé.');
+        return $this->redirectToRoute('main_index');
     }
 }

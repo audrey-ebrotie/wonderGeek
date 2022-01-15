@@ -117,6 +117,13 @@ nav .logo {
 .notification.n-error{
   background-color: #c0392b;
 }
+.form-error{
+  align-self: center;
+  background-color: rgba(255, 0, 0, 0.5);
+  color: white;
+  width: 50%;
+  text-align: center
+}
 
 @media(max-width: 1024px){
   nav .mainMenu{

@@ -24,7 +24,12 @@ class VideoGameRepository extends ServiceEntityRepository
         $stmt = $this->createQueryBuilder('g');
 
         if(!empty($criteria['query'])){
+            $stmt->leftJoin('g.category', 'c');
+            $stmt->leftJoin('g.platform', 'p');
+
             $stmt->where('g.name LIKE :query');
+            $stmt->orwhere('c.name LIKE :query');
+            $stmt->orwhere('p.name LIKE :query');
             $stmt->setParameter('query', '%' . $criteria['query'] . '%');
         }
 

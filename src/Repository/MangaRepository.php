@@ -23,7 +23,11 @@ class MangaRepository extends ServiceEntityRepository
         $stmt = $this->createQueryBuilder('m');
     
         if(!empty($criteria['query'])){
+            $stmt->leftJoin('m.category', 'c');
+            
             $stmt->where('m.name LIKE :query');
+            $stmt->orwhere('m.author LIKE :query');
+            $stmt->orwhere('c.name LIKE :query');
             $stmt->setParameter('query', '%' . $criteria['query'] . '%');
         }
     

@@ -3,9 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\UserLevel;
 use App\Entity\Event;
+use App\Entity\Booking;
+use App\Form\EventType;
+use App\Entity\UserLevel;
+use App\Service\UploaderHelper;
+use Gedmo\Sluggable\Util\Urlizer;
 use App\Form\SearchEventType;
+use Symfony\Component\Uid\Uuid;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,7 +60,7 @@ class EventController extends AbstractController
     #[Route('/new', name: 'new')]
     #[Route('/{id}/edit', name: 'edit', requirements: ['id' => '\d+'])]
     #[IsGranted('ROLE_USER')]
-    public function eventForm(Request $request, $id = null): Response
+    public function eventForm(Request $request, UploaderHelper $uploaderHelper, $id = null): Response
     {
         if($id){
             $event = $this->eventRepository->find($id);
@@ -69,6 +74,11 @@ class EventController extends AbstractController
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+
+            $uploadedFile = $form['pictureFile']->getData();
+
+            $newFilename = $uploaderHelper->uploadEventPicture($uploadedFile);
+            $event->setPicture($newFilename);
 
             $this->em->persist($event);
             $this->em->flush();
@@ -98,4 +108,24 @@ class EventController extends AbstractController
         $this->addFlash('notice', 'L\'évènement a bien été annulé.');
         return $this->redirectToRoute('event_list');
     }
-}
+
+    #[Route('/{id}/booking', name: 'booking', requirements: ['id' => '\d+'])]
+    #[IsGranted('BOOK_EVENT', subject: 'event')]
+    public function booking(Request $request, Event $event): Response
+    {
+                $booking = new Booking();
+                $booking->setEvent($event);
+                $booking->setUser($this->getUser());
+                $booking->setReference(Uuid::v4());
+
+                $this->em->persist($booking);
+                $this->em->flush();
+
+                return $this->redirectToRoute('booking_confirmation', [
+                    'reference' => $booking->getReference(),
+                ]);
+            }
+        }
+        
+    
+
