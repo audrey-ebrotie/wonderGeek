@@ -9,14 +9,13 @@ use App\Entity\UserProfile;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -41,8 +40,9 @@ class UserType extends AbstractType
             ])
             ->add('plainPassword', PasswordType::class,[
                 'label' => 'Mot de passe',
+                'help' => 'Il doit contenir au minimum 6 caractères dont une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial',
                 'attr' => [
-                    'placeholder' => 'Renseignez un mot de passe de 6 caractères minimum et contenant au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial'
+                    'placeholder' => 'Renseignez un mot de passe'
                 ]
             ])
             ->add('birthdate', BirthdayType::class, [
@@ -64,23 +64,34 @@ class UserType extends AbstractType
                 'choice_label' => 'name',
                 'label'=> 'Profil',
                 'by_reference' => 'false',
-                'placeholder' => 'Sélectionnez votre profil (facultatif)',
+                'placeholder' => 'Sélectionnez votre profil',
+                'help' => 'Facultatif',
                 'attr' => [
                     'class' => 'text-field'
                 ]
             ])
+            
             ->add('level', EntityType::class, [
                 'class' => UserLevel::class,
                 'choice_label' => 'name',
                 'label' => 'Niveau',
                 'placeholder' => 'Sélectionnez votre niveau d\'expérience en tant que joueur (facultatif)',
+                'help' => 'Facultatif',
                 'attr' => [
                     'class' => 'text-field'
                 ]
             ])
             ->add('pictureFile', FileType::class, [
                 'mapped' => false,
-                'label' => 'Avatar'
+                'label' => 'Avatar',
+                'constraints' => [
+                    new Image([
+                        'maxSize' => '1M'
+                    ]),
+                    new NotNull([
+                        'message'  => 'Vous devez ajouter une image pour votre avatar'
+                    ])
+                ]
             ])
             ->add('cgu', CheckboxType::class, [
                 'label' => 'J\'accepte les conditions générales d\'utilisation',

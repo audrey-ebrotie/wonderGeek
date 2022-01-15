@@ -31,7 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
-    
     #[Assert\NotBlank(message :"Vous devez saisir un mot de passe")]
     #[Assert\Length(
         min:6,
@@ -88,13 +87,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(targetEntity: UserLevel::class, inversedBy: 'users')]
     private $level;
 
+    #[Assert\NotBlank(message : "Vous devez renseigner votre ville")]
     #[ORM\Column(type: 'string', length: 60)]
     private $city;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $picture;
     
-
     public function __construct()
     {
         $this->ownedEvents = new ArrayCollection();

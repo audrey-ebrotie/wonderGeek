@@ -32,3 +32,7 @@ textarea {
 #event_endAt_time_minute {
   color: grey;
 }
+
+.form-error-icon {
+  display: none;
+}

@@ -15,19 +15,18 @@
             <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
         </div>
         <div class="boardGame-summary d-flex flex-column">
-                <p class="boardGame-summary__description my-3">
-                    {{ boardGame.description }}
-                </p>
-                <aside class="boardGame-summary__detail my-3">
-                    <ul>
-                        <li>
-                            <i class="fas fa-tags"></i>
-                            Genre : {{ boardGame.category.name }}
-                        </li>
-                    </ul>
-                </aside>
-            </div>
-
+            <p class="boardGame-summary__description my-3">
+                {{ boardGame.description }}
+            </p>
+            <aside class="boardGame-summary__detail my-3 text-center">
+                <ul>
+                    <li>
+                        <i class="fas fa-tags"></i>
+                        Genre : {{ boardGame.category.name }}
+                    </li>
+                </ul>
+            </aside>
+        </div>
     </article>
 {% endblock %}
 

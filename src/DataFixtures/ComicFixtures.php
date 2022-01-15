@@ -16,7 +16,6 @@ class ComicFixtures extends Fixture implements DependentFixtureInterface
                 'https://c8.alamy.com/compfr/t27dd2/italie-1973-premiere-edition-de-marvel-comic-books-couvrir-de-captain-america-t27dd2.jpg',
                 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengers50_infinitysaga_variant.jpg',
                 'https://cdnb.artstation.com/p/assets/images/images/012/822/497/large/alex-loken-cover.jpg?1536692282&dl=1',
-                'https://static.wikia.nocookie.net/marveldatabase/images/d/d8/Deadpool_Vol_3_1.jpg/revision/latest?cb=20191227043225',
                 'https://mlpnk72yciwc.i.optimole.com/cqhiHLc.WqA8~2eefa/w:auto/h:auto/q:75/https://bleedingcool.com/wp-content/uploads/2020/09/TWDDLX01_Adams-Cover.jpg',
                 'https://www.dccomics.com/sites/default/files/imce/2021/11-NOV/BM_Cv118_1in25_var_618447d1a5e754.72998228.jpg',
                 'https://www.gamespot.com/a/uploads/original/1562/15626911/3002107-5032115-04-variant.jpg',

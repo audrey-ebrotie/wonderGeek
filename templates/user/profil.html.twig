@@ -10,10 +10,21 @@
 {% block body %}
 <h1> Mon profil </h1>
 
+<<<<<<< HEAD
 <div class="card border-light mb-3">
   <h2 class="card-header"> <img src="/uploads/avatar/{{user.picture}}" alt="Avatar de profil de {{user.username}}"><br>
   {{user.username}} <br>
   de {{user.city}} né le {{user.birthdate|date('d/m/Y')}}</h2>
+=======
+<div class="card border-light mb-3" style="max-width: 18rem;">
+  <div class="card-header">
+    {% if user.picture matches '{^http}' %}
+            <img src="{{ user.picture }}" alt="{{ user.name }}">
+        {% else %}
+            <img src="{{ asset('uploads/user_avatars/' ~ user.picture) }}" alt="{{ user.username }}">
+        {% endif %}
+        </div> {{user.username}} <br> de {{user.city}} né le {{user.birthdate|date('d/m/Y')}}</div>
+>>>>>>> 75cc49af0b241a128ef02082933c7284f850260f
   <div class="card-body">
     <h3 class="card-title">Information de {{user.username}} </h3>
     <p class="card-text">

@@ -44,25 +44,25 @@ body {
   margin: 0;
 }
 
-.event .event-summary aside {
+.event .event-summary div {
   flex: 1;
   background-color: #212529;
   color: white;
   border-radius: 10px;
 }
 
-.event .event-summary aside ul {
+.event .event-summary div ul {
   margin: 0;
 }
 
-.event .event-summary aside li {
+.event .event-summary div li {
   position: relative;
   list-style-type: none;
   margin: 2% 2%;
   font-size: 1.2rem;
 }
 
-.event .event-summary aside li::before {
+.event .event-summary div li::before {
   position: absolute;
   left: -1.9rem;
   content: attr(data-icon);

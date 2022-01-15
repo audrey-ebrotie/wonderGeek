@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\UserLevel;
 use App\Entity\Event;
 use App\Form\EventType;
+use App\Entity\UserLevel;
+use App\Service\UploaderHelper;
+use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,7 +51,7 @@ class EventController extends AbstractController
     #[Route('/new', name: 'new')]
     #[Route('/{id}/edit', name: 'edit', requirements: ['id' => '\d+'])]
     #[IsGranted('ROLE_USER')]
-    public function eventForm(Request $request, $id = null): Response
+    public function eventForm(Request $request, UploaderHelper $uploaderHelper, $id = null): Response
     {
         if($id){
             $event = $this->eventRepository->find($id);
@@ -63,6 +65,11 @@ class EventController extends AbstractController
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+
+            $uploadedFile = $form['pictureFile']->getData();
+
+            $newFilename = $uploaderHelper->uploadEventPicture($uploadedFile);
+            $event->setPicture($newFilename);
 
             $this->em->persist($event);
             $this->em->flush();

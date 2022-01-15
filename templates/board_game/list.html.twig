@@ -8,20 +8,20 @@
 
 {% block body %}
 
-    <h1 class="py-2">Les jeux de société</h1>
+    <h1 class="py-2 text-center">Les jeux de société</h1>
 
-    <div class="boardGames row">
-        {% for boardGame in boardGames %}
-        <div class="col col-md-12 col-lg-6">
-            <article class="card boardGame">
-                <div class="card-body">
-                    <div class="boardGame-picture text-center p-1">    
-                        <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
-                    </div>
-                    <div class="boardGame-summary">
-                        <h2 class="text-center">{{ boardGame.name }}</h2>
-                        <p>{{ boardGame.description|slice(0, 250) }} ...</p>
-                        <div>
+    <div class="boardGames container-fluid">
+        <div class="row">
+            {% for boardGame in boardGames %}
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <article class="card bg-dark boardGame">
+                    <div class="card-body p-3 pushbtn">
+                        <div class="boardGame-picture text-center p-1">    
+                            <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
+                        </div>
+                        <div class="boardGame-summary">
+                            <h2 class="text-center py-3">{{ boardGame.name }}</h2>
+                            <p class="px-3 py-2">{{ boardGame.description|slice(0, 250) }} ...</p>
                             <ul>
                                 <li>
                                     <i class="fas fa-tags"></i>
@@ -33,10 +33,10 @@
                             <a href="{{ path('board_game_show', {id: boardGame.id}) }}" class="button">Plus de détails</a>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 
 {% endblock %}
