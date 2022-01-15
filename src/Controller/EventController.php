@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Event;
+use App\Entity\Booking;
 use App\Form\EventType;
 use App\Entity\UserLevel;
 use App\Service\UploaderHelper;
 use Gedmo\Sluggable\Util\Urlizer;
 use App\Form\SearchEventType;
+use Symfony\Component\Uid\Uuid;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -106,4 +108,24 @@ class EventController extends AbstractController
         $this->addFlash('notice', 'L\'évènement a bien été annulé.');
         return $this->redirectToRoute('event_list');
     }
-}
+
+    #[Route('/{id}/booking', name: 'booking', requirements: ['id' => '\d+'])]
+    #[IsGranted('BOOK_EVENT', subject: 'event')]
+    public function booking(Request $request, Event $event): Response
+    {
+                $booking = new Booking();
+                $booking->setEvent($event);
+                $booking->setUser($this->getUser());
+                $booking->setReference(Uuid::v4());
+
+                $this->em->persist($booking);
+                $this->em->flush();
+
+                return $this->redirectToRoute('booking_confirmation', [
+                    'reference' => $booking->getReference(),
+                ]);
+            }
+        }
+        
+    
+
