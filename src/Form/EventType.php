@@ -84,11 +84,11 @@ class EventType extends AbstractType
             ])
             ->add('startAt', DateTimeType::class, [
                 'label' => 'Date de début',
-                'date_widget' => 'single_text'
+                'widget' => 'single_text'
             ])
             ->add('endAt', DateTimeType::class, [
                 'label' => 'Date de fin',
-                'date_widget' => 'single_text',
+                'widget' => 'single_text',
                 'attr' => [
                     'class' => 'text-field'
                 ]

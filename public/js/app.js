@@ -27,7 +27,8 @@ setTimeout(() => {
             notification.remove();
         }, 500);
     }
-}, 600);
+}, 5000);
+
 
 
 
