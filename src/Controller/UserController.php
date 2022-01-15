@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Service\UploaderHelper;
-use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +27,33 @@ class UserController extends AbstractController
         $this->em = $em;
         $this->userRepository = $userRepository;
         $this->hasher = $hasher;
+    }
+
+    #[Route(' ', name: 'list')]
+    public function usersList(Request $request): Response
+    {
+        //  Formulaire de recherche
+        // $searchForm = $this->createForm(SearchUserype::class);
+        // $searchForm->handleRequest($request);
+        // $searchCriteria = $searchForm->getData();
+
+        // $users = $this->userRepository->search($searchCriteria);  
+
+        // Système de pagination
+        $limit = 18;        
+        $page = (int)$request->query->get("page", 1);  
+        
+        $users = $this->userRepository->getPaginatedUsers($page, $limit);       
+        $total = $this->userRepository->getTotalUsers();   
+
+        return $this->render('user/list.html.twig', [
+            'users' => $users,
+            'total' => $total,
+            'limit' => $limit,
+            'page' => $page,
+            // 'searchForm' => $searchForm->createView(),
+    
+        ]);
     }
     
     #[Route('/register', name: 'register')]
@@ -91,13 +117,13 @@ class UserController extends AbstractController
         return $this->redirectToRoute('main_index');
     }
 
-    #[Route('/{id}', name: 'profil', requirements: ['id' => '\d+'])]
-    public function profil($id):Response
+    #[Route('/{id}', name: 'profile', requirements: ['id' => '\d+'])]
+    public function profile($id):Response
     {
         {
             $user = $this->userRepository->find($id);
             
-            return $this->render('user/profil.html.twig', [
+            return $this->render('user/profile.html.twig', [
                 'user' => $user
             ]);
         }
@@ -122,7 +148,7 @@ class UserController extends AbstractController
             $message = sprintf('Votre compte a bien été modifié');
             $this->addFlash('notice', $message);
 
-        }  return $this->redirectToRoute('user_profil',[
+        }  return $this->redirectToRoute('user_profile',[
                 'id' => $user->getId()
             ]);      
     }

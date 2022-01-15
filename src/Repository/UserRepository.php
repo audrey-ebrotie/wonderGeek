@@ -36,32 +36,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    /**
+     * Pagination : renvoi 18 élements par page
+     * @return void
+     */
+    public function getPaginatedUsers($page, $limit){
+        $query = $this->createQueryBuilder('u')
+        ->setFirstResult(($page * $limit) - $limit)
+        ->setMaxResults($limit)
+    ;
+    return $query->getQuery()->getResult();
+}
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+/**
+ * Pagination : renvoi le nombre total d'éléments
+ * @return void
+ */
+public function getTotalUsers(){
+    $query = $this->createQueryBuilder('u')
+        ->select('COUNT(u)')
+    ;
+    return $query->getQuery()->getSingleScalarResult();
+}
+
 }

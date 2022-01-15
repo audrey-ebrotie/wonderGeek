@@ -15,10 +15,11 @@
           <li><a href="{{ path('board_game_list') }}">Jeux de société</a></li>
           <li><a href="{{ path('manga_list') }}">Mangas</a></li>
           <li><a href="{{ path('comic_list') }}">Comics</a></li>
+          <li><a href="{{ path('user_list') }}">Utilisateurs</a></li>
           <li><a href="{{ path('main_contact') }}">Contact</a></li>
 
           {% if app.user %}
-          <li><a href="{{ path('user_profil', {id: app.user.id}) }}">{{ app.user.username }}</a></li>
+          <li><a href="{{ path('user_profile', {id: app.user.id}) }}">{{ app.user.username }}</a></li>
           <li><a href="{{ path('user_logout') }}">Déconnexion</a> </li>
 
           {% else %}

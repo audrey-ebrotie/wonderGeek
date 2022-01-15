@@ -27,7 +27,6 @@ class EventRepository extends ServiceEntityRepository
             $query = $this->createQueryBuilder('e')
             ->setFirstResult(($page * $limit) - $limit)
             ->setMaxResults($limit)
-
         ;
         return $query->getQuery()->getResult();
     }

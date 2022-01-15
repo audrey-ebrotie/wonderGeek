@@ -36,3 +36,9 @@ textarea {
 .form-error-icon {
   display: none;
 }
+
+.form-check {
+  width: 45%;
+  margin: auto;
+  padding: 2%;
+}
