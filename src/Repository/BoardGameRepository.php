@@ -47,7 +47,10 @@ public function getPaginatedBoardGames($page, $limit){
         $stmt = $this->createQueryBuilder('b');
     
         if(!empty($criteria['query'])){
+            $stmt->leftJoin('b.category', 'c');
+
             $stmt->where('b.name LIKE :query');
+            $stmt->orwhere('c.name LIKE :query');
             $stmt->setParameter('query', '%' . $criteria['query'] . '%');
         }
     

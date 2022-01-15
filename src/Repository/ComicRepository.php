@@ -47,7 +47,10 @@ class ComicRepository extends ServiceEntityRepository
         $stmt = $this->createQueryBuilder('c');
 
         if(!empty($criteria['query'])){
+            $stmt->leftJoin('c.category', 'a');
             $stmt->where('c.name LIKE :query');
+            $stmt->orwhere('c.author LIKE :query');
+            $stmt->orwhere('a.name LIKE :query');
             $stmt->setParameter('query', '%' . $criteria['query'] . '%');
         }
         

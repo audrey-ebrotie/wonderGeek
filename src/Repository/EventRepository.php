@@ -48,7 +48,13 @@ class EventRepository extends ServiceEntityRepository
         $stmt = $this->createQueryBuilder('e');
 
         if(!empty($criteria['query'])){
-            $stmt->where('e.name LIKE :query');
+            $stmt->leftJoin('e.activity', 'a');
+            $stmt->leftJoin('e.category', 'c');
+
+            $stmt->where('a.name LIKE :query');
+            $stmt->orwhere('e.name LIKE :query');
+            $stmt->orwhere('c.name LIKE :query');
+            
             $stmt->setParameter('query', '%' . $criteria['query'] . '%');
         }
 
