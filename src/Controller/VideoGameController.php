@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\VideoGame;
+use App\Form\SearchVideoGameType;
 use App\Repository\VideoGameRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,17 +23,26 @@ class VideoGameController extends AbstractController
     #[Route(' ', name: 'list')]
     public function videoGamesList(Request $request): Response
     {
+        // Formulaire de recherche
+        $searchForm = $this->createForm(SearchVideoGameType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $videoGames = $this->videoGameRepository->search($searchCriteria);
+
+        // Système de pagination
         $limit = 12;        
         $page = (int)$request->query->get("page", 1);    
         
         $videoGames = $this->videoGameRepository->getPaginatedVideoGames($page, $limit);       
         $total = $this->videoGameRepository->getTotalVideoGames(); 
-        
+
         return $this->render('video_game/list.html.twig', [
             'videoGames' => $videoGames,
             'total' => $total,
             'limit' => $limit,
-            'page' => $page
+            'page' => $page,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

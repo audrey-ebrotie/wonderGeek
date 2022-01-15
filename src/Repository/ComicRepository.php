@@ -20,55 +20,38 @@ class ComicRepository extends ServiceEntityRepository
     }
 
     /**
-     * Returns 12 comics per page
+     * Pagination : renvoi 12 élements par page
      * @return void
      */
     public function getPaginatedComics($page, $limit){
         $query = $this->createQueryBuilder('c')
         ->setFirstResult(($page * $limit) - $limit)
         ->setMaxResults($limit)
-
     ;
     return $query->getQuery()->getResult();
 }
 
 /**
- * Returns the total number of comics
+ * Pagination : Renvoi le nombre total d'éléments
  * @return void
  */
-public function getTotalComics(){
+    public function getTotalComics(){
     $query = $this->createQueryBuilder('c')
         ->select('COUNT(c)')
     ;
     return $query->getQuery()->getSingleScalarResult();
-}
-
-    // /**
-    //  * @return Comic[] Returns an array of Comic objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Comic
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+// Formulaire de recherche
+    public function search($criteria){
+        $stmt = $this->createQueryBuilder('c');
+
+        if(!empty($criteria['query'])){
+            $stmt->where('c.name LIKE :query');
+            $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+        
+    return $stmt->getQuery()->getResult();
     }
-    */
+
 }

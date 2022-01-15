@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\BoardGame;
+use App\Form\SearchBoardGameType;
 use App\Repository\BoardGameRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,17 +23,26 @@ class BoardGameController extends AbstractController
     #[Route(' ', name: 'list')]
     public function boardGamesList(Request $request): Response
     {
+        // Formulaire de recherche
+        $searchForm = $this->createForm(SearchBoardGameType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $boardGames = $this->boardGameRepository->search($searchCriteria);
+
+        // Système de pagination
         $limit = 12;        
         $page = (int)$request->query->get("page", 1);    
         
         $boardGames = $this->boardGameRepository->getPaginatedBoardGames($page, $limit);       
         $total = $this->boardGameRepository->getTotalBoardGames();
-        
+
         return $this->render('board_game/list.html.twig', [
             'boardGames' => $boardGames,
             'total' => $total,
             'limit' => $limit,
-            'page' => $page
+            'page' => $page,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

@@ -20,7 +20,7 @@ class EventRepository extends ServiceEntityRepository
     }
 
     /**
-     * Returns 12 events per page
+     * Pagination : renvoi 12 élements par page
      * @return void
      */
     public function getPaginatedEvents($page, $limit){
@@ -33,7 +33,7 @@ class EventRepository extends ServiceEntityRepository
     }
 
     /**
-     * Returns the total number of events
+     * Pagination : renvoi le nombre total d'éléments
      * @return void
      */
     public function getTotalEvents(){
@@ -43,32 +43,16 @@ class EventRepository extends ServiceEntityRepository
         return $query->getQuery()->getSingleScalarResult();
     }
 
-    // /**
-    //  * @return Event[] Returns an array of Event objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+// Formulaire de recherche
+    public function search($criteria){
+        $stmt = $this->createQueryBuilder('e');
 
-    /*
-    public function findOneBySomeField($value): ?Event
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        if(!empty($criteria['query'])){
+            $stmt->where('e.name LIKE :query');
+            $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+
+        return $stmt->getQuery()->getResult();
     }
-    */
+
 }

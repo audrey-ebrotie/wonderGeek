@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Avatar;
 use App\Form\UserType;
 use App\Service\UploaderHelper;
 use Gedmo\Sluggable\Util\Urlizer;
@@ -97,7 +96,7 @@ class UserController extends AbstractController
             $user = $this->userRepository->find($id);
             
             return $this->render('user/profil.html.twig', [
-                'user' => $user,
+                'user' => $user
             ]);
         }
     }

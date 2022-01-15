@@ -73,6 +73,13 @@ h1 {
   color: white;
 }
 
+.fa-search {
+  background-color: #3d7f3c;
+  color: white;
+  padding: 40%;
+  border-radius: 5px;
+}
+
 a {
   text-decoration: none;
 }
@@ -98,7 +105,29 @@ a {
     display: flex;
     flex-direction: column;
   }
-  .main-header {
+
+  h1 {
+    color: #002a35;
+  }
+
+  .comics .comic {
+    margin: 2% 0;
+    display: flex;
+    gap: 1%;
+    min-height: 100%;
+  }
+
+  .comics .comic .comic-picture {
+    position: relative;
+  }
+
+  .comics .comic img {
+    width: 350px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .comics .comic .comic-summary {
     display: flex;
     flex-direction: column;
   }

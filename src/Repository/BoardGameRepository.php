@@ -19,56 +19,39 @@ class BoardGameRepository extends ServiceEntityRepository
         parent::__construct($registry, BoardGame::class);
     }
 
-    /**
-     * Returns 12 board games per page
-     * @return void
-     */
-    public function getPaginatedBoardGames($page, $limit){
-        $query = $this->createQueryBuilder('b')
-        ->setFirstResult(($page * $limit) - $limit)
-        ->setMaxResults($limit)
-
+/**
+ * Pagination : renvoi 12 élements par page
+ * @return void
+ */
+public function getPaginatedBoardGames($page, $limit){
+    $query = $this->createQueryBuilder('b')
+    ->setFirstResult(($page * $limit) - $limit)
+    ->setMaxResults($limit)
     ;
     return $query->getQuery()->getResult();
 }
 
 /**
- * Returns the total number of board games
+ * Pagination : renvoi le nombre total d'éléments
  * @return void
  */
-public function getTotalBoardGames(){
-    $query = $this->createQueryBuilder('b')
-        ->select('COUNT(b)')
-    ;
-    return $query->getQuery()->getSingleScalarResult();
-}
-
-    // /**
-    //  * @return BoardGame[] Returns an array of BoardGame objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+    public function getTotalBoardGames(){
+        $query = $this->createQueryBuilder('b')
+            ->select('COUNT(b)')
         ;
+        return $query->getQuery()->getSingleScalarResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?BoardGame
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+// Formulaire de recherche
+    public function search($criteria){
+        $stmt = $this->createQueryBuilder('b');
+    
+        if(!empty($criteria['query'])){
+            $stmt->where('b.name LIKE :query');
+            $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+    
+        return $stmt->getQuery()->getResult();
     }
-    */
-}
+    
+    }

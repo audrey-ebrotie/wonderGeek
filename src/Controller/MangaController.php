@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Manga;
+use App\Form\SearchMangaType;
 use App\Repository\MangaRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +23,14 @@ class MangaController extends AbstractController
     #[Route(' ', name: 'list')]
     public function mangaList(Request $request): Response
     {
+        // Formulaire de recherche
+        $searchForm = $this->createForm(SearchMangaType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $mangas = $this->mangaRepository->search($searchCriteria);
+
+        // Système de pagination
         $limit = 12;        
         $page = (int)$request->query->get("page", 1);    
         
@@ -32,7 +41,8 @@ class MangaController extends AbstractController
             'mangas' => $mangas,
             'total' => $total,
             'limit' => $limit,
-            'page' => $page
+            'page' => $page,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

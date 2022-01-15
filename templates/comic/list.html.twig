@@ -8,11 +8,22 @@
 
 {% block body %}
 
-    <h1 class="py-2 text-center">Les Comics</h1>
+    <h1 class="py-4 text-center">Les Comics</h1>
+    
+    {{ form_start(searchForm) }}
+    <div class="row g-3 my-2">
+        <div class="col-sm-7">
+        {{ form_row(searchForm.query) }}  
+        </div>
+        <div class="col-sm">
+        {{ form_row(searchForm.submit) }}
+        </div>
+    </div>
+    {{ form_end(searchForm) }}
 
     <div class="comics row">
         {% for comic in comics %}
-        <div class="col col-sm-12 col-md-6 col-lg-4">
+        <div class="col col-sm-12 col-md-6 col-lg-4 my-3">
             <article class="card bg-dark comic">
                 <div class="card-body">
                     <div class="comic-picture text-center p-1">    

@@ -20,20 +20,19 @@ class MangaRepository extends ServiceEntityRepository
     }
 
     /**
-     * Returns 12 mangas per page
+     * Pagination : renvoi 12 élements par page
      * @return void
      */
     public function getPaginatedMangas($page, $limit){
         $query = $this->createQueryBuilder('m')
         ->setFirstResult(($page * $limit) - $limit)
         ->setMaxResults($limit)
-
     ;
     return $query->getQuery()->getResult();
 }
 
 /**
- * Returns the total number of mangas
+ * Pagination : renvoi le nombre total d'éléments
  * @return void
  */
 public function getTotalMangas(){
@@ -43,32 +42,17 @@ public function getTotalMangas(){
     return $query->getQuery()->getSingleScalarResult();
 }
 
-    // /**
-    //  * @return Manga[] Returns an array of Manga objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+// Formulaire de recherche 
 
-    /*
-    public function findOneBySomeField($value): ?Manga
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+    public function search($criteria){
+        $stmt = $this->createQueryBuilder('m');
+    
+        if(!empty($criteria['query'])){
+            $stmt->where('m.name LIKE :query');
+            $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+    
+        return $stmt->getQuery()->getResult();
     }
-    */
-}
+    
+    }

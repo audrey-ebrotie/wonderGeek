@@ -20,20 +20,19 @@ class VideoGameRepository extends ServiceEntityRepository
     }
 
 /**
-     * Returns 12 video games per page
+     * Pagination : renvoi 12 élements par page
      * @return void
      */
     public function getPaginatedVideoGames($page, $limit){
         $query = $this->createQueryBuilder('v')
         ->setFirstResult(($page * $limit) - $limit)
         ->setMaxResults($limit)
-
     ;
     return $query->getQuery()->getResult();
 }
 
 /**
- * Returns the total number of video games
+ * Pagination : renvoi le nombre total d'éléments
  * @return void
  */
 public function getTotalVideoGames(){
@@ -43,49 +42,18 @@ public function getTotalVideoGames(){
     return $query->getQuery()->getSingleScalarResult();
 }
 
-    // public function list()
-    // {
-    //     $stmt = $this->createQueryBuilder('g');
-
-    //     if(!empty($criteria['query'])){
-    //         $stmt->leftJoin('e.place', 'p');
-
-    //         $stmt->where('g.name LIKE :query');
-    //         $stmt->orWhere('g.description LIKE :query');
-    //         $stmt->orWhere('g.name LIKE :query');
-    //         $stmt->setParameter('query', '%' . $criteria['query'] . '%');
-    //         $stmt->andWhere('g.category = :category');
-    //         $stmt->setParameter('category', $criteria['category']);
-    //     }
-
-    //     return $stmt->getQuery()->getResult();
-    // }
-    // /**
-    //  * @return VideoGame[] Returns an array of VideoGame objects
-    //  */
-    /*
-    public function findByExampleField($value)
+/**
+ * Formulaire de recherche
+*/ 
+    public function search($criteria)
     {
-        return $this->createQueryBuilder('v')
-            ->andWhere('v.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('v.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $stmt = $this->createQueryBuilder('g');
 
-    /*
-    public function findOneBySomeField($value): ?VideoGame
-    {
-        return $this->createQueryBuilder('v')
-            ->andWhere('v.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        if(!empty($criteria['query'])){
+            $stmt->where('g.name LIKE :query');
+            $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+
+        return $stmt->getQuery()->getResult();
     }
-    */
 }

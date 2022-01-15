@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Comic;
+use App\Form\SearchComicType;
 use App\Repository\ComicRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +23,14 @@ class ComicController extends AbstractController
     #[Route(' ', name: 'list')]
     public function comicList(Request $request): Response
     {
+        // Formulaire de recherche
+        $searchForm = $this->createForm(SearchComicType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $comics = $this->comicRepository->search($searchCriteria);
+
+        // Système de pagination
         $limit = 12;        
         $page = (int)$request->query->get("page", 1);    
         
@@ -32,7 +41,8 @@ class ComicController extends AbstractController
             'comics' => $comics,
             'total' => $total,
             'limit' => $limit,
-            'page' => $page
+            'page' => $page,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

@@ -212,6 +212,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getAge()
+    {
+        $now = new \DateTime('now');
+        $age = $this->getBirthdate();
+        $difference = $now->diff($age);
+
+        return $difference->format('%y ans');
+    }
+
     /** 
     * @return Collection|Event[]
     */
