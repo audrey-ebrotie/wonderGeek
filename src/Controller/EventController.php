@@ -78,7 +78,7 @@ class EventController extends AbstractController
             $isNew = false;
         } else {
             $event = new Event();
-            $event->setOwner($this->getUser());  /* On définit le onwer une fois à la création de l'event pour éviter un chgt de owner en cas d'edit */
+            $event->setOwner($this->getUser());  /* On définit le owner une fois à la création de l'event pour éviter un chgt de owner en cas d'edit */
             $isNew = true;
         }
         $form = $this->createForm(EventType::class, $event);

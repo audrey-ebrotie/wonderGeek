@@ -1,70 +1,132 @@
 body {
-    margin: 0;
-    font-size: 16px;
-    font-family: "Roboto", sans-serif;
-    background-color: #002a35;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  margin: 0;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  background-color: #002a35;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.heart-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 3% 3% 0 0;
+}
+
+.heart-icon {
+  font-size: 2rem;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+
+.heart-icon:hover,
+.heart-icon:active {
+  -webkit-animation: heart-anim 1s ease;
+  animation: heart-anim 1s ease;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+
+@-webkit-keyframes heart-anim {
+  from {
+    background-size: 100%;
   }
-  .comic .comic-view {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2%;
+  to {
+    -webkit-text-stroke: initial;
+    color: transparent;
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(#ffffff),
+      to(#ef3b36)
+    );
+    background-image: linear-gradient(0deg, #ffffff 0%, #ef3b36 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
   }
-  
-  .comic .comic-view img {
-    width: 100%;
-    height: 600px;
-    object-fit: contain;
+}
+
+@keyframes heart-anim {
+  from {
+    -webkit-text-fill-color: transparent;
+    background-size: 100%;
   }
-  
-  .comic .comic-view h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 1%;
-    font-size: 1.6rem;
-    border-radius: 5px;
+  to {
+    -webkit-text-stroke: initial;
+    color: transparent;
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(#ffffff),
+      to(#ef3b36)
+    );
+    background-image: linear-gradient(0deg, #ffffff 0%, #ef3b36 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
   }
-  
-  .comic .comic-summary {
-    display: flex;
-    margin: 1% 2%;
-    gap: 2%;
-  }
-  
-  .comic .comic-summary p {
-    flex: 2;
-    margin: 0;
-  }
-  
-  .comic .comic-summary aside {
-    flex: 1;
-    background-color: #212529;
-    color: white;
-    border-radius: 10px;
-  }
-  
-  .comic .comic-summary aside ul {
-    margin: 0;
-  }
-  
-  .comic .comic-summary aside li {
-    position: relative;
-    list-style-type: none;
-    margin: 2% 2%;
-    font-size: 1.2rem;
-  }
-  
-  .comic .comic-summary aside i {
-    color: #535ba8;
-    font-size: 1.2rem;
-    margin-right: 1rem;
-  }
-  
+}
+
+.comic .comic-view {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.comic .comic-view img {
+  width: 100%;
+  height: 600px;
+  object-fit: contain;
+}
+
+.comic .comic-view h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1%;
+  font-size: 1.6rem;
+  border-radius: 5px;
+}
+
+.comic .comic-summary {
+  display: flex;
+  margin: 1% 2%;
+  gap: 2%;
+}
+
+.comic .comic-summary p {
+  flex: 2;
+  margin: 0;
+}
+
+.comic .comic-summary aside {
+  flex: 1;
+  background-color: #212529;
+  color: white;
+  border-radius: 10px;
+}
+
+.comic .comic-summary aside ul {
+  margin: 0;
+}
+
+.comic .comic-summary aside li {
+  position: relative;
+  list-style-type: none;
+  margin: 2% 2%;
+  font-size: 1.2rem;
+}
+
+.comic .comic-summary aside i {
+  color: #535ba8;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}

@@ -101,6 +101,67 @@ a {
   border-radius: 5px;
 }
 
+.heart-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.heart-icon {
+  font-size: 2rem;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+
+.heart-icon:hover,
+.heart-icon:active {
+  -webkit-animation: heart-anim 1s ease;
+  animation: heart-anim 1s ease;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+
+@-webkit-keyframes heart-anim {
+  from {
+    background-size: 100%;
+  }
+  to {
+    -webkit-text-stroke: initial;
+    color: transparent;
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(#ffffff),
+      to(#ef3b36)
+    );
+    background-image: linear-gradient(0deg, #ffffff 0%, #ef3b36 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+  }
+}
+
+@keyframes heart-anim {
+  from {
+    -webkit-text-fill-color: transparent;
+    background-size: 100%;
+  }
+  to {
+    -webkit-text-stroke: initial;
+    color: transparent;
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(#ffffff),
+      to(#ef3b36)
+    );
+    background-image: linear-gradient(0deg, #ffffff 0%, #ef3b36 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+  }
+}
+
 @media (max-width: 720px) {
   .videoGame {
     display: flex;

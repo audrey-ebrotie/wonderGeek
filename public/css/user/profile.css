@@ -4,6 +4,17 @@ main {
   align-items: center;
 }
 
+h4 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .avatar {
   width: 10rem;
   height: auto;
@@ -15,9 +26,14 @@ main {
   border-radius: 20px;
   background-color: rgb(206, 209, 212);
   width: 50rem;
-  height: 30rem;
+  height: auto;
   overflow: hidden;
 }
+
+.card-text {
+  margin-bottom: 5%;
+}
+
 .card-header {
   text-align: center;
   font-size: xx-large;
@@ -31,6 +47,27 @@ li {
   list-style-type: none;
 }
 
+.container-favorites img {
+  width: 200px;
+  height: auto;
+  margin-right: 1rem;
+  box-shadow: 2px 2px 10px black;
+  transition: 0.2s all ease-in-out;
+}
+
+.container-favorites img:hover {
+  transform: translateY(-5px);
+}
+
+.favorites {
+  display: flex;
+  margin-bottom: 5%;
+}
+
 .username {
   text-transform: uppercase;
+}
+
+.bookedEvents {
+  background-color: #25515e;
 }
