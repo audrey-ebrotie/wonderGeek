@@ -2,11 +2,15 @@
 
 namespace App\Controller\Admin;
 
-use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use App\Entity\Comic;
+use App\Entity\Manga;
+use App\Entity\BoardGame;
+use App\Entity\VideoGame;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -25,6 +29,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::linkToCrud('Jeux vidéos', 'fas fa-gamepad', VideoGame::class);
+        yield MenuItem::linkToCrud('Jeux de société', 'fas fa-dice', BoardGame::class);
+        yield MenuItem::linkToCrud('Mangas', 'fas fa-book-reader', Manga::class);
+        yield MenuItem::linkToCrud('Comics', 'fas fa-book-reader', Comic::class);
     }
 }

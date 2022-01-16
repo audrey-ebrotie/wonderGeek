@@ -17,7 +17,11 @@
     <article class="boardGame container-fluid">
         <h1 class="py-3 text-center">{{ boardGame.name }}</h1>
         <div class="boardGame-view">
-            <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
+            {% if boardGame.picture matches '{^http}' %}
+                <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
+            {% else %}
+                <img src="{{ asset('uploads/boardGame_pictures/' ~ boardGame.picture) }}" alt="{{ boardGame.name }}">
+            {% endif %}
         </div>
         <div class="boardGame-summary d-flex flex-column">
             <p class="boardGame-summary__description my-3">

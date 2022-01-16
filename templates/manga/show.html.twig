@@ -17,7 +17,11 @@
     <article class="manga container-fluid">
         <h1 class="py-3 text-center">{{ manga.name }}</h1>
         <div class="manga-view">
-            <img src="{{ manga.picture }}" alt="{{ manga.name }}">
+            {% if manga.picture matches '{^http}' %}
+                <img src="{{ manga.picture }}" alt="{{ manga.name }}">
+            {% else %}
+                <img src="{{ asset('uploads/manga_pictures/' ~ manga.picture) }}" alt="{{ manga.name }}">
+            {% endif %}
         </div>
         <div class="manga-summary d-flex flex-column">
                 <p class="manga-summary__description my-3">

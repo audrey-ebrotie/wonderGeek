@@ -34,7 +34,11 @@
                         <article class="videoGame">
 
                             <div class="videoGame-picture text-center p-1">    
-                                <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
+                                {% if videoGame.picture matches '{^http}' %}
+                                    <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
+                                {% else %}
+                                    <img src="{{ asset('uploads/videoGame_pictures/' ~ videoGame.picture) }}" alt="{{ videoGame.name }}">
+                                {% endif %}
                             </div>
 
                             <div class="videoGame-summary">

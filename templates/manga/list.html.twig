@@ -32,7 +32,11 @@
                     </div>
 
                     <div class="manga-picture text-center p-1">    
-                        <img src="{{ manga.picture }}" alt="{{ manga.name }}">
+                        {% if manga.picture matches '{^http}' %}
+                            <img src="{{ manga.picture }}" alt="{{ manga.name }}">
+                        {% else %}
+                            <img src="{{ asset('uploads/manga_pictures/' ~ manga.picture) }}" alt="{{ manga.name }}">
+                        {% endif %}
                     </div>
                     <div class="manga-summary">
                         <h2 class="text-center">{{ manga.name }}</h2>

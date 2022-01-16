@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier ton profil - {{ parent() }}{% endblock %}
+{% block title %}Modifier tes informations - {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-center py-4">Inscription</h1>
+    <h1 class="text-center py-4">Modification de tes informations</h1>
 
     {{ form_start(form) }}
 
@@ -61,6 +61,13 @@
                 {{ form_widget(form.pictureFile) }}                
                 {{ form_help(form.pictureFile) }}
             </div>
+
+            <div class="form-group py-2 my-2">
+                {{ form_label(form.cgu) }}
+                {{ form_widget(form.cgu) }}                
+                {{ form_help(form.cgu) }}
+            </div>
+
         </div>
     </div>
 

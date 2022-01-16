@@ -33,7 +33,11 @@
                         </div>
 
                         <div class="boardGame-picture text-center p-1">    
-                            <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
+                            {% if boardGame.picture matches '{^http}' %}
+                                <img src="{{ boardGame.picture }}" alt="{{ boardGame.name }}">
+                            {% else %}
+                                <img src="{{ asset('uploads/boardGame_pictures/' ~ boardGame.picture) }}" alt="{{ boardGame.name }}">
+                            {% endif %}
                         </div>
                         <div class="boardGame-summary">
                             <h2 class="text-center py-3">{{ boardGame.name }}</h2>

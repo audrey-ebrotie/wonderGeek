@@ -17,7 +17,11 @@
     <article class="comic container-fluid">
         <h1 class="py-3 text-center">{{ comic.name }}</h1>
         <div class="comic-view">
-            <img src="{{ comic.picture }}" alt="{{ comic.name }}">
+            {% if comic.picture matches '{^http}' %}
+                            <img src="{{ comic.picture }}" alt="{{ comic.name }}">
+                        {% else %}
+                            <img src="{{ asset('uploads/comic_pictures/' ~ comic.picture) }}" alt="{{ comic.name }}">
+                        {% endif %}
         </div>
         <div class="comic-summary d-flex flex-column">
                 <p class="comic-summary__description my-3">

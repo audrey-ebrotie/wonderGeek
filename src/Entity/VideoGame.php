@@ -43,10 +43,10 @@ class VideoGame
     #[Assert\Url(message:"Vous devez saisir une URL valide")]
     private $pictureUrl;
 
-    #[Assert\Expression(
-        "this.getPictureUrl() or this.getPictureFIle()",
-        message:"Vous devez importer une image ou fournir une URL"
-    )]
+    // #[Assert\Expression(
+    //     "this.getPictureUrl() or this.getPictureFIle()",
+    //     message:"Vous devez importer une image ou fournir une URL"
+    // )]
     #[Assert\File(
         maxSize:"2M",
         mimeTypes:"image/jpeg/png",

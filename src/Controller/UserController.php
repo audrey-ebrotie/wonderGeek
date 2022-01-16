@@ -4,16 +4,17 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\SearchUserType;
 use App\Service\UploaderHelper;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/user', name: 'user_')]
 class UserController extends AbstractController
@@ -32,17 +33,16 @@ class UserController extends AbstractController
     #[Route(' ', name: 'list')]
     public function usersList(Request $request): Response
     {
-        //  Formulaire de recherche
-        // $searchForm = $this->createForm(SearchUserype::class);
-        // $searchForm->handleRequest($request);
-        // $searchCriteria = $searchForm->getData();
-
-        // $users = $this->userRepository->search($searchCriteria);  
+         //Formulaire de recherche
+        $searchForm = $this->createForm(SearchUserType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
 
         // Système de pagination
         $limit = 18;        
         $page = (int)$request->query->get("page", 1);  
         
+        $users = $this->userRepository->search($searchCriteria);  
         $users = $this->userRepository->getPaginatedUsers($page, $limit);       
         $total = $this->userRepository->getTotalUsers();   
 
@@ -51,8 +51,7 @@ class UserController extends AbstractController
             'total' => $total,
             'limit' => $limit,
             'page' => $page,
-            // 'searchForm' => $searchForm->createView(),
-    
+            'searchForm' => $searchForm->createView(),
         ]);
     }
     

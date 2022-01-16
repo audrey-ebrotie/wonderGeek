@@ -20,7 +20,11 @@
         <div class="row justify-content-center">
             <div class="col col-lg-6">
                 <div class="videoGame-view">
-                    <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
+                    {% if videoGame.picture matches '{^http}' %}
+                                    <img src="{{ videoGame.picture }}" alt="{{ videoGame.name }}">
+                                {% else %}
+                                    <img src="{{ asset('uploads/videoGame_pictures/' ~ videoGame.picture) }}" alt="{{ videoGame.name }}">
+                                {% endif %}
                 </div>
             
                 <div class="videoGame-summary d-flex flex-column">

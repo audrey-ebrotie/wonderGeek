@@ -32,7 +32,11 @@
                     </div>
 
                     <div class="comic-picture text-center p-1">    
-                        <img src="{{ comic.picture }}" alt="{{ comic.name }}">
+                        {% if comic.picture matches '{^http}' %}
+                            <img src="{{ comic.picture }}" alt="{{ comic.name }}">
+                        {% else %}
+                            <img src="{{ asset('uploads/comic_pictures/' ~ comic.picture) }}" alt="{{ comic.name }}">
+                        {% endif %}
                     </div>
                     <div class="comic-summary">
                         <h2 class="text-center">{{ comic.name }}</h2>
