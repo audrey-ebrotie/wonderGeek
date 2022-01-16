@@ -39,7 +39,7 @@ class EventController extends AbstractController
         $searchForm->handleRequest($request);
         $searchCriteria = $searchForm->getData();
 
-        $events = $this->eventRepository->search($searchCriteria);  
+         
 
         // Système de pagination
         $limit = 12;        
@@ -47,7 +47,7 @@ class EventController extends AbstractController
         
         $events = $this->eventRepository->getPaginatedEvents($page, $limit);       
         $total = $this->eventRepository->getTotalEvents();   
-
+        $events = $this->eventRepository->search($searchCriteria); 
         return $this->render('event/list.html.twig', [
             'events' => $events,
             'total' => $total,

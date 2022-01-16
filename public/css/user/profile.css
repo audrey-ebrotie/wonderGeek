@@ -74,3 +74,14 @@ li {
   border: solid 4px #212529;
   border-radius: 30px;
 }
+
+.cgu{
+  background-color: white;
+  color: black;
+  font-size: small;
+  width: 90%;
+  line-height: 1.1;
+}
+.cgu > p{
+  margin-top: 1;
+}

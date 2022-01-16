@@ -89,6 +89,12 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/register/cgu', name: 'cgu')]
+    public function CGU(): Response
+    {
+        return $this->render('user/cgu.html.twig');
+    }
+
     #[Route('/login', name: 'login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {

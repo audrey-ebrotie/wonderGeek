@@ -28,7 +28,7 @@ class BoardGameController extends AbstractController
         $searchForm->handleRequest($request);
         $searchCriteria = $searchForm->getData();
 
-        $boardGames = $this->boardGameRepository->search($searchCriteria);
+        
 
         // Système de pagination
         $limit = 12;        
@@ -36,7 +36,7 @@ class BoardGameController extends AbstractController
         
         $boardGames = $this->boardGameRepository->getPaginatedBoardGames($page, $limit);       
         $total = $this->boardGameRepository->getTotalBoardGames();
-
+        $boardGames = $this->boardGameRepository->search($searchCriteria);
         return $this->render('board_game/list.html.twig', [
             'boardGames' => $boardGames,
             'total' => $total,
