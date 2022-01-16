@@ -142,6 +142,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
 
+
             $this->em->persist($user);
             $this->em->flush();
 
@@ -164,5 +165,14 @@ class UserController extends AbstractController
 
         $this->addFlash('notice', 'Votre compte a été supprimé.');
         return $this->redirectToRoute('main_index');
+    }
+
+    #[Route('/{id}/favorites/add', name: 'add_favorite', requirements: ['id' => '\d+'])]
+    public function addtoFavorites(Request $request) {
+        $user->getFavoriteVideoGame();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
     }
 }
