@@ -77,5 +77,8 @@ li {
   color: black;
   font-size: small;
   width: 90%;
-  line-height: 1.2;
+  line-height: 1.1;
+}
+.cgu > p{
+  margin-top: 1;
 }
