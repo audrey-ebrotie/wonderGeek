@@ -59,4 +59,17 @@ public function getTotalUsers(){
     return $query->getQuery()->getSingleScalarResult();
 }
 
+public function search($criteria)
+{
+    $stmt = $this->createQueryBuilder('u');
+
+    if(!empty($criteria['query'])){
+        $stmt->where('u.username LIKE :query');
+        $stmt->orwhere('u.email LIKE :query');
+        $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+
+    return $stmt->getQuery()->getResult();
+}
+
 }
