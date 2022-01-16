@@ -134,24 +134,30 @@ class UserController extends AbstractController
      */
     #[Route('/{id}/edit', name: 'edit', requirements: ['id' => '\d+'])]
     #[IsGranted('ROLE_USER')]
-    public function userForm(Request $request, $id = null): Response
+    public function edit(user $user, Request $request, UploaderHelper $uploaderHelper)
     {
-        $user = $this->userRepository->find($id);
         $form = $this->createForm(UserType::class, $user);
-
+        
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()){
 
+            $uploadedFile = $form['pictureFile']->getData();
 
+            $newFilename = $uploaderHelper->uploadUserAvatar($uploadedFile);
+            $user->setPicture($newFilename);
+            
             $this->em->persist($user);
             $this->em->flush();
 
-            $message = sprintf('Votre compte a bien été modifié');
-            $this->addFlash('notice', $message);
+            $this->addFlash('notice', 'Votre compte a bien été modifié');
+            return $this->redirectToRoute('user_profile', [
+                'id' => $user->getId(),
+            ]);
+        }
 
-        }  return $this->redirectToRoute('user_profile',[
-                'id' => $user->getId()
-            ]);      
+        return $this->render('user/edit.html.twig', [
+            'form' => $form->createView(), 
+        ]);
     }
     
     #[Route('/{id}/delete', name: 'delete', requirements: ['id' => '\d+'])]
@@ -167,12 +173,4 @@ class UserController extends AbstractController
         return $this->redirectToRoute('main_index');
     }
 
-    #[Route('/{id}/favorites/add', name: 'add_favorite', requirements: ['id' => '\d+'])]
-    public function addtoFavorites(Request $request) {
-        $user->getFavoriteVideoGame();
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
-    }
 }

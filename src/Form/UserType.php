@@ -91,15 +91,6 @@ class UserType extends AbstractType
                     ])
                 ]
             ])
-            ->add('cgu', CheckboxType::class, [
-                'label' => 'J\'accepte les conditions générales d\'utilisation',
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Vous devez accepter nos CGU'
-                    ]),
-                ]
-            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
                 'attr' => [
