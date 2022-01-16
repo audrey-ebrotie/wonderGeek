@@ -71,3 +71,11 @@ li {
 .bookedEvents {
   background-color: #25515e;
 }
+
+.cgu{
+  background-color: white;
+  color: black;
+  font-size: small;
+  width: 90%;
+  line-height: 1.2;
+}
