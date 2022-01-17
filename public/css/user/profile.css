@@ -95,3 +95,9 @@ li {
 .cgu > p {
   margin-top: 1;
 }
+
+@media (max-width:1024px) {
+  .profile-space{
+    flex-direction: column;
+  }
+}
