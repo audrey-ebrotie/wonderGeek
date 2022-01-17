@@ -173,9 +173,9 @@ nav .allMenu .closeMenu i {
 
   nav .allMenu .closeMenu i {
     display: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed;
+    top: 40px;
+    right: 30px;
     z-index: 999;
   }
 
