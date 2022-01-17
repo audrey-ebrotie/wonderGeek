@@ -24,9 +24,9 @@ class MangaController extends AbstractController
     public function mangaList(Request $request): Response
     {
         // Formulaire de recherche
-        $searchForm = $this->createForm(SearchMangaType::class);
-        $searchForm->handleRequest($request);
-        $searchCriteria = $searchForm->getData();
+        # $searchForm = $this->createForm(SearchMangaType::class);
+        # $searchForm->handleRequest($request);
+        # $searchCriteria = $searchForm->getData();
 
         // Système de pagination
         $limit = 12;        
@@ -34,14 +34,14 @@ class MangaController extends AbstractController
         $mangas = $this->mangaRepository->getPaginatedMangas($page, $limit);       
         $total = $this->mangaRepository->getTotalMangas();
         
-        $mangas = $this->mangaRepository->search($searchCriteria);
+        # $mangas = $this->mangaRepository->search($searchCriteria);
         
         return $this->render('manga/list.html.twig', [
             'mangas' => $mangas,
             'total' => $total,
             'limit' => $limit,
             'page' => $page,
-            'searchForm' => $searchForm->createView(),
+            #'searchForm' => $searchForm->createView(),
         ]);
     }
 

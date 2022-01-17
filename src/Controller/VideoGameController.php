@@ -25,9 +25,9 @@ class VideoGameController extends AbstractController
     public function videoGamesList(Request $request): Response
     {
         // Formulaire de recherche
-        $searchForm = $this->createForm(SearchVideoGameType::class);
-        $searchForm->handleRequest($request);
-        $searchCriteria = $searchForm->getData();
+        # $searchForm = $this->createForm(SearchVideoGameType::class);
+        # $searchForm->handleRequest($request);
+        # $searchCriteria = $searchForm->getData();
 
         // Système de pagination
         $limit = 12;        
@@ -35,14 +35,14 @@ class VideoGameController extends AbstractController
         $videoGames = $this->videoGameRepository->getPaginatedVideoGames($page, $limit);
         $total = $this->videoGameRepository->getTotalVideoGames(); 
         
-        $videoGames = $this->videoGameRepository->search($searchCriteria);  
+        #$videoGames = $this->videoGameRepository->search($searchCriteria);  
         
         return $this->render('video_game/list.html.twig', [
             'videoGames' => $videoGames,
             'total' => $total,
             'limit' => $limit,
             'page' => $page,
-            'searchForm' => $searchForm->createView(),
+            #'searchForm' => $searchForm->createView(),
         ]);
     }
 

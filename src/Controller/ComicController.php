@@ -24,9 +24,9 @@ class ComicController extends AbstractController
     public function comicList(Request $request): Response
     {
         // Formulaire de recherche
-        $searchForm = $this->createForm(SearchComicType::class);
-        $searchForm->handleRequest($request);
-        $searchCriteria = $searchForm->getData();
+        #$searchForm = $this->createForm(SearchComicType::class);
+        #$searchForm->handleRequest($request);
+        #$searchCriteria = $searchForm->getData();
 
         
 
@@ -35,14 +35,14 @@ class ComicController extends AbstractController
         $page = (int)$request->query->get("page", 1);    
         $comics = $this->comicRepository->getPaginatedComics($page, $limit);       
         $total = $this->comicRepository->getTotalComics();   
-        $comics = $this->comicRepository->search($searchCriteria);
+        #$comics = $this->comicRepository->search($searchCriteria);
         
         return $this->render('comic/list.html.twig', [
             'comics' => $comics,
             'total' => $total,
             'limit' => $limit,
             'page' => $page,
-            'searchForm' => $searchForm->createView(),
+            #'searchForm' => $searchForm->createView(),
         ]);
     }
 
