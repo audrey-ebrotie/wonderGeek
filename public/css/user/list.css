@@ -35,6 +35,7 @@ h1 {
   flex-direction: column;
   margin: 1% 0;
   flex: 1;
+  min-height: 100%;
 }
 
 .users .user div {

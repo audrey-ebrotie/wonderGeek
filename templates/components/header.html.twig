@@ -5,16 +5,22 @@
       {# LOGO WonderGeeK#}
       <a href="{{ path('main_index') }}"><img src={{ asset('img/logo.png') }} alt="logo wonderGeeK"></a>
 
-      <div class="openMenu d-flex align-self-end justify-content-end ms-auto"><i class="fa fa-bars"></i></div>
-
       <div class="allMenu">
         <ul class="mainMenu navbar-nav me-auto mb-2 mb-lg-0">
           <li><a href="{{ path('main_index') }}">Accueil</a></li>
-          <li><a href="{{ path('event_list') }}">Évènements</a></li>
-          <li><a href="{{ path('video_game_list') }}">Jeux vidéos</a></li>
-          <li><a href="{{ path('board_game_list') }}">Jeux de société</a></li>
-          <li><a href="{{ path('manga_list') }}">Mangas</a></li>
-          <li><a href="{{ path('comic_list') }}">Comics</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Évènements
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ path('event_list') }}">Liste</a></li>
+              <li><a class="dropdown-item" href="{{ path('video_game_list') }}">Jeux vidéos</a></li>
+              <li><a class="dropdown-item" href="{{ path('board_game_list') }}">Jeux de société</a></li>
+              <li><a class="dropdown-item" href="{{ path('manga_list') }}">Mangas</a></li>
+              <li><a class="dropdown-item" href="{{ path('comic_list') }}">Comics</a></li>
+            </ul>
+          </li>
           <li><a href="{{ path('user_list') }}">Utilisateurs</a></li>
           <li><a href="{{ path('contact_index') }}">Contact</a></li>
 
@@ -39,6 +45,9 @@
         </ul>
         <div class="closeMenu"><i class="fa fa-times"></i></div>
       </div>
+
+      <div class="openMenu d-flex align-self-end justify-content-end ms-auto"><i class="fa fa-bars"></i></div>
+
     </nav>
   </div>
 </header>

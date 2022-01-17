@@ -12,10 +12,10 @@
 
     {{ form_start(searchForm) }}
     <div class="row g-3 my-2">
-        <div class="col-sm-7">
+        <div class="col">
             {{ form_row(searchForm.query) }}  
         </div>
-        <div class="col-sm">
+        <div class="col">
             {{ form_row(searchForm.submit) }}
         </div>
     </div>
@@ -34,32 +34,34 @@
                         {% endif %}
                     </div>
                     <div class="user-summary">
-                        <h2 class="text-center">{{ user.username }}</h2>
+                        <h2 class="card-title text-center py-2">{{ user.username }}</h2>
+                        <ul class="py-2">
+                            <li>
+                                <i class="fas fa-home"></i>
+                                {{ user.city }}
+                            </li>
+                            <li>
+                                <i class="fas fa-birthday-cake"></i>
+                                {{ user.birthdate|date('d/m/Y') }} - {{ user.age }}
+                            </li>
+                        </ul>
                         
-                            <ul>
-                                <li>
-                                    <i class="fas fa-home"></i>
-                                    {{ user.city }}
-                                </li>
-                                <li>
-                                    <i class="fas fa-birthday-cake"></i>
-                                    {{ user.birthdate|date('d/m/Y') }} - {{ user.age }}
-                                </li>
-                                <li>
-                                    {% if user.profile != NULL %}
-                                        <i class="fas fa-id-card"></i>
-                                        {{ user.profile.name }}
-                                    {% else %}
-                                    {% endif %}
-                                </li>
-                                <li>
-                                    {% if user.level != NULL %}
-                                        <i class="fas fa-sort-amount-up"></i>
-                                        {{ user.level.name }}
-                                    {% else %}
-                                    {% endif %}
-                                </li>
-                            </ul>
+                        <ul class="py-2">
+                            <li>
+                                {% if user.profile != NULL %}
+                                    <i class="fas fa-id-card"></i>
+                                    {{ user.profile.name }}
+                                {% else %}
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if user.level != NULL %}
+                                    <i class="fas fa-sort-amount-up"></i>
+                                    {{ user.level.name }}
+                                {% else %}
+                                {% endif %}
+                            </li>
+                        </ul>
                         {# <div class="user-action">
                             <a href="{{ path('user_show', {id: user.id}) }}" class="button">Plus de détails</a>
                         </div> #}
