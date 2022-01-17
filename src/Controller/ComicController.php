@@ -27,15 +27,16 @@ class ComicController extends AbstractController
         $searchForm = $this->createForm(SearchComicType::class);
         $searchForm->handleRequest($request);
         $searchCriteria = $searchForm->getData();
+
         
+
         // Système de pagination
         $limit = 12;        
         $page = (int)$request->query->get("page", 1);    
         $comics = $this->comicRepository->getPaginatedComics($page, $limit);       
         $total = $this->comicRepository->getTotalComics();   
-
         $comics = $this->comicRepository->search($searchCriteria);
-
+        
         return $this->render('comic/list.html.twig', [
             'comics' => $comics,
             'total' => $total,

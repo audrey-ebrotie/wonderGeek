@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Contact - {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/component/form.css') }}">
+{% endblock %}
+{% block body %}
+
+    <div class="container">
+
+        <h1 class="text-center">Contact</h1>
+
+        {{form_start(form)}}
+            <div class="row">
+                {{form_row(form.name)}}
+                
+            </div>
+            <div class="row">
+                {{form_row(form.email)}}
+               
+            </div>
+            <div class="row pt-4">
+                {{form_row(form.message)}}
+            </div>
+            <div class="form-end">
+                <input class="btn btn-primary py-2 px-3" type="submit" value="Valider">
+            </div>
+        {{form_end(form)}}
+    </div>
+
+    <div class="InfoMessage">
+        <p class="fst-italic"> WonderGeek s'engage à vous répondre sous 48h dès la réception de votre message</p>
+    </div>
+{% endblock %}
