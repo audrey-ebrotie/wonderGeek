@@ -97,10 +97,6 @@ class UserController extends AbstractController
     #[Route('/login', name: 'login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        if($this->getUser()){
-            return $this->disallowAccess();
-        }
-
         $error = $authenticationUtils->getLastAuthenticationError();
 
         return $this->render('user/login.html.twig', [
@@ -117,7 +113,7 @@ class UserController extends AbstractController
 
     private function disallowAccess():Response
     {
-        $this->addFlash('notice', 'Vous êtes déjà connecté(e), déconnectez vous pour changer de compte');
+        $this->addFlash('notice', 'Vous ne pouvez pas accéder aux informations personnelles de cet utilisateur');
 
         return $this->redirectToRoute('main_index');
     }
@@ -127,6 +123,10 @@ class UserController extends AbstractController
     {
         {
             $user = $this->userRepository->find($id);
+
+            if($user->getUsername() != $this->getUser()->getUsername()){
+                return $this->disallowAccess();
+            }
             
             return $this->render('user/profile.html.twig', [
                 'user' => $user
@@ -142,7 +142,7 @@ class UserController extends AbstractController
     public function edit(user $user, Request $request, UploaderHelper $uploaderHelper)
     {
         $form = $this->createForm(UserType::class, $user);
-        
+
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\VideoGame;
 use App\Form\SearchVideoGameType;
 use App\Repository\VideoGameRepository;

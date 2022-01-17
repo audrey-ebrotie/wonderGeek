@@ -37,9 +37,7 @@ class EventController extends AbstractController
         //  Formulaire de recherche
         $searchForm = $this->createForm(SearchEventType::class);
         $searchForm->handleRequest($request);
-        $searchCriteria = $searchForm->getData();
-
-         
+        $searchCriteria = $searchForm->getData(); 
 
         // Système de pagination
         $limit = 12;        
@@ -124,19 +122,18 @@ class EventController extends AbstractController
     #[IsGranted('BOOK_EVENT', subject: 'event')]
     public function booking(Request $request, Event $event): Response
     {
-                $booking = new Booking();
-                $booking->setEvent($event);
-                $booking->setUser($this->getUser());
-                $booking->setReference(Uuid::v4());
+        $booking = new Booking();
+        $booking->setEvent($event);
+        $booking->setUser($this->getUser());
+        $booking->setReference(Uuid::v4());
 
-                $this->em->persist($booking);
-                $this->em->flush();
+        $this->em->persist($booking);
+        $this->em->flush();
 
-                return $this->redirectToRoute('booking_confirmation', [
-                    'reference' => $booking->getReference(),
-                ]);
-            }
-        }
+        $this->addFlash('notice', 'L\'évènement a bien été réservé.');
+        return $this->redirectToRoute('event_list');
+    }
+}
         
     
 

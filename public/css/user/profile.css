@@ -4,6 +4,10 @@ main {
   align-items: center;
 }
 
+h1 {
+  margin: 2% 0 2% 0;
+}
+
 h4,
 h3 {
   font-weight: bold;
@@ -69,19 +73,25 @@ li {
   text-transform: uppercase;
 }
 
-.bookedEvents {
-  background-color: #25515e;
-  border: solid 4px #212529;
+.events {
+  background-color: #212529;
+  border: solid 1px white;
   border-radius: 30px;
+  width: 35%;
 }
 
-.cgu{
+.events a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.cgu {
   background-color: white;
   color: black;
   font-size: small;
   width: 90%;
   line-height: 1.1;
 }
-.cgu > p{
+.cgu > p {
   margin-top: 1;
 }

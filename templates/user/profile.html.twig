@@ -73,16 +73,38 @@
           </div>
 
         <div class="create-event__button my-2">
-          <a href="{{ path('user_edit', {id: user.id}) }}" class="btn btn-primary m-2">Modifier vos informations</a>
-          <a href="{{ path('user_delete', {id: user.id}) }}" class="btn btn-danger m-2">Supprimer votre compte</a>
+          <a href="{{ path('user_edit', {id: user.id}) }}" class="btn btn-primary m-2">Modifier tes informations</a>
+          <a href="{{ path('user_delete', {id: user.id}) }}" class="btn btn-danger m-2">Supprimer ton compte</a>
         </div>
       </div>
   </div>
 
-  <div class="bookedEvents p-3 w-25 text-center rounded-2">
-    <h3>Mes réservations</h2>
+  <div class="events p-3 my-3 mx-2 rounded-4">
+    
+    <div>
+    <h3>Mes réservations</h3>
+    {% for bookings in user.bookings %}
+    <div class="py-4">
+      <i class="fas fa-ticket-alt"></i>
+      Référence de réservation : {{ bookings.reference }} <br>
+      <i class="fas fa-calendar-day"></i>
+      Date de l'évènement : {{ bookings.event.startAt|date('d/m/Y H:i') }} <br>
+      <i class="far fa-eye"></i>
+      Voir l'évènement <i class="fas fa-arrow-right"></i> <a href="{{ path('event_show', {id: bookings.event.id }) }}">{{ bookings.event.name}}</a>
+    </div>           
+    {% endfor %}
   </div>
 
-</div>
+  <div class="py-4">
+    <h3>Mes évènements</h3>
+    {% for ownedEvents in user.ownedEvents %}
+    <div>
+      <i class="fas fa-calendar-day"></i>
+      Date de l'évènement : {{ ownedEvents.startAt|date('d/m/Y H:i') }} <br>
+      <i class="far fa-eye"></i>
+      Voir l'évènement <i class="fas fa-arrow-right"></i></i> <a href="{{ path('event_show', {id: ownedEvents.id }) }}">{{ ownedEvents.name}}</a>
+    </div>           
+    {% endfor %}
+  </div>
 
 {% endblock %}
