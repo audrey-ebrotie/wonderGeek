@@ -181,6 +181,7 @@ nav .allMenu .closeMenu i {
 
   nav .allMenu {
     position: relative;
+    justify-content: space-around;
   }
 
   nav .openMenu {
