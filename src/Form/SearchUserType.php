@@ -23,12 +23,6 @@ class SearchUserType extends AbstractType
                 'placeholder' => 'Nom du joueur',
             ],
         ])
-        ->add('profile', EntityType::class, [
-            'label' => false,
-            'class' => UserProfile::class,
-            'choice_label' => 'name',
-            'placeholder' => 'Filtrer par catégorie',
-        ])
         
         ->add('submit', SubmitType::class, [
             'label' => '<i class="fas fa-search"></i>',

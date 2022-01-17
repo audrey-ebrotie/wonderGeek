@@ -34,9 +34,9 @@ class UserController extends AbstractController
     public function usersList(Request $request): Response
     {
         //  Formulaire de recherche
-        $searchForm = $this->createForm(SearchUserType::class);
-        $searchForm->handleRequest($request);
-        $searchCriteria = $searchForm->getData();
+        # $searchForm = $this->createForm(SearchUserType::class);
+        # $searchForm->handleRequest($request);
+        # $searchCriteria = $searchForm->getData();
 
          
 
@@ -44,17 +44,17 @@ class UserController extends AbstractController
         $limit = 18;        
         $page = (int)$request->query->get("page", 1);  
         
-        $users = $this->userRepository->search($searchCriteria);  
+        # $users = $this->userRepository->search($searchCriteria);  
         $users = $this->userRepository->getPaginatedUsers($page, $limit);       
         $total = $this->userRepository->getTotalUsers();   
-        $users = $this->userRepository->search($searchCriteria); 
+        #$users = $this->userRepository->search($searchCriteria); 
 
         return $this->render('user/list.html.twig', [
             'users' => $users,
             'total' => $total,
             'limit' => $limit,
             'page' => $page,
-            'searchForm' => $searchForm->createView(),
+            //'searchForm' => $searchForm->createView(),
     
         ]);
     }
