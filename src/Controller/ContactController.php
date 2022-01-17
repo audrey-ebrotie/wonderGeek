@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     #[Route('', name: 'contact_')]
 class ContactController extends AbstractController
 {
-    #[Route('/', name: 'index')]
+    #[Route('/contact', name: 'index')]
         public function index(Request $request, MailerInterface $mailer)
         {
             $form = $this->createForm(ContactType::class);
@@ -38,3 +38,4 @@ class ContactController extends AbstractController
         ]);
     }
 }
+
