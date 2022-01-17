@@ -34,6 +34,7 @@ class VideoGameController extends AbstractController
         $page = (int)$request->query->get("page", 1);       
         $videoGames = $this->videoGameRepository->getPaginatedVideoGames($page, $limit);
         $total = $this->videoGameRepository->getTotalVideoGames(); 
+        
         $videoGames = $this->videoGameRepository->search($searchCriteria);  
         
         return $this->render('video_game/list.html.twig', [

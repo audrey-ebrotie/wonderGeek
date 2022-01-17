@@ -28,14 +28,12 @@ class MangaController extends AbstractController
         $searchForm->handleRequest($request);
         $searchCriteria = $searchForm->getData();
 
-        
-
         // Système de pagination
         $limit = 12;        
         $page = (int)$request->query->get("page", 1);    
-        
         $mangas = $this->mangaRepository->getPaginatedMangas($page, $limit);       
         $total = $this->mangaRepository->getTotalMangas();
+        
         $mangas = $this->mangaRepository->search($searchCriteria);
         
         return $this->render('manga/list.html.twig', [

@@ -84,7 +84,7 @@ class AppLoginAuthenticator extends AbstractAuthenticator implements Authenticat
     {
         $session = $this->requestStack->getSession();
         $flashBag = $session->getFlashBag();
-        $flashBag->add('info', 'Vous devez être connecté(e) pour créer un évènement');
+        $flashBag->add('info', 'Vous devez être connecté(e) pour accéder à cette page');
         
         $url = $this->urlGenerator->generate('user_login');
         return new RedirectResponse($url);
