@@ -109,16 +109,23 @@
         <div class="event-register my-3 rounded-2">
             <span>
                 <i class="fas fa-ticket-alt"></i>
-                Nombre de places dsponibles : {{ event.capacity }}
+                Nombre de places dsponibles : {{ event.capacity - event.bookings|length }}
             </span>
-            {% if is_granted('DISPLAY_BOOK_EVENT', event) %}
-                <a href="{{ path('event_booking', {id: event.id }) }}" class="button">
-                    Réserver
-                </a>
+            {% if event.endAt < date() %}
+                Cet évènement est terminé
             {% else %}
-                <span>Déjà réservé</span>
-                <a class="button" href="{{ path('user_profile', { id: app.user.id }) }}">Voir mes réservations</a> 
+
+                {% if is_granted('DISPLAY_BOOK_EVENT', event) %}
+                    <a href="{{ path('event_booking', {id: event.id }) }}" class="button">
+                        Réserver
+                    </a>
+                {% else %}
+                    <span>Déjà réservé</span>
+                    <a class="button" href="{{ path('user_profile', { id: app.user.id }) }}">Voir mes réservations</a> 
+                {% endif %}
+
             {% endif %}
+            
         </div>
         
     </article>
