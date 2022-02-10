@@ -22,7 +22,7 @@ système d’upload d’images
 - Evènements : si déjà réservé, l’utilisateur voit la mention "déjà réservé" et peut accéder à la liste de
 ses évènements réservés
 - Evènements : indication si passé, à venir, en cours par pastille dans le coin de l’image. Si évènement
-passé, à la place du bouton réserver  :  "Cet  évènement est terminé"   
+passé, à la place du bouton réserver : "Cet évènement est terminé"   
 - Système de pagination
 - Sécurité : token à la réservation, au login
 - Keeplogin qui permet de rester connecter (durée : 1 semaine)
